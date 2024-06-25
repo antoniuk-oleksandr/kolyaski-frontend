@@ -19,7 +19,6 @@ const SidebarSubItemsMenu = (props: SidebarSubItemsMenuProps) => {
                 <SidebarItem
                     key={index}
                     itemStyles={`hover:text-neutral-600 ${subMenuItemStyle}`}
-                    chevronDirection={'down'}
                     item={item}
                 />
             ))}

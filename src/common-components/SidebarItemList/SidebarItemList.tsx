@@ -5,7 +5,6 @@ import {Key} from "react";
 
 type SidebarItemListProps = {
     itemStyles: string,
-    chevronDirection: 'right' | 'down',
     subMenuStyles?: string,
     menuStyles?: string,
     borderBottom?: boolean,

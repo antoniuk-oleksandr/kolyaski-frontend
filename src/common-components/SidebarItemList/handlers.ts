@@ -1,5 +1,5 @@
 import {NextRouter} from "next/router";
-import React from "react";
+import React, {Dispatch, SetStateAction} from "react";
 
 export const handleSidebarItemClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -12,7 +12,9 @@ export const handleSidebarItemClick = (
 
 export const handleSidebarItemChevronClick = (
     e: React.MouseEvent<HTMLOrSVGElement, MouseEvent>,
+    setIsHovered : Dispatch<SetStateAction<boolean>>,
 ) => {
+    setIsHovered((prev) => !prev);
     e.stopPropagation();
     console.log("chevron clicked");
 }

@@ -4,12 +4,15 @@ import Header from "@/common-components/Header/Header";
 import AppLayout from "@/pages/AppLayout";
 import '@mantine/core/styles.css';
 import Footer from "@/common-components/Footer/Footer";
+import PageLayout from "@/pages/PageLayout";
 
 export default function App({Component, pageProps}: AppProps) {
     return (
         <AppLayout>
             <Header/>
-            <Component {...pageProps} />
+            <PageLayout>
+                <Component {...pageProps} />
+            </PageLayout>
             <Footer/>
         </AppLayout>
     )

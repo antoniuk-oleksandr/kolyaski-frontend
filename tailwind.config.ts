@@ -17,9 +17,16 @@ const config: Config = {
             width: {
                 75: "17.75rem",
                 headerSearchInput: "calc(100% - 6rem)",
+                62: "15.375rem",
             },
             height: {
                 headerDrawer: "calc(100% - 3.75rem)",
+            },
+            minHeight: {
+                7.5: "1.875rem",
+                40.5: "10.125rem",
+                pageLayout: "calc(100svh - 10.125rem)",
+                pageLayoutMobile: "calc(100svh - 18rem)",
             },
             colors: {
                 primary: "#A696D2",
@@ -27,12 +34,11 @@ const config: Config = {
                 babyCarriage: "#CE4ADA",
             },
             gridTemplateColumns: {
-              headerColumns: "18.75rem, 1fr, 18.75rem"
+                headerColumns: "18.75rem, 1fr, 18.75rem"
             },
-            gridTemplateRows: {
-            },
+            gridTemplateRows: {},
             screens: {
-              phone: {max: "960px"}
+                phone: {max: "960px"}
             },
         },
     },

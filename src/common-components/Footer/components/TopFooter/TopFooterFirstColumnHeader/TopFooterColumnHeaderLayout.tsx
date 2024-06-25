@@ -1,6 +1,6 @@
 import {LayoutProps} from "@/types/LayoutProps";
 
-const TopFooterFirstColumnHeaderLayout = (props: LayoutProps) => {
+const TopFooterColumnHeaderLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
@@ -10,4 +10,4 @@ const TopFooterFirstColumnHeaderLayout = (props: LayoutProps) => {
     )
 }
 
-export default TopFooterFirstColumnHeaderLayout;
+export default TopFooterColumnHeaderLayout;

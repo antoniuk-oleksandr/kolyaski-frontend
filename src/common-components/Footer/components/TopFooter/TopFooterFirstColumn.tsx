@@ -7,7 +7,7 @@ const TopFooterFirstColumn = () => {
             <TopFooterFirstColumnHeader/>
             <p className={"text-primary"}>Здійснюється в межах України поштовим оператором Нова Пошта. Інші способи доставки оговорюються
                 індивідуально.</p>
-            <p className={"text-primary"}>Термін доставки 1-3 дні </p>
+            <p className={"text-primary"}>Термін доставки 1-3 дні.</p>
         </>
     )
 }

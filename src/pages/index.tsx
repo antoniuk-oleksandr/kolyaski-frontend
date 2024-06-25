@@ -1,12 +1,9 @@
-import Image from "next/image";
-import Wrapper from "@/common-components/Wrapper";
+import Sidebar from "@/common-components/Sidebar/Sidebar";
 
 export default function Home() {
     return (
         <div>
-            <Wrapper>
-                <p>Home Page</p>
-            </Wrapper>
+            <Sidebar/>
         </div>
     );
 }

@@ -1,12 +1,13 @@
-import Image from "next/image";
 import Wrapper from "@/common-components/Wrapper";
 
-export default function Home() {
+const WishlistPage = () => {
     return (
         <div>
             <Wrapper>
-                <p>Home Page</p>
+                <p>WishList</p>
             </Wrapper>
         </div>
-    );
+    )
 }
+
+export default WishlistPage;

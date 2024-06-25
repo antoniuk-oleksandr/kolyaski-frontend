@@ -1,12 +1,13 @@
-import Image from "next/image";
 import Wrapper from "@/common-components/Wrapper";
 
-export default function Home() {
+const PaymentMethodsPage = () => {
     return (
         <div>
             <Wrapper>
-                <p>Home Page</p>
+                <p>PaymentMethodsPage</p>
             </Wrapper>
         </div>
-    );
+    )
 }
+
+export default PaymentMethodsPage;

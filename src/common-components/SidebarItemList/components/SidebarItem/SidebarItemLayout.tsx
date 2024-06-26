@@ -19,7 +19,7 @@ const SidebarItemLayout = (props: SidebarItemLayoutProps) => {
 
     return (
         <div
-            onClick={(e) => isMobile && handleSidebarItemClick(e, router, link)}
+            onClick={(e) => handleSidebarItemClick(e, router, link)}
             onMouseEnter={() => !isMobile && setIsHovered(true)}
             onMouseLeave={() => !isMobile && setIsHovered(false)}
             className={`text-sm font-medium duration-200 ease-out cursor-pointer flex gap-x-1.5 justify-center flex-col relative 

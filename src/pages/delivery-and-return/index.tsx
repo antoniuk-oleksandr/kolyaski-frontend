@@ -1,12 +1,15 @@
-import Wrapper from "@/common-components/Wrapper";
+import HomeContentLayout from "@/pages/home/components/HomeContentLayout";
+import DeliveryAndReturnLeftSide
+    from "@/pages/delivery-and-return/components/DeliveryAndReturnLeftSide/DeliveryAndReturnLeftSide";
+import DeliveryAndReturnRightSide
+    from "@/pages/delivery-and-return/components/DeliveryAndReturnRightSide/DeliveryAndReturnRightSide";
 
 const DeliveryReturnPage = () => {
     return (
-        <div>
-            <Wrapper>
-                <p>Delivery and return</p>
-            </Wrapper>
-        </div>
+        <HomeContentLayout>
+            <DeliveryAndReturnLeftSide/>
+            <DeliveryAndReturnRightSide/>
+        </HomeContentLayout>
     )
 }
 

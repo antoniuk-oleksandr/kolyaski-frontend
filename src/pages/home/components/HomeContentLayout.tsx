@@ -1,10 +1,14 @@
 import {LayoutProps} from "@/types/LayoutProps";
 
-const HomeContentLayout = (props: LayoutProps) => {
-    const {children} = props;
+type HomeContentLayout = LayoutProps & {
+    reverse?: boolean,
+}
+
+const HomeContentLayout = (props: HomeContentLayout) => {
+    const {children, reverse} = props;
 
     return (
-        <div className={"flex phone:flex-col"}>
+        <div className={`flex phone:flex-col ${reverse && 'phone:flex-col-reverse'}`}>
             {children}
         </div>
     )

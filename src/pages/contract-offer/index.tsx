@@ -1,12 +1,12 @@
-import Wrapper from "@/common-components/Wrapper";
+import ContractOfferHeader from "@/pages/contract-offer/components/ContractOfferHeader";
+import ContractContent from "@/pages/contract-offer/components/ContractContent/ContractContent";
 
 const ContractOfferPage = () => {
     return (
-        <div>
-            <Wrapper>
-                <p>ContractOfferPage</p>
-            </Wrapper>
-        </div>
+        <>
+            <ContractOfferHeader />
+            <ContractContent/>
+        </>
     )
 }
 

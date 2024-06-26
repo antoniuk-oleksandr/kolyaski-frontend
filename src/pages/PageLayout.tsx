@@ -5,7 +5,7 @@ const PageLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"min-h-pageLayout phone:min-h-pageLayoutMobile pt-3 px-3"}>
+        <div className={"min-h-pageLayout phone:min-h-pageLayoutMobile p-3"}>
             <Wrapper>
                 {children}
             </Wrapper>

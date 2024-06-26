@@ -18,9 +18,13 @@ const config: Config = {
                 75: "17.75rem",
                 headerSearchInput: "calc(100% - 6rem)",
                 62: "15.375rem",
+                67.5: "16.875rem",
             },
             height: {
                 headerDrawer: "calc(100% - 3.75rem)",
+                108: "27rem",
+                67.5: "16.875rem",
+                116: "29rem",
             },
             minHeight: {
                 7.5: "1.875rem",
@@ -34,7 +38,8 @@ const config: Config = {
                 babyCarriage: "#CE4ADA",
             },
             gridTemplateColumns: {
-                headerColumns: "18.75rem, 1fr, 18.75rem"
+                headerColumns: "18.75rem, 1fr, 18.75rem",
+                homeBottomContent: "66%, 1fr",
             },
             gridTemplateRows: {},
             screens: {

@@ -1,15 +1,18 @@
 import Sidebar from "@/common-components/Sidebar/Sidebar";
-import HomeCarousel from "@/pages/home/components/HomeCarousel/HomeCarousel";
+import HomeCarousel from "@/pages/home/components/HomeCarousel/HomeCarousel/HomeCarousel";
 import BrandList from "@/pages/home/components/BrandList/BrandList";
+import HomeContentLayout from "@/pages/home/components/HomeContentLayout";
+import HomeBottomContent from "@/pages/home/components/HomeBottom/HomeBottomContent/HomeBottomContent";
 
 export default function Home() {
     return (
-        <div>
-            <div className={"flex phone:flex-col"}>
+        <>
+            <HomeContentLayout>
                 <Sidebar/>
                 <HomeCarousel/>
-            </div>
+            </HomeContentLayout>
             <BrandList/>
-        </div>
+            <HomeBottomContent/>
+        </>
     );
 }

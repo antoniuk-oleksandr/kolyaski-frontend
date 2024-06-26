@@ -1,14 +1,13 @@
 import {LayoutProps} from "@/types/LayoutProps";
-import {Carousel} from "@mantine/carousel";
 import {motion} from "framer-motion";
 
 const HomeCarouselSlideLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        // <div className={""}>
-        <Carousel.Slide className={"relative rounded-md overflow-hidden"}>
+        <div className={"relative rounded-md overflow-hidden flex w-full flex-shrink-0"}>
             <motion.div
+                className={"flex-shrink-0 flex w-full"}
                 initial={{opacity: 0}}
                 animate={{opacity: 1}}
                 exit={{opacity: 1}}
@@ -16,8 +15,7 @@ const HomeCarouselSlideLayout = (props: LayoutProps) => {
             >
                 {children}
             </motion.div>
-        </Carousel.Slide>
-        // </div>
+        </div>
     )
 }
 

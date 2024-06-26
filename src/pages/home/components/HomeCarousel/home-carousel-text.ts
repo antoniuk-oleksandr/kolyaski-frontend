@@ -23,7 +23,7 @@ export const homeCarouselText: HomeCarouselItemType[] = [
     },
     {
         firstLineText: 'дитячі ліжечка',
-        secondLineText: 'екологічні матеріали',
+        secondLineText: 'Екологічні матеріали',
         thirdLineText: 'Найкращі ціни!',
         imageSrc: '/images/home-carousel3.jpg',
         link: '/',

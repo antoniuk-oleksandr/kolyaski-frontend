@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import "@/styles/scrollbar.css";
 import type {AppProps} from "next/app";
 import Header from "@/common-components/Header/Header";
 import AppLayout from "@/pages/AppLayout";

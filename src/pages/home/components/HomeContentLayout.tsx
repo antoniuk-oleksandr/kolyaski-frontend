@@ -1,13 +1,13 @@
 import {LayoutProps} from "@/types/LayoutProps";
 
-const CarouselLayout = (props: LayoutProps) => {
+const HomeContentLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"p-3 flex-1"}>
+        <div className={"flex phone:flex-col"}>
             {children}
         </div>
     )
 }
 
-export default CarouselLayout;
+export default HomeContentLayout;

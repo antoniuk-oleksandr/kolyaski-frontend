@@ -16,7 +16,7 @@ const SidebarSubItemsMenuLayout = (props: SidebarSubItemsMenuLayoutProps) => {
         <AnimatePresence>
             {isShown && (
                 <motion.div
-                    className={`bg-white absolute phone:static phone:left-0 phone:top-[100%] top-0 left-[100%] ${subMenuStyles}`}
+                    className={`bg-white absolute phone:static phone:left-0 phone:top-[100%] z-10 top-0 left-[100%] ${subMenuStyles}`}
                     initial={{opacity: 0, y: isMobile ? 0 : 10}}
                     animate={{opacity: 1, y: 0}}
                     exit={{opacity: 0, y: isMobile ? 0 : 10}}

@@ -1,13 +1,21 @@
 import HomeCarouselLayout from "./HomeCarouselLayout";
 import {Carousel} from "@mantine/carousel";
+import '@mantine/carousel/styles.css';
+import {useSlide} from "@/pages/home/components/use-slide";
+import {Key} from "react";
+import HomeCarouselSlide from "@/pages/home/components/HomeCarouselSlide/HomeCarouselSlide";
+import {homeCarouselText} from "../home-carousel-text";
 
 const HomeCarousel = () => {
+    const slide = useSlide();
+
     return (
         <HomeCarouselLayout>
-            <Carousel>
-                <Carousel.Slide>1</Carousel.Slide>
-                <Carousel.Slide>2</Carousel.Slide>
-                <Carousel.Slide>3</Carousel.Slide>
+            <Carousel
+                loop initialSlide={slide} withIndicators withControls={false} height={435} draggable>
+                {homeCarouselText.map((item, index: Key) => (
+                    <HomeCarouselSlide {...item} key={index}/>
+                ))}
             </Carousel>
         </HomeCarouselLayout>
     )

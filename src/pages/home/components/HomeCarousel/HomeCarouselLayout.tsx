@@ -4,7 +4,7 @@ const CarouselLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div>
+        <div className={"p-3 flex-1"}>
             {children}
         </div>
     )

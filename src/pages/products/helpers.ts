@@ -1,11 +1,13 @@
 import {SearchParams} from "@/types/SearchParams";
 import {BreadcrumbsItemType} from "@/types/BreadcrumbsItemType";
+import {capitalizeFirstLetter} from "@/utils/utils";
 
 export const getProductsPageTitle = (params: SearchParams): string => {
-    if (params.value !== undefined) return `Ви шукали ${params.value}`;
-    if (params.subType !== undefined) return params.subType as string;
-    if (params.type !== undefined) return params.type as string;
-    return 'error';
+    const part = ' - Купити з доставкою по Україні';
+    if (params.value !== undefined) return `Ви шукали ${params.value}` + part;
+    if (params.subType !== undefined) return capitalizeFirstLetter(params.subType as string) + part;
+    if (params.type !== undefined) return capitalizeFirstLetter(params.type as string) + part;
+    return 'Магазин' + part;
 }
 
 export const getProductsBreadcrumbsItems = (params: SearchParams): BreadcrumbsItemType[] => {
@@ -21,4 +23,11 @@ export const getProductsBreadcrumbsItems = (params: SearchParams): BreadcrumbsIt
     });
 
     return items;
+}
+
+export const getProductsText = (params: SearchParams) => {
+    if(params.value !== undefined) return `Результати пошуку: "${params.value}"`;
+    if(params.subType !== undefined) return params.subType;
+    if(params.type !== undefined) return params.type;
+    else return 'Магазин';
 }

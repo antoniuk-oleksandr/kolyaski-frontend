@@ -55,6 +55,9 @@ const config: Config = {
             screens: {
                 phone: {max: "960px"}
             },
+            gradientColorStops: {
+
+            },
         },
     },
     plugins: [

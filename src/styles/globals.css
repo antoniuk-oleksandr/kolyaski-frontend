@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mantine-Select-input:focus {
+    border-color: #A696D2 !important;
+}

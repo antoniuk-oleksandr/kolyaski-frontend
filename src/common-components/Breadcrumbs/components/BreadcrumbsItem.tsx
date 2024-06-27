@@ -12,8 +12,9 @@ const BreadcrumbsItem = (props: BreadcrumbsItemProps) => {
     return (
         <>
             <span
-                onClick={() => router.push(link)}
-                className={"hover:text-primary cursor-pointer duration-200 ease-out first-letter:capitalize"}>{name}</span>
+                onClick={() => !isLast && router.push(link)}
+                className={`hover:${isLast ? '' : 'text-primary cursor-pointer'}  duration-200 ease-out first-letter:capitalize`}
+            >{name}</span>
             {!isLast && <span>/</span>}
         </>
     )

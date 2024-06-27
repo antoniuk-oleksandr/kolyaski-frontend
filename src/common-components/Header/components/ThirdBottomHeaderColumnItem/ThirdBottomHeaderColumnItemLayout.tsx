@@ -17,7 +17,7 @@ const ThirdBottomHeaderColumnItemLayout = (props: ThirdBottomHeaderColumnItemLay
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             onClick={() => router.push(link)}
-            className={`flex flex-col items-center justify-center text-3xl gap-y-2 duration-200 ease-out active:scale-95
+            className={`flex flex-col items-center justify-center text-3xl gap-y-2 duration-200 ease-out outline-none active:scale-95
             ${isHovered ? "text-secondary" : "text-white"}`}
         >
             {children}

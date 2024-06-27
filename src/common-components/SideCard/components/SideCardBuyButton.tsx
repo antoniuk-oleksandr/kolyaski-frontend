@@ -12,7 +12,7 @@ const SideCardBuyButton = (props: SideCardBuyButtonProps) => {
     return (
         <button
             onClick={() => router.push(link)}
-            className={`mt-9 w-full rounded-md font-semibold text-base duration-200 ease-out py-3 uppercase ${buyButtonStyles}`}>
+            className={`mt-9 w-full rounded-md font-semibold text-base duration-200 ease-out py-3 active:scale-95 outline-none uppercase ${buyButtonStyles}`}>
             Купити<br/>Зараз
         </button>
     )

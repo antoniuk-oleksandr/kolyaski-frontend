@@ -10,7 +10,6 @@ const SidebarContent = () => {
                 subMenuStyles={'!bg-primary !text-white w-full px-2 pt-2 drop-shadow-lg'}
                 itemStyles={'py-3 !mb-0'}
                 borderBottom
-                chevronDirection={'right'}
             />
         </SidebarContentLayout>
     )

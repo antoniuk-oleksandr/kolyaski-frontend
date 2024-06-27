@@ -9,6 +9,7 @@ type SidebarItemListProps = {
     menuStyles?: string,
     borderBottom?: boolean,
     subMenuItemStyle?: string,
+    border?: boolean,
 }
 
 const SidebarItemList = (props: SidebarItemListProps) => {

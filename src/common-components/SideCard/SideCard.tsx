@@ -24,7 +24,7 @@ const SideCard = (props: SideCardProps) => {
     return (
         <SideCardLayout {...props}>
             <Image
-                className={"size-full rounded-md object-cover object-center"}
+                className={"size-full aspect-4x3 rounded-md object-cover object-center"}
                 width={300}
                 height={200}
                 src={imageSrc}

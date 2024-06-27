@@ -4,7 +4,6 @@ import MiddleFooterThirdColumnHeaderLayout
     from "@/common-components/Footer/components/MiddleFooter/MiddleFooterThirdColumnHeader/MiddleFooterThirdColumnHeaderLayout";
 import MiddleFooterTextLayout from "@/common-components/Footer/components/MiddleFooter/MiddleFooterTextLayout";
 import {FaClock, FaPhone} from "react-icons/fa6";
-import {BsFillCaretRightFill} from "react-icons/bs";
 
 const ContactsLeftSide = () => {
     return (

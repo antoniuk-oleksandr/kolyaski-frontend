@@ -3,7 +3,7 @@ type PaymentMethodsTextPropsProps = {
     secondLineText: string,
 }
 
-const DeliveryAndReturnText = (props: PaymentMethodsTextPropsProps) => {
+const TwoLinesText = (props: PaymentMethodsTextPropsProps) => {
     const {firstLineText, secondLineText} = props;
 
     return (
@@ -14,4 +14,4 @@ const DeliveryAndReturnText = (props: PaymentMethodsTextPropsProps) => {
     )
 }
 
-export default DeliveryAndReturnText;
+export default TwoLinesText;

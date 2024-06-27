@@ -4,7 +4,7 @@ type HomeContentLayout = LayoutProps & {
     reverse?: boolean,
 }
 
-const HomeContentLayout = (props: HomeContentLayout) => {
+const PageContentLayout = (props: HomeContentLayout) => {
     const {children, reverse} = props;
 
     return (
@@ -14,4 +14,4 @@ const HomeContentLayout = (props: HomeContentLayout) => {
     )
 }
 
-export default HomeContentLayout;
+export default PageContentLayout;

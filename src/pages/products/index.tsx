@@ -1,12 +1,17 @@
 import {useProducts} from "@/pages/products/use-products";
+import PageContentLayout from "@/common-components/PageContentLayout";
+import ProductsLeftSide from "@/pages/products/components/ProductsLeftSide/ProductsLeftSide";
+import ProductsRightSide from "@/pages/products/components/ProductsRightSide/ProductsRightSide";
 
 const ProductsPage = () => {
-    useProducts();
+    const {searchParams} = useProducts();
 
+    if (!searchParams) return;
     return (
-        <div>
-
-        </div>
+        <PageContentLayout>
+            <ProductsLeftSide/>
+            <ProductsRightSide searchParams={searchParams}/>
+        </PageContentLayout>
     )
 }
 

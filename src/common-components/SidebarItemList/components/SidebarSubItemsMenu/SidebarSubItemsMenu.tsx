@@ -1,12 +1,15 @@
 import SidebarSubItemsMenuLayout from "./SidebarSubItemsMenuLayout";
 import {SidebarItemType} from "@/types/SidebarItemType";
 import SidebarItem from "@/common-components/SidebarItemList/components/SidebarItem/SidebarItem";
+import {Dispatch, SetStateAction} from "react";
 
 type SidebarSubItemsMenuProps = {
     items: SidebarItemType[] | undefined,
     isShown: boolean,
     subMenuStyles? : string,
     subMenuItemStyle?: string,
+    setIsParentHovered: Dispatch<SetStateAction<boolean>>,
+    border?: boolean,
 }
 
 const SidebarSubItemsMenu = (props: SidebarSubItemsMenuProps) => {
@@ -17,6 +20,7 @@ const SidebarSubItemsMenu = (props: SidebarSubItemsMenuProps) => {
         <SidebarSubItemsMenuLayout {...props} isShown={isShown}>
             {items.map((item, index) => (
                 <SidebarItem
+                    {...props}
                     key={index}
                     itemStyles={`hover:text-neutral-600 ${subMenuItemStyle}`}
                     item={item}

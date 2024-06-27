@@ -1,4 +1,4 @@
-import HomeContentLayout from "@/pages/home/components/HomeContentLayout";
+import PageContentLayout from "@/common-components/PageContentLayout";
 import DeliveryAndReturnLeftSide
     from "@/pages/delivery-and-return/components/DeliveryAndReturnLeftSide/DeliveryAndReturnLeftSide";
 import DeliveryAndReturnRightSide
@@ -6,10 +6,10 @@ import DeliveryAndReturnRightSide
 
 const DeliveryReturnPage = () => {
     return (
-        <HomeContentLayout>
+        <PageContentLayout>
             <DeliveryAndReturnLeftSide/>
             <DeliveryAndReturnRightSide/>
-        </HomeContentLayout>
+        </PageContentLayout>
     )
 }
 

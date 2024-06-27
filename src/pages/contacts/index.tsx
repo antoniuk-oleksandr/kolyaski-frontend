@@ -1,11 +1,13 @@
-import HomeContentLayout from "@/pages/home/components/HomeContentLayout";
+import PageContentLayout from "@/common-components/PageContentLayout";
 import ContactsLeftSide from "@/pages/contacts/components/ContactsLeftSide/ContactsLeftSide";
+import ContactsRightSide from "@/pages/contacts/components/ContactsRightSide/ContactsRightSide";
 
 const ContactsPage = () => {
     return (
-        <HomeContentLayout>
+        <PageContentLayout>
             <ContactsLeftSide/>
-        </HomeContentLayout>
+            <ContactsRightSide/>
+        </PageContentLayout>
     )
 }
 

@@ -6,10 +6,12 @@ import AppLayout from "@/pages/AppLayout";
 import '@mantine/core/styles.css';
 import Footer from "@/common-components/Footer/Footer";
 import PageLayout from "@/pages/PageLayout";
+import SuccessDialog from "@/common-components/SuccessDialog/SuccessDialog";
 
 export default function App({Component, pageProps}: AppProps) {
     return (
         <AppLayout>
+            <SuccessDialog/>
             <Header/>
             <PageLayout>
                 <Component {...pageProps} />

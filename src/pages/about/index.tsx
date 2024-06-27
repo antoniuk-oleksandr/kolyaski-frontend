@@ -1,4 +1,4 @@
-import HomeContentLayout from "@/pages/home/components/HomeContentLayout";
+import PageContentLayout from "@/common-components/PageContentLayout";
 import AboutLeftSide from "@/pages/about/components/AboutLeftSide/AboutLeftSide";
 import BrandList from "@/pages/home/components/BrandList/BrandList";
 import AboutRightSide from "@/pages/about/components/AboutRightSide/AboutRightSide";
@@ -6,10 +6,10 @@ import AboutRightSide from "@/pages/about/components/AboutRightSide/AboutRightSi
 const AboutPage = () => {
     return (
         <>
-            <HomeContentLayout>
+            <PageContentLayout>
                 <AboutLeftSide/>
                 <AboutRightSide/>
-            </HomeContentLayout>
+            </PageContentLayout>
             <BrandList/>
         </>
     )

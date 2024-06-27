@@ -5,8 +5,10 @@ export const handleSidebarItemClick = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     router: NextRouter,
     link: string,
+    setIsParentHovered?: Dispatch<SetStateAction<boolean>>,
 ) => {
     e.stopPropagation();
+    setIsParentHovered && setIsParentHovered(false);
     router.push(link);
 }
 

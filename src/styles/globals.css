@@ -5,3 +5,45 @@
 .mantine-Select-input:focus {
     border-color: #A696D2 !important;
 }
+
+.mantine-Carousel-control {
+    background: transparent !important;
+    border: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    cursor: auto !important;
+}
+
+.mantine-Slider-bar {
+    background: #A696D2 !important;
+}
+
+.mantine-Slider-thumb {
+    background: white !important;
+    border-width: 1px !important;
+    border-color: #dedede !important;
+}
+
+.mantine-Slider-track::before {
+    background: #dedede !important;
+}
+
+.mantine-Slider-label {
+    display: none !important;
+}
+
+.buy-product-input::-webkit-outer-spin-button,
+.buy-product-input::-webkit-inner-spin-button {
+    -webkit-user-select: all !important;
+}
+
+img {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+}
+
+p:has(> strong) {
+    padding-top: 12px;
+}

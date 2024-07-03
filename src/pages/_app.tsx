@@ -7,10 +7,18 @@ import '@mantine/core/styles.css';
 import Footer from "@/common-components/Footer/Footer";
 import PageLayout from "@/pages/PageLayout";
 import SuccessDialog from "@/common-components/SuccessDialog/SuccessDialog";
+import {useRouter} from "next/router";
+import {pageTitles} from "@/common-components/Header/page-titles";
+import HeadElement from "@/common-components/HeadElement";
 
 export default function App({Component, pageProps}: AppProps) {
+    const router = useRouter();
+    const pageTitle = pageTitles[router.pathname as keyof typeof pageTitles];
+
     return (
-        <AppLayout>
+        <>
+            <HeadElement pageTitle={pageTitle}/>
+            <AppLayout>
             <SuccessDialog/>
             <Header/>
             <PageLayout>
@@ -18,5 +26,6 @@ export default function App({Component, pageProps}: AppProps) {
             </PageLayout>
             <Footer/>
         </AppLayout>
+        </>
     )
 }

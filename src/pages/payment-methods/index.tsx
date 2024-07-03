@@ -5,10 +5,12 @@ import PaymentMethodsRightSide
 
 const PaymentMethodsPage = () => {
     return (
-        <PageContentLayout>
-            <PaymentMethodsLeftSide/>
-            <PaymentMethodsRightSide/>
-        </PageContentLayout>
+        <>
+            <PageContentLayout>
+                <PaymentMethodsLeftSide/>
+                <PaymentMethodsRightSide/>
+            </PageContentLayout>
+        </>
     )
 }
 

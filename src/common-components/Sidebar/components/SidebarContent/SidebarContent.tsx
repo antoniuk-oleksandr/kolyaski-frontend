@@ -8,7 +8,7 @@ const SidebarContent = () => {
                 subMenuItemStyle={'hover:!text-secondary'}
                 menuStyles={'!w-full'}
                 subMenuStyles={'!bg-primary !text-white w-full px-2 pt-2 drop-shadow-lg'}
-                itemStyles={'py-3 !mb-0'}
+                itemStyles={'py-3 !mb-0 hover:!text-primary'}
                 borderBottom
             />
         </SidebarContentLayout>

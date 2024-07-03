@@ -4,7 +4,7 @@ const BreadcrumbsLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"flex gap-x-1 text-sm"}>
+        <div className={"flex gap-x-1 text-sm flex-wrap"}>
             {children}
         </div>
     )

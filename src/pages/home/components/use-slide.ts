@@ -12,9 +12,6 @@ export const useSlide = () => {
             setSelectedSlideIndex((prev) => (prev + 1) % 3);
         }, 5000)
 
-
-        document.title = 'Головна - Купити коляски в дитячому інтернет-магазині';
-
         return () => clearTimeout(slideRef.current);
     }, [selectedSlideIndex]);
 

@@ -6,10 +6,12 @@ import DeliveryAndReturnRightSide
 
 const DeliveryReturnPage = () => {
     return (
-        <PageContentLayout>
-            <DeliveryAndReturnLeftSide/>
-            <DeliveryAndReturnRightSide/>
-        </PageContentLayout>
+        <>
+            <PageContentLayout>
+                <DeliveryAndReturnLeftSide/>
+                <DeliveryAndReturnRightSide/>
+            </PageContentLayout>
+        </>
     )
 }
 

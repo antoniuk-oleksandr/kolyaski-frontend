@@ -1,6 +1,9 @@
 export type ProductData = {
-    image: string,
-    title: string,
+    images: string[],
+    name: string,
     price: number,
     id: number,
+    type?: string,
+    subType?: string,
+    description: string,
 }

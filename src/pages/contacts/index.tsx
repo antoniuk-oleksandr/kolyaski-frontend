@@ -4,10 +4,12 @@ import ContactsRightSide from "@/pages/contacts/components/ContactsRightSide/Con
 
 const ContactsPage = () => {
     return (
-        <PageContentLayout>
-            <ContactsLeftSide/>
-            <ContactsRightSide/>
-        </PageContentLayout>
+        <>
+            <PageContentLayout>
+                <ContactsLeftSide/>
+                <ContactsRightSide/>
+            </PageContentLayout>
+        </>
     )
 }
 

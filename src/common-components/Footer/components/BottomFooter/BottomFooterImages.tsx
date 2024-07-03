@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 const BottomFooterImages = () => {
-    const srcs = ['/images/liqpay.png', '/images/visa.svg', '/images/mastercard.svg'];
+    const srcs = ['/images/liqpay.jpg', '/images/visa.svg', '/images/mastercard.svg'];
 
     return (
         <div className={"flex items-center gap-x-2 col-start-3"}>

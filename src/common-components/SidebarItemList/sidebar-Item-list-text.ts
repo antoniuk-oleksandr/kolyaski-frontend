@@ -1,29 +1,29 @@
 import { SidebarItemType } from "@/types/SidebarItemType";
-import { createProductsUrl } from "@/utils/utils";
+import { createCatalogUrl } from "@/utils/utils";
 
 export const sidebarItemListText: SidebarItemType[] = [
     {
         text: 'Коляски',
-        link: createProductsUrl('коляски'),
+        link: createCatalogUrl('коляски'),
         subItems: [
-            {text: 'Коляски 2 в 1', link: createProductsUrl('коляски', 'коляски 2 в 1')},
-            {text: 'Коляски 3 в 1', link: createProductsUrl('коляски', 'коляски 3 в 1')},
-            {text: 'Прогулянкові коляски', link: createProductsUrl('коляски', 'прогулянкові коляски')},
-            {text: 'Коляски для двійні', link: createProductsUrl('коляски', 'коляски для двійні')}
+            {text: 'Коляски 2 в 1', link: createCatalogUrl('коляски', 'коляски 2 в 1')},
+            {text: 'Коляски 3 в 1', link: createCatalogUrl('коляски', 'коляски 3 в 1')},
+            {text: 'Прогулянкові коляски', link: createCatalogUrl('коляски', 'прогулянкові коляски')},
+            {text: 'Коляски для двійні', link: createCatalogUrl('коляски', 'коляски для двійні')}
         ]
     },
-    {text: 'Аксесуари для колясок', link: createProductsUrl('аксесуари для колясок')},
-    {text: 'Автокрісла', link: createProductsUrl('автокрісла')},
+    {text: 'Аксесуари для колясок', link: createCatalogUrl('аксесуари для колясок')},
+    {text: 'Автокрісла', link: createCatalogUrl('автокрісла')},
     {
-        text: 'Ліжечка', link: createProductsUrl('ліжечка'),
+        text: 'Ліжечка', link: createCatalogUrl('ліжечка'),
         subItems: [
-            {text: 'Матраси', link: createProductsUrl('ліжечка', 'матраси')},
-            {text: 'Постіль', link: createProductsUrl('ліжечка', 'постіль')}
+            {text: 'Матраси', link: createCatalogUrl('ліжечка', 'матраси')},
+            {text: 'Постіль', link: createCatalogUrl('ліжечка', 'постіль')}
         ]
     },
-    {text: 'Заколисуючі центри', link: createProductsUrl('заколисуючі центри')},
-    {text: 'Стільчики для годування', link: createProductsUrl('стільчики для годування')},
-    {text: 'Манежі', link: createProductsUrl('манежі')},
-    {text: 'Ходунки', link: createProductsUrl('ходунки')},
-    {text: 'Велосипеди', link: createProductsUrl('велосипеди')}
+    {text: 'Заколисуючі центри', link: createCatalogUrl('заколисуючі центри')},
+    {text: 'Стільчики для годування', link: createCatalogUrl('стільчики для годування')},
+    {text: 'Манежі', link: createCatalogUrl('манежі')},
+    {text: 'Ходунки', link: createCatalogUrl('ходунки')},
+    {text: 'Велосипеди', link: createCatalogUrl('велосипеди')}
 ];

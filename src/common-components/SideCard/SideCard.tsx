@@ -16,15 +16,17 @@ type SideCardProps = {
     bgColor: string,
     buyButtonStyles: string,
     link: string,
+    aspect?: string,
 }
 
 const SideCard = (props: SideCardProps) => {
-    const {imageSrc, firstLineText, secondLineText} = props;
+    const {imageSrc, aspect} = props;
 
     return (
         <SideCardLayout {...props}>
             <Image
-                className={"size-full aspect-4x3 rounded-md object-cover object-center"}
+                priority
+                className={`size-full ${aspect  ? aspect : 'aspect-4x3'} rounded-md object-cover object-center`}
                 width={300}
                 height={200}
                 src={imageSrc}

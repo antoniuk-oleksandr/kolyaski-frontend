@@ -6,10 +6,14 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            scale: {
+              200: "200%"
+            },
             aspectRatio: {
                 "1x1": "1/1",
                 "3x2": "3/2",
                 "4x3": "4/3",
+                "3x4": "3/4",
                 "2x3": "2/3",
                 "5x6": "5/6",
                 "16x9": "16/9"
@@ -23,6 +27,7 @@ const config: Config = {
                 300: "75rem",
             },
             width: {
+                66: "16.625rem",
                 140: "35rem",
                 75: "17.75rem",
                 headerSearchInput: "calc(100% - 6rem)",

@@ -84,3 +84,12 @@ export const isPriceError = (index: number, error: InvalidPrice) => {
     else if (error === InvalidPrice.Third) return true;
     return false;
 }
+
+export const tryToRemovePrice = (searchParams: SearchParams) => {
+    if (searchParams.priceFrom === undefined || Number.isNaN(Number(searchParams.priceFrom))) {
+        delete searchParams.priceFrom;
+    }
+    if (searchParams.priceTo === undefined || Number.isNaN(Number(searchParams.priceFrom))) {
+        delete searchParams.priceTo;
+    }
+}

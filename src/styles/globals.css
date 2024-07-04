@@ -44,6 +44,15 @@ img {
     -moz-user-select: none;
 }
 
+.product-description img,
+.product-description iframe {
+    display: none;
+}
+
 p:has(> strong) {
     padding-top: 12px;
+}
+
+:root {
+    --mantine-color-violet-6: #A696D2 !important;
 }

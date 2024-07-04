@@ -1,13 +1,13 @@
 import Head from "next/head";
 
 type HeadElementProps = {
-    pageTitle: string;
+    pageTitle: string | null;
 }
 
 const HeadElement = (props: HeadElementProps) => {
     const {pageTitle} = props;
 
-    if(pageTitle === undefined) return null;
+    if(!pageTitle) return null;
     return (
         <Head>
             <title>{pageTitle + ' - Купити коляски в дитячому інтернет-магазині'}</title>

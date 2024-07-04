@@ -10,11 +10,11 @@ const ProductCardInfo = (props: ProductCardInfoProps) => {
 
     return (
         <ProductCardInfoLayout>
-            <h3 className="text-sm font-medium">{name}</h3>
-            <p className="text-xl font-medium text-primary mt-2">
+            <h3 className="text-sm ">{name}</h3>
+            <p className="text-2xl font-medium text-primary mt-3">
                 <NumberFormatter thousandSeparator=" " value={price} suffix="₴"/>
             </p>
-            <ProductCardButton/>
+            {/*<ProductCardButton/>*/}
         </ProductCardInfoLayout>
     )
 }

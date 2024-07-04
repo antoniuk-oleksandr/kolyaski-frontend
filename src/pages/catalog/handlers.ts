@@ -5,7 +5,7 @@ import {RangeSliderValue} from "@mantine/core";
 import {ChangeEvent, Dispatch, SetStateAction} from "react";
 import {PriceData} from "@/types/PriceData";
 import {isPositiveNumber} from "@/utils/utils";
-import {convertToArrOfNumber, convertToArrOfString, priceInputSchema} from "@/pages/catalog/helpers";
+import {convertToArrOfNumber, convertToArrOfString, priceInputSchema, tryToRemovePrice} from "@/pages/catalog/helpers";
 import {z} from "zod";
 import {InvalidPrice} from "@/types/InvalidPrice";
 
@@ -15,8 +15,11 @@ export const handleProductSortTypeChange = (
     searchParams: SearchParams,
 ) => {
     searchParams.sortType = value.toLowerCase() as SortEnum;
+
+    tryToRemovePrice(searchParams);
+
     const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
-    router.push(`/catalog?${res.toString()}`)
+    router.push(`/catalog?${res.toString()}`);
 }
 
 export const handlePriceFormSubmit = (
@@ -24,6 +27,9 @@ export const handlePriceFormSubmit = (
     searchParams: SearchParams,
     router: NextRouter,
 ) => {
+    searchParams.sortType = (searchParams.sortType as string).toLowerCase() as SortEnum;
+
+
     console.log("submit");
 
     searchParams.priceFrom = value[0];
@@ -93,4 +99,18 @@ export const handleProductBuyInputChange = (
 
 export const handleProductBuyFormSubmit = (data: any) => {
     console.log(data);
+}
+
+export const handlePageItemClick = (
+    searchParams: SearchParams,
+    nextPage: number,
+    router: NextRouter,
+) => {
+    searchParams.sortType = (searchParams.sortType as string).toLowerCase() as SortEnum;
+    searchParams.page = nextPage;
+
+    tryToRemovePrice(searchParams);
+
+    const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
+    router.push(`/catalog?${res.toString()}`);
 }

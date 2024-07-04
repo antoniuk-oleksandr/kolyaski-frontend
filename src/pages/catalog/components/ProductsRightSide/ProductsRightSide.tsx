@@ -6,6 +6,7 @@ import ProductsTitle from "../ProductsTitle";
 import ProductsTopLine from "../ProductsTopLine/ProductsTopLine";
 import { getProductsBreadcrumbsItems } from "../../helpers";
 import ProductCardGrid from "../ProductCardGrid/ProductCardGrid";
+import CatalogPagination from "@/pages/catalog/components/CatalogPagination/CatalogPagination";
 
 type ProductsRightSideProps = {
     searchParams: SearchParams,
@@ -26,6 +27,7 @@ const ProductsRightSide = (props: ProductsRightSideProps) => {
             <ProductsTitle {...props}/>
             <ProductsTopLine {...props}/>
             <ProductCardGrid/>
+            <CatalogPagination totalPages={20} {...props}/>
         </ProductsRightSideLayout>
     )
 }

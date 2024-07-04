@@ -8,12 +8,12 @@ import Footer from "@/common-components/Footer/Footer";
 import PageLayout from "@/pages/PageLayout";
 import SuccessDialog from "@/common-components/SuccessDialog/SuccessDialog";
 import {useRouter} from "next/router";
-import {pageTitles} from "@/common-components/Header/page-titles";
 import HeadElement from "@/common-components/HeadElement";
+import {usePageTitle} from "@/pages/use-page-title";
 
 export default function App({Component, pageProps}: AppProps) {
     const router = useRouter();
-    const pageTitle = pageTitles[router.pathname as keyof typeof pageTitles];
+    const {pageTitle} = usePageTitle(router);
 
     return (
         <>

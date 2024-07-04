@@ -10,7 +10,7 @@ const ProductBuyContainerLayout = (props: LayoutProps) => {
         <FormProvider {...methods}>
             <form
                 onSubmit={methods.handleSubmit(handleProductBuyFormSubmit)}
-                className={"flex gap-x-3 font-medium"}
+                className={"flex gap-x-3 font-medium mt-6"}
             >
                 {children}
             </form>

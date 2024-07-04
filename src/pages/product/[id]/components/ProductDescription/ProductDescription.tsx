@@ -9,7 +9,7 @@ const ProductDescription = (props: ProductDescriptionProps) => {
 
     return (
         <ProductDescriptionLayout>
-            <div dangerouslySetInnerHTML={{__html: description}}/>
+            <div className={"product-description"} dangerouslySetInnerHTML={{__html: description}}/>
         </ProductDescriptionLayout>
     )
 }

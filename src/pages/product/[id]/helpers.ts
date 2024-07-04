@@ -10,11 +10,11 @@ export const getProductItemPageBreadcrumbs = (productItem: ProductData): Breadcr
         {name: 'Магазин', link: '/catalog'},
         {
             name: type as string,
-            link: `/catalog?type=${type}&sortType=${SortEnum.ByPopularity}`
+            link: `/catalog?type=${type}&sortType=${SortEnum.POPULARITY}`
         },
         subType ? {
             name: subType,
-            link: `/catalog?type=${type}&subType=${subType}&sortType=${SortEnum.ByPopularity}`
+            link: `/catalog?type=${type}&subType=${subType}&sortType=${SortEnum.POPULARITY}`
         } : undefined,
         {
             name: name as string,

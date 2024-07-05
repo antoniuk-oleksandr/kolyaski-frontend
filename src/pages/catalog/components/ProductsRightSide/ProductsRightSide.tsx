@@ -4,12 +4,15 @@ import {BreadcrumbsItemType} from "@/types/BreadcrumbsItemType";
 import {SearchParams} from "@/types/SearchParams";
 import ProductsTitle from "../ProductsTitle";
 import ProductsTopLine from "../ProductsTopLine/ProductsTopLine";
-import { getProductsBreadcrumbsItems } from "../../helpers";
+import {getProductsBreadcrumbsItems} from "../../helpers";
 import ProductCardGrid from "../ProductCardGrid/ProductCardGrid";
 import CatalogPagination from "@/pages/catalog/components/CatalogPagination/CatalogPagination";
+import {CatalogData} from "@/types/CatalogData";
+import CatalogProductsData from "@/pages/catalog/components/CatalogProductsData/CatalogProductsData";
 
 type ProductsRightSideProps = {
     searchParams: SearchParams,
+    catalogData: CatalogData | null,
 }
 
 const ProductsRightSide = (props: ProductsRightSideProps) => {
@@ -17,7 +20,7 @@ const ProductsRightSide = (props: ProductsRightSideProps) => {
 
     const breadcrumbsItems: BreadcrumbsItemType[] = [
         {name: 'Головна', link: '/'},
-        {name: 'Магазин', link: '/catalog'},
+        {name: 'Магазин', link: '/catalog?page=1'},
         ...getProductsBreadcrumbsItems(searchParams)
     ]
 
@@ -25,9 +28,7 @@ const ProductsRightSide = (props: ProductsRightSideProps) => {
         <ProductsRightSideLayout>
             <Breadcrumbs items={breadcrumbsItems}/>
             <ProductsTitle {...props}/>
-            <ProductsTopLine {...props}/>
-            <ProductCardGrid/>
-            <CatalogPagination totalPages={20} {...props}/>
+            <CatalogProductsData {...props}/>
         </ProductsRightSideLayout>
     )
 }

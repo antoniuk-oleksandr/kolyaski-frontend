@@ -28,10 +28,6 @@ export const handlePriceFormSubmit = (
     router: NextRouter,
 ) => {
     searchParams.sortType = (searchParams.sortType as string).toLowerCase() as SortEnum;
-
-
-    console.log("submit");
-
     searchParams.priceFrom = value[0];
     searchParams.priceTo = value[1];
     const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
@@ -111,6 +107,7 @@ export const handlePageItemClick = (
 
     tryToRemovePrice(searchParams);
 
+    console.log(searchParams);
     const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
     router.push(`/catalog?${res.toString()}`);
 }

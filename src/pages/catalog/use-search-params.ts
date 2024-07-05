@@ -5,10 +5,10 @@ import {capitalizeFirstLetter} from "@/utils/utils";
 import {SortEnum} from "@/types/SortEnum";
 import {handleProductSortTypeChange} from "./handlers";
 import {getProductsPageTitle} from "./helpers";
+import {getSearchRequest} from "@/api/get-search-request";
 
-export const useCatalog = () => {
+export const useSearchParams = () => {
     const [searchParams, setSearchParams] = useState<SearchParams | null>(null);
-    const [products, setProducts] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -27,8 +27,9 @@ export const useCatalog = () => {
             sortType: capitalizeFirstLetter(router.query.sortType as string) as SortEnum,
         });
 
+
         document.title = getProductsPageTitle(router.query as unknown as SearchParams);
     }, [router]);
 
-    return {searchParams, products}
+    return {searchParams}
 }

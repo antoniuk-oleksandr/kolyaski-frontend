@@ -10,7 +10,7 @@ const ProductCardInfo = (props: ProductCardInfoProps) => {
 
     return (
         <ProductCardInfoLayout>
-            <h3 className="text-sm ">{name}</h3>
+            <h3 className="text-sm line-clamp-2 h-10">{name}</h3>
             <p className="text-2xl font-medium text-primary mt-3">
                 <NumberFormatter thousandSeparator=" " value={price} suffix="₴"/>
             </p>

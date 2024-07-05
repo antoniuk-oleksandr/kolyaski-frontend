@@ -17,11 +17,11 @@ export const getProductsBreadcrumbsItems = (params: SearchParams): BreadcrumbsIt
 
     if (params.type !== undefined) items.push({
         name: params.type,
-        link: `/catalog?type=${params.type}`,
+        link: `/catalog?type=${params.type.toLowerCase()}`,
     });
     if (params.subType !== undefined) items.push({
         name: params.subType,
-        link: `/catalog${items.length === 0 ? '?' : '&'}subType=${params.subType}`,
+        link: `/catalog${items.length === 0 ? '?' : '&'}subType=${params.subType.toLowerCase()}`,
     });
 
     return items;

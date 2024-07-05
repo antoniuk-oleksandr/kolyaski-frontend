@@ -1,9 +1,20 @@
 import ProductShownBlockLayout from "./ProductShownBlockLayout";
+import {CatalogData} from "@/types/CatalogData";
+import {getPagesCountText} from "@/pages/product/[id]/helpers";
 
-const ProductShownBlock = () => {
+type ProductShownBlockProps = {
+    catalogData: CatalogData | null,
+    page: number,
+}
+
+const ProductShownBlock = (props: ProductShownBlockProps) => {
+    const {catalogData, page} = props;
+    console.log(catalogData);
+
+    if(!catalogData) return null;
     return (
         <ProductShownBlockLayout>
-            <p className={"text-sm"}>Показано 1–16 із 172</p>
+            <p className={"text-sm"}>{getPagesCountText(catalogData, page)}</p>
         </ProductShownBlockLayout>
     )
 }

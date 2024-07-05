@@ -30,7 +30,7 @@ const ProductImagesCarousel = (props: ProductImagesCarouselProps) => {
                     >
                         <Image
                             priority
-                            className={"size-full aspect-1x1"}
+                            className={"size-full aspect-1x1 object-cover object-center"}
                             width={100}
                             height={100}
                             src={image}

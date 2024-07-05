@@ -1,21 +1,19 @@
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardGridLayout from "./ProductCardGridLayout";
-import {ProductData} from "@/types/ProductData";
+import {CatalogData} from "@/types/CatalogData";
 
-const ProductCardGrid = () => {
-    const cardData: ProductData = {
-        id: 1,
-        images: ["/images/card-image.jpg"],
-        name: "Прогулянкова коляска CARRELLO Forte CRL-8502 Frost Beige",
-        price: 4200,
-    }
+type ProductCardGridProps = {
+    catalogData: CatalogData | null,
+}
 
-    const arrOfCards = Array.from({length: 30}, (_) => cardData);
+const ProductCardGrid = (props: ProductCardGridProps) => {
+    const {catalogData} = props;
 
+    if(!catalogData) return null;
     return (
         <ProductCardGridLayout>
-            {arrOfCards.map((card, index) => (
-                <ProductCard {...card} key={index}/>
+            {catalogData.products.map((element, index) => (
+                <ProductCard {...element} key={index}/>
             ))}
         </ProductCardGridLayout>
     )

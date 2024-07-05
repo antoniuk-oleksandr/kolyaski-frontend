@@ -12,7 +12,7 @@ const ProductCard = (props: ProductCardProps) => {
         <ProductCardLayout {...props}>
             <Image
                 priority
-                className="w-full h-48 object-center object-cover rounded-t-md"
+                className={"w-full aspect-3x4 h-48 object-center object-cover rounded-t-md"}
                 src={images[0]}
                 alt={name}
                 layout="responsive"

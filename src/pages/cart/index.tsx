@@ -3,7 +3,7 @@ import {NextPage} from "next";
 const CartPage: NextPage = () => {
     return (
         <>
-            123
+            Coming soon.
         </>
     )
 }

@@ -1,4 +1,9 @@
 import React, {Dispatch, MutableRefObject, SetStateAction} from "react";
+import {UnknownAction} from "redux";
+import {ProductData} from "@/types/ProductData";
+import {addCartProduct} from "@/redux/cart-slice";
+import {addCartProductToLocalStorage} from "@/utils/local-storage-utils";
+import {removeUnnecessaryFieldsFromProduct} from "@/pages/product/[id]/helpers";
 
 export const handleProductImageMouseMove = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -35,4 +40,15 @@ export const handleImagesViewControlClick = (
         if(value === -1) return numberOfSlides - 1;
         return value;
     });
+}
+
+export const handleProductBuyFormSubmit = (
+    data: any,
+    dispatch: Dispatch<UnknownAction>,
+    product: ProductData,
+) => {
+    const copiedProduct = removeUnnecessaryFieldsFromProduct(product);
+    const newCartItem = {quantity: data.quantity, product: copiedProduct};
+    dispatch(addCartProduct(newCartItem));
+    addCartProductToLocalStorage(newCartItem);
 }

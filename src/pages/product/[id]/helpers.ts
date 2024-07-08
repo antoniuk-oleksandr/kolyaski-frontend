@@ -2,6 +2,7 @@ import {BreadcrumbsItemType} from "@/types/BreadcrumbsItemType";
 import {SortEnum} from "@/types/SortEnum";
 import {ProductData} from "@/types/ProductData";
 import {CatalogData} from "@/types/CatalogData";
+import {CartItem} from "@/types/CartItem";
 
 export const getProductItemPageBreadcrumbs = (productItem: ProductData): BreadcrumbsItemType[] => {
     let {type, subType, name} = productItem;
@@ -29,6 +30,15 @@ export const getPagesCountText = (catalogData: CatalogData, page: number) => {
 
     const first = 16 * (page - 1) + 1;
     let second = 16 * page;
-    if(pagesCount === page) second = totalCount;
+    if (pagesCount === page) second = totalCount;
     return `Показано ${first}–${second} із ${totalCount}`;
+}
+
+export const removeUnnecessaryFieldsFromProduct = (product: ProductData) => {
+    return {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        images: [product.images[0]],
+    } as ProductData;
 }

@@ -1,7 +1,7 @@
 import ProductItemInfoLayout from "./ProductItemInfoLayout";
 import {ProductData} from "@/types/ProductData";
 import {NumberFormatter} from "@mantine/core";
-import ProductBuyContainer from "@/pages/catalog/components/ProductBuyContainer/ProductBuyContainer";
+import ProductBuyContainer from "@/pages/product/[id]/components/ProductBuyContainer/ProductBuyContainer";
 
 type ProductItemInfoProps = ProductData;
 
@@ -17,7 +17,7 @@ const ProductItemInfo = (props: ProductItemInfoProps) => {
                 value={price}
                 suffix="₴"
             />
-            <ProductBuyContainer/>
+            <ProductBuyContainer product={props}/>
         </ProductItemInfoLayout>
     )
 }

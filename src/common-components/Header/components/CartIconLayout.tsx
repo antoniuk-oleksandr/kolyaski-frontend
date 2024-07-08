@@ -1,10 +1,19 @@
 import {LayoutProps} from "@/types/LayoutProps";
+import {Dispatch, SetStateAction} from "react";
 
-const CartIconLayout = (props: LayoutProps) => {
-    const {children} = props;
+type CartIconLayoutProps = LayoutProps & {
+    setHovered: Dispatch<SetStateAction<boolean>>;
+}
+
+const CartIconLayout = (props: CartIconLayoutProps) => {
+    const {children, setHovered} = props;
 
     return (
-        <div className={"relative"}>
+        <div
+            onMouseEnter={() => setHovered(true)}
+            onMouseLeave={() => setHovered(false)}
+            className={"relative"}
+        >
             {children}
         </div>
     )

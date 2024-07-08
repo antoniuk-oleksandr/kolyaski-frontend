@@ -8,6 +8,10 @@ import {isPositiveNumber} from "@/utils/utils";
 import {convertToArrOfNumber, convertToArrOfString, priceInputSchema, tryToRemovePrice} from "@/pages/catalog/helpers";
 import {z} from "zod";
 import {InvalidPrice} from "@/types/InvalidPrice";
+import {UnknownAction} from "redux";
+import {ProductData} from "@/types/ProductData";
+import {CartState} from "@/types/CartState";
+import {addCartProduct, setCartProductQuantity} from "@/redux/cart-slice";
 
 export const handleProductSortTypeChange = (
     value: SortEnum,
@@ -93,9 +97,6 @@ export const handleProductBuyInputChange = (
     setInputValue(value);
 }
 
-export const handleProductBuyFormSubmit = (data: any) => {
-    console.log(data);
-}
 
 export const handlePageItemClick = (
     searchParams: SearchParams,

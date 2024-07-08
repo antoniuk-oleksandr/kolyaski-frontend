@@ -1,12 +1,20 @@
 import {FaCartShopping} from "react-icons/fa6";
 
-const ProductInfoBuyButton = () => {
+type ProductInfoBuyButtonProps = {
+    inCart: boolean,
+}
+
+const ProductInfoBuyButton = (props: ProductInfoBuyButtonProps) => {
+    const {inCart} = props;
+
     return (
         <button
+            disabled={inCart}
             type={"submit"}
-            className={"text-white flex items-center gap-x-2 bg-primary rounded px-4 py-3 font-medium outline-none active:scale-95 duration-200 ease-out hover:bg-secondary"}>
+            className={` flex items-center gap-x-2 w-48 justify-center rounded px-4 py-3 font-medium outline-none  duration-200 ease-out  
+            ${inCart ? 'text-primary bg-neutral-200' : 'text-white bg-primary hover:bg-secondary active:scale-95'}`}>
             <FaCartShopping/>
-            <p>Додати у кошик</p>
+            <p>{inCart ? 'В кошику' : 'Додати у кошик'}</p>
         </button>
     )
 }

@@ -7,7 +7,7 @@ const config: Config = {
     theme: {
         extend: {
             scale: {
-              200: "200%"
+                200: "200%"
             },
             aspectRatio: {
                 "1x1": "1/1",
@@ -33,6 +33,7 @@ const config: Config = {
                 headerSearchInput: "calc(100% - 6rem)",
                 62: "15.375rem",
                 67.5: "16.875rem",
+                20: "5rem",
             },
             height: {
                 140: "35rem",
@@ -40,6 +41,7 @@ const config: Config = {
                 108: "27rem",
                 67.5: "16.875rem",
                 116: "29rem",
+                20: "5rem",
             },
             minHeight: {
                 7.5: "1.875rem",
@@ -55,14 +57,14 @@ const config: Config = {
             gridTemplateColumns: {
                 headerColumns: "18.75rem, 1fr, 18.75rem",
                 homeBottomContent: "66%, 1fr",
+                cartElement: "5rem, 16rem, 1.5fr, 1fr, auto",
+                cartPhoneElement: "5rem, 1fr, auto"
             },
             gridTemplateRows: {},
             screens: {
                 phone: {max: "960px"}
             },
-            gradientColorStops: {
-
-            },
+            gradientColorStops: {},
         },
     },
     plugins: [

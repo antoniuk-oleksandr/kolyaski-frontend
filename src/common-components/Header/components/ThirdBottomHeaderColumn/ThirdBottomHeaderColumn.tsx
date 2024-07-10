@@ -19,6 +19,7 @@ const ThirdBottomHeaderColumn = () => {
             />
             <CartIconLayout setHovered={setHovered}>
                 <ThirdBottomHeaderColumnItem
+                    action={() => setHovered(false)}
                     text={'Мій кошик'}
                     icon={<FaCartShopping/>}
                     link={'/cart'}

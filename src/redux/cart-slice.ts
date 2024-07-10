@@ -21,10 +21,11 @@ export const cartSlice = createSlice({
         },
         setCartProductQuantity: (state, action) => {
             const {id, newQuantity} = action.payload;
-            state.products.forEach((product) => {
+            state.products = state.products.map((product) => {
                 if (product.product.id === id) {
-                    product.quantity = newQuantity;
+                    return {...product, quantity: newQuantity};
                 }
+                return product;
             });
         }
     }

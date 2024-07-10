@@ -34,6 +34,7 @@ export const handlePriceFormSubmit = (
     searchParams.sortType = (searchParams.sortType as string).toLowerCase() as SortEnum;
     searchParams.priceFrom = value[0];
     searchParams.priceTo = value[1];
+    searchParams.page = 1;
     const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
     router.push(`/catalog?${res.toString()}`)
 }

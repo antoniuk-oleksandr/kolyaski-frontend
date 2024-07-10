@@ -6,17 +6,21 @@ type ThirdBottomHeaderColumnItemLayoutProps = LayoutProps & {
     setIsHovered: Dispatch<SetStateAction<boolean>>,
     isHovered: boolean,
     link: string,
+    action?: () => void,
 }
 
 const ThirdBottomHeaderColumnItemLayout = (props: ThirdBottomHeaderColumnItemLayoutProps) => {
-    const {children, setIsHovered, isHovered, link} = props;
+    const {children, setIsHovered, isHovered, link, action} = props;
     const router = useRouter();
 
     return (
         <button
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            onClick={() => router.push(link)}
+            onClick={() => {
+                action && action();
+                router.push(link);
+            }}
             className={`flex flex-col items-center justify-center text-3xl gap-y-2 duration-200 ease-out outline-none active:scale-95
             ${isHovered ? "text-secondary" : "text-white"}`}
         >

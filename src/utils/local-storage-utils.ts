@@ -20,3 +20,14 @@ export const removeCartProductFromLocalStorage = (newCartItemId: number) => {
     cartItems = cartItems.filter(item => item.product.id !== newCartItemId);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 }
+
+export const changeCartProductQuantityInLocalStorage = (id: number, newQuantity: number) => {
+    let cartItems = getCartItemsFromLocalStorage();
+    cartItems = cartItems.map((cartItem) => {
+        if (cartItem.product.id === id) {
+            return {...cartItem, quantity: newQuantity};
+        }
+        return cartItem;
+    })
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+}

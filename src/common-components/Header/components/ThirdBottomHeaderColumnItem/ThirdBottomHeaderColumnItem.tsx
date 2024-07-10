@@ -5,6 +5,7 @@ type ThirdBottomHeaderColumnItemProps = {
     text: string,
     icon: ReactNode,
     link: string,
+    action?: () => void,
 }
 
 const ThirdBottomHeaderColumnItem = (props: ThirdBottomHeaderColumnItemProps) => {

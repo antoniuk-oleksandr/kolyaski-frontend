@@ -10,15 +10,17 @@ const ProductCard = (props: ProductCardProps) => {
 
     return (
         <ProductCardLayout {...props}>
-            <Image
-                priority
-                className={"w-full aspect-3x4 h-48 object-center object-cover rounded-t-md"}
-                src={images[0]}
-                alt={name}
-                layout="responsive"
-                width={400}
-                height={200}
-            />
+            <div className={"aspect-3x4  grid place-items-center p-3"}>
+                <Image
+                    priority
+                    className={"size-full object-center object-contain rounded-t-md"}
+                    src={images[0]}
+                    alt={name}
+                    layout="responsive"
+                    width={400}
+                    height={200}
+                />
+            </div>
             <ProductCardInfo {...props}/>
         </ProductCardLayout>
     );

@@ -11,7 +11,7 @@ const ProductImageLayout = (props: ProductImageLayoutProps) => {
     return (
         <div
             onMouseLeave={() => setIsHovered(false)}
-            className={"w-full relative overflow-hidden col-span-2 aspect-3x4 rounded-md"}>
+            className={"w-full bg-white relative grid p-3 place-items-center overflow-hidden col-span-2 aspect-3x4 rounded-md"}>
             {children}
         </div>
     )

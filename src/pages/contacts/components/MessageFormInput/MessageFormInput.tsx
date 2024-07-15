@@ -8,6 +8,7 @@ type MessageFromInputProps = {
     label: string,
     textArea?: boolean,
     required?: boolean,
+    type?: "text" | "number",
 }
 
 const MessageFromInput = (props: MessageFromInputProps) => {
@@ -15,7 +16,7 @@ const MessageFromInput = (props: MessageFromInputProps) => {
 
     return (
         <MessageFormInputLayout>
-            <label className={"font-medium"} htmlFor={id}>{label}</label>
+            <label className={"text-sm"} htmlFor={id}>{label}</label>
             {
                 textArea
                     ? <MessageFormTextAreaElement {...props}/>

@@ -3,7 +3,7 @@ import {Children} from "react";
 
 type CarouselLayoutProps = LayoutProps & {
     index: number,
-    className: string,
+    className?: string,
 };
 
 const CarouselLayout = (props: CarouselLayoutProps) => {

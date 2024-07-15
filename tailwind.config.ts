@@ -26,6 +26,9 @@ const config: Config = {
             maxWidth: {
                 300: "75rem",
             },
+            lineHeight: {
+                3.5: "0.875rem",
+            },
             width: {
                 66: "16.625rem",
                 140: "35rem",
@@ -43,11 +46,17 @@ const config: Config = {
                 116: "29rem",
                 20: "5rem",
             },
+            inset: {
+                13: "3.25rem",
+            },
             minHeight: {
                 7.5: "1.875rem",
                 40.5: "10.125rem",
                 pageLayout: "calc(100svh - 10.125rem)",
                 pageLayoutMobile: "calc(100svh - 18rem)",
+            },
+            maxHeight: {
+                44: "11rem",
             },
             colors: {
                 primary: "#A696D2",
@@ -58,13 +67,16 @@ const config: Config = {
                 headerColumns: "18.75rem, 1fr, 18.75rem",
                 homeBottomContent: "66%, 1fr",
                 cartElement: "5rem, 16rem, 1.5fr, 1fr, auto",
-                cartPhoneElement: "5rem, 1fr, auto"
+                cartPhoneElement: "5rem, 1fr, auto",
+                checkoutCartElement: "5rem, 1fr, 10rem, 7.5rem",
+                checkoutCartPhoneElement: "5rem, 1fr, auto",
             },
             gridTemplateRows: {},
             screens: {
                 phone: {max: "960px"}
             },
             gradientColorStops: {},
+
         },
     },
     plugins: [

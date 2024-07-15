@@ -10,12 +10,12 @@ const ProductItemInfo = (props: ProductItemInfoProps) => {
 
     return (
         <ProductItemInfoLayout>
-            <p className={"text-2xl"}>{name}</p>
+            <p className={"text-2xl text-pretty"}>{name}</p>
             <NumberFormatter
                 className="text-2xl "
-                thousandSeparator=" "
+                thousandSeparator=","
                 value={price}
-                suffix="₴"
+                suffix=" грн."
             />
             <ProductBuyContainer product={props}/>
         </ProductItemInfoLayout>

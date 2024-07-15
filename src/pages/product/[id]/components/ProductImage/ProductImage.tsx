@@ -22,7 +22,7 @@ const ProductImage = (props: ProductImageProps) => {
             <Image
                 priority
                 onMouseEnter={() => setIsHovered(true)}
-                className={"size-full object-cover object-center"}
+                className={"size-full object-center object-contain"}
                 width={600}
                 height={720}
                 src={imageSrc}

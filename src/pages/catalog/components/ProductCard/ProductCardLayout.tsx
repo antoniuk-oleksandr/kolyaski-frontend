@@ -12,7 +12,7 @@ const ProductCardLayout = (props: ProductCardLayoutProps) => {
     return (
         <div
             onClick={() => router.push(`/product/${id}`)}
-            className="cursor-pointer mx-auto bg-white rounded-lg overflow-hidden transform transition phone:transform-none phone:transition-none duration-200 hover:scale-105 phone:!scale-100">
+            className={"size-full cursor-pointer mx-auto bg-white rounded-lg overflow-hidden transform transition phone:transform-none phone:transition-none duration-200 hover:scale-105 phone:!scale-100"}>
             {children}
         </div>
     );

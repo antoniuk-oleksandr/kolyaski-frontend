@@ -1,6 +1,5 @@
 import CartItemElementLayout from "./CartItemElementLayout";
 import {CartItem} from "@/types/CartItem";
-import {IoTrashBin} from "react-icons/io5";
 import CartItemImage from "@/pages/cart/components/CartItemImage/CartItemImage";
 import CartItemQuantitySelector from "@/pages/cart/components/CartItemQuantitySelector/CartItemQuantitySelector";
 import {NumberFormatter} from "@mantine/core";
@@ -18,7 +17,6 @@ const CartItemElement = (props: CartItemElementProps) => {
     const {quantity, product} = props;
     const {price, images, id} = product;
     const dispatch = useDispatch();
-    const router = useRouter();
 
     return (
         <CartItemElementLayout {...props}>

@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.mantine-Select-input:focus {
-    border-color: #A696D2 !important;
-}
-
 .mantine-Carousel-control {
     background: transparent !important;
     border: transparent !important;
@@ -53,6 +49,29 @@ p:has(> strong) {
     padding-top: 12px;
 }
 
+
+.mantine-Modal-content {
+    overflow: visible !important;
+}
+
 :root {
     --mantine-color-violet-6: #A696D2 !important;
+    --mantine-color-blue-6: #A696D2 !important;
+}
+
+#phoneNumber {
+    -moz-appearance: textfield;
+}
+
+#phoneNumber::-webkit-outer-spin-button,
+#phoneNumber::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+#phoneNumber::-ms-clear,
+#phoneNumber::-ms-reveal {
+    display: none;
+    width: 0;
+    height: 0;
 }

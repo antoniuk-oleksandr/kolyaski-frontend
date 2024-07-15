@@ -7,4 +7,5 @@ export const pageTitles = {
     '/contacts': 'Контакти',
     '/wishlist': 'Пакунок малюка',
     '/cart' : 'Мій кошик',
+    '/checkout' : 'Оформлення замовлення'
 }

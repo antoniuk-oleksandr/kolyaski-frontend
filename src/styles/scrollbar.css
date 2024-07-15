@@ -11,3 +11,15 @@
 .hide-scrollbar {
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
+
+
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+    width: 10px;
+    border-radius: 16px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}

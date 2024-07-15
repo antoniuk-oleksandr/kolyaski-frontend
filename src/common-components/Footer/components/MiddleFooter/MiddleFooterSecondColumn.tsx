@@ -10,7 +10,6 @@ const MiddleFooterSecondColumn = () => {
             </MiddleFooterThirdColumnHeaderLayout>
             <SidebarItemList
                 subMenuStyles={'!text-primary w-full px-2 pt-2 drop-shadow-lg'}
-                chevronDirection={'down'}
                 itemStyles={'text-secondary hover:text-white'}
             />
         </>

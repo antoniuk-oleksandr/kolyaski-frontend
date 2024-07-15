@@ -15,7 +15,6 @@ const ProductImagesCarousel = (props: ProductImagesCarouselProps) => {
     return (
         <ProductImagesCarouselLayout>
             <Carousel
-                slideGap="sm"
                 slideSize={"20%"}
                 dragFree
                 align="start"
@@ -25,17 +24,18 @@ const ProductImagesCarousel = (props: ProductImagesCarouselProps) => {
                     <Carousel.Slide
                         key={index}
                         onClick={() => setSelectedSlideIndex(index)}
-                        className={`rounded-md overflow-hidden cursor-pointer duration-200 ease-out 
+                        className={`rounded-md bg-white grid place-items-center  aspect-1x1  cursor-pointer duration-200 ease-out 
                         ${index === selectedSlideIndex ? '' : 'opacity-40'}`}
                     >
-                        <Image
-                            priority
-                            className={"size-full aspect-1x1 object-cover object-center"}
-                            width={100}
-                            height={100}
-                            src={image}
-                            alt={'image'}
-                        />
+                        <div className="w-full h-full relative">
+                            <Image
+                                priority
+                                fill
+                                className={"object-contain size-full"}
+                                src={image}
+                                alt={'image'}
+                            />
+                        </div>
                     </Carousel.Slide>
                 ))}
             </Carousel>

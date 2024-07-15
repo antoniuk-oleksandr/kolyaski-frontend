@@ -14,6 +14,7 @@ type WarehouseListProps = {
     inputValue: string,
     inputRef: MutableRefObject<HTMLInputElement | null>,
     setWarehouseListElement: Dispatch<SetStateAction<HTMLDivElement | null>>,
+    warehouseElement: HTMLDivElement | null;
 }
 
 const WarehouseList = (props: WarehouseListProps) => {

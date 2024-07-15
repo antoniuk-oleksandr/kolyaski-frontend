@@ -21,11 +21,10 @@ const WarehouseSelectedElement = (props: WarehouseSelectedElementProps) => {
 
     return (
             <WarehouseSelectedElementLayout isErrorPresent={isErrorPresent} {...props}>
-
                 <span>{warehouse ? warehouse.warehouse : 'Виберіть відповідне відділення'}</span>
                 <FaChevronDown/>
                 {isErrorPresent && (
-                    <span className={"absolute top-9 left-0"}>Відділення Нової Пошти є обов'язковим</span>
+                    <p className={"absolute top-9 left-0"}>Відділення Нової Пошти є обов'язковим</p>
                 )}
             </WarehouseSelectedElementLayout>
     )

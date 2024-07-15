@@ -1,7 +1,6 @@
 import {LayoutProps} from "@/types/LayoutProps";
 import {Dispatch, SetStateAction} from "react";
-import {Box, LoadingOverlay, Transition} from "@mantine/core";
-import {motion} from "framer-motion";
+import {Box, LoadingOverlay} from "@mantine/core";
 
 type WarehouseSelectedElementLayoutProps = LayoutProps & {
     setIsMenuShown: Dispatch<SetStateAction<boolean>>,

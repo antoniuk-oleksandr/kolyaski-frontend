@@ -32,6 +32,7 @@ const WarehouseSelectorElement = (props: WareHouseSelectorElementProps) => {
             />
             <WarehouseList
                 {...props}
+                warehouseElement={warehouseElement}
                 setWarehouseListElement={setWarehouseListElement}
                 inputRef={inputRef}
                 inputValue={warehouseInputValue}

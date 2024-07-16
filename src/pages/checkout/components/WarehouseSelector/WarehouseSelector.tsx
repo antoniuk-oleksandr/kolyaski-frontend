@@ -2,6 +2,7 @@ import WarehouseSelectorLayout from "./WarehouseSelectorLayout";
 import WarehouseSelectorElement from "@/pages/checkout/components/WarehouseSelectorElement/WarehouseSelectorElement";
 import {Dispatch, SetStateAction} from "react";
 import {Warehouse} from "@/types/Warehouse";
+import WarehouseWorkTime from "@/pages/checkout/components/WarehouseWorkTime/WarehouseWorkTime";
 
 type WarehouseSelector = {
     cityRef: string,
@@ -18,6 +19,7 @@ const WareHouseSelector = (props: WarehouseSelector) => {
         <WarehouseSelectorLayout>
             <p>Самовивіз з Нової Пошти</p>
             <WarehouseSelectorElement {...props}/>
+            <WarehouseWorkTime {...props}/>
         </WarehouseSelectorLayout>
     )
 }

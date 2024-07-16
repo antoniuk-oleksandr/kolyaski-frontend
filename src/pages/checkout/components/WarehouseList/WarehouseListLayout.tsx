@@ -15,8 +15,6 @@ const WarehouseListLayout = (props: WarehouseListLayoutProps) => {
     const childrenArr = Children.toArray(children);
     const top = 10 + 4 + 2 + (warehouseElement ? warehouseElement.clientHeight : 0);
 
-    console.log(top);
-
     return (
         <AnimatePresence>
             {isMenuShown && warehouseList && warehouseList.length > 0 && (

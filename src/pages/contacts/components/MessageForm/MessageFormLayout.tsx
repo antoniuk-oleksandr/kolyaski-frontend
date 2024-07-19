@@ -8,6 +8,7 @@ import {useRouter} from "next/router";
 const schema = z.object({
     email: z.string().email("Неправильна електронна адреса"),
     name: z.string().min(1, "Ім'я є обов'язковим"),
+    message: z.string().min(1, "Повідомлення є обов'язковим"),
 });
 
 const MessageFormLayout = (props: LayoutProps) => {

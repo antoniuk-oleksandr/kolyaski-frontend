@@ -10,7 +10,7 @@ type WarehouseWorkTimeProps = {
 const WarehouseWorkTime = (props: WarehouseWorkTimeProps) => {
     const {warehouse} = props;
 
-
+    if(warehouse === undefined) return null;
     return (
         <WarehouseWorkTimeLayout {...props}>
             {Object.entries((warehouse as Warehouse).schedule).map((item, index: Key) => (

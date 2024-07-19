@@ -8,7 +8,7 @@ type MessageFromInputProps = {
     label: string,
     textArea?: boolean,
     required?: boolean,
-    type?: "text" | "number",
+    type?: "text" | "number" | "password",
 }
 
 const MessageFromInput = (props: MessageFromInputProps) => {

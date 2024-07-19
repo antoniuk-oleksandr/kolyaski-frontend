@@ -5,9 +5,9 @@ import MessageFormSubmitButton from "@/pages/contacts/components/MessageFormSubm
 const MessageForm = () => {
     return (
         <MessageFormLayout>
-            <MessageFormInput id={'name'} label={'Ваше і\'мя'} required/>
-            <MessageFormInput id={'email'} label={'Ваш e-mail'} required/>
-            <MessageFormInput id={'message'} label={'Ваше повідомлення (не обов\'язково)'} textArea/>
+            <MessageFormInput id={'name'} label={'І\'мя'} required/>
+            <MessageFormInput id={'email'} label={'E-mail'} required/>
+            <MessageFormInput id={'message'} label={'Повідомлення'} textArea required/>
             <MessageFormSubmitButton/>
         </MessageFormLayout>
     )

@@ -3,8 +3,16 @@ import HomeCarousel from "@/pages/home/components/HomeCarousel/HomeCarousel/Home
 import BrandList from "@/pages/home/components/BrandList/BrandList";
 import PageContentLayout from "@/common-components/PageContentLayout";
 import HomeBottomContent from "@/pages/home/components/HomeBottom/HomeBottomContent/HomeBottomContent";
+import HomeCenterRightSide from "@/pages/home/components/HomeRightSide/HomeCenterRightSide";
+import HomeCenterLeftSide from "@/pages/home/components/HomeLeftSide/HomeCenterLeftSide";
+import {useHomeData} from "@/pages/home/use-home-data";
+import {Loader} from "@mantine/core";
+import LoaderElement from "@/common-components/LoaderElement";
 
 export default function Home() {
+    const {homeData} = useHomeData();
+
+    if(!homeData) return <LoaderElement/>
     return (
         <>
             <PageContentLayout>
@@ -12,6 +20,10 @@ export default function Home() {
                 <HomeCarousel/>
             </PageContentLayout>
             <BrandList/>
+            <PageContentLayout>
+                <HomeCenterLeftSide homeData={homeData}/>
+                <HomeCenterRightSide homeData={homeData}/>
+            </PageContentLayout>
             <HomeBottomContent/>
         </>
     );

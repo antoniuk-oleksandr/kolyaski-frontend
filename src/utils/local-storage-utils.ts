@@ -1,4 +1,5 @@
 import {CartItem} from "@/types/CartItem";
+import {TokenInfo} from "@/types/TokenInfo";
 
 export const getCartItemsFromLocalStorage = (): CartItem[] => {
     const cartItems = localStorage.getItem("kolyaskiCartItems");

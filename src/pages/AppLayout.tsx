@@ -17,7 +17,7 @@ const AppLayout = (props: LayoutProps) => {
                 <motion.div
                     initial={{opacity: 0}}
                     animate={{opacity: 1}}
-                    transition={{duration: 0.2, easings: "easeOut"}}
+                    transition={{duration: 0.5, easings: "easeOut"}}
                 >
                     {children}
                 </motion.div>

@@ -1,8 +1,9 @@
 import {NextRouter} from "next/router";
 import {successDialogSignal} from "@/common-components/SuccessDialog/success-dialog-signal";
+import {postContactRequest} from "@/api/post-contact-request";
 
-export const handleMessageFormSubmit = (data: any, router: NextRouter) => {
-    console.log(data);
+export const handleMessageFormSubmit = async (data: any, router: NextRouter) => {
     successDialogSignal.value = ++successDialogSignal.value;
-    router.push("/");
+    await postContactRequest(data);
+    await router.push("/");
 }

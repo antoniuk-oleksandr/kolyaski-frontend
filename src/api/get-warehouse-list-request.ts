@@ -1,7 +1,9 @@
 import axios from "axios";
+import {getIpAddress} from "@/utils/utils";
 
 export const getWarehouseListRequest = async (cityRef: string) => {
-    const url = `http://localhost:8080/api/novaposhta/warehouses?cityRef=${cityRef}`;
+    const host = getIpAddress();
+    const url = `http://${host}/api/novaposhta/warehouses?cityRef=${cityRef}`;
 
     try {
         const response = await axios.get(url);

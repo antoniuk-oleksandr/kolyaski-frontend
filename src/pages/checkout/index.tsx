@@ -9,6 +9,7 @@ import {useCommonCities} from "@/pages/checkout/use-effects/use-common-cities";
 import {Loader} from "@mantine/core";
 import {useState} from "react";
 import SuccessfulOrder from "@/pages/checkout/components/SuccessfulOrder/SuccessfulOrder";
+import LoaderElement from "@/common-components/LoaderElement";
 
 const CheckoutPage = () => {
     const {cart} = useSelector((state: any) => state) as { cart: CartState };
@@ -17,7 +18,7 @@ const CheckoutPage = () => {
     const [isOrderRequestSending, setIsOrderRequestSending] = useState<boolean>(false);
 
     if (cart.products.length === 0 && !isOrderCompleted) return <NoCartItemsMessage/>
-    if(!commonCities) return <Loader className={"!w-full !grid !place-items-center !h-full"}/>
+    if(!commonCities) return <LoaderElement/>
     if(isOrderCompleted) return <SuccessfulOrder/>
     return (
         <CheckoutFormLayout

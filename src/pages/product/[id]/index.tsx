@@ -10,7 +10,7 @@ const ProductItemPage = () => {
     if (!productItem) return null;
     return (
         <>
-            <HeadElement pageTitle={productItem.name}/>
+            <HeadElement pageTitle={productItem.product.name}/>
             <PageContentLayout reverse>
                 <LeftProductItemSide/>
                 <RightProductItemSide productItem={productItem}/>

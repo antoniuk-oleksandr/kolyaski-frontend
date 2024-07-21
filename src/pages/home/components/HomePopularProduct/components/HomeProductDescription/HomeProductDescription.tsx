@@ -1,8 +1,8 @@
 import HomeProductDescriptionLayout from "./HomeProductDescriptionLayout";
 import {NumberFormatter} from "@mantine/core";
-import {HomeDataElement} from "@/types/HomeDataElement";
+import {RestrictedProduct} from "@/types/RestrictedProduct";
 
-type HomeProductDescriptionProps = HomeDataElement;
+type HomeProductDescriptionProps = RestrictedProduct;
 
 const HomeProductDescription = (props: HomeProductDescriptionProps) => {
     const {name, price} = props;

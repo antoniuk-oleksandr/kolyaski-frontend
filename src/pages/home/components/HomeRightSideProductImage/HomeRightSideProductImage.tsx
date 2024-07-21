@@ -1,8 +1,8 @@
 import HomeRightSideProductImageLayout from "./HomeRightSideProductImageLayout";
 import Image from "next/image";
-import {HomeDataElement} from "@/types/HomeDataElement";
+import {RestrictedProduct} from "@/types/RestrictedProduct";
 
-type HomeRightSideProductImageProps = HomeDataElement;
+type HomeRightSideProductImageProps = RestrictedProduct;
 
 const HomeRightSideProductImage = (props: HomeRightSideProductImageProps) => {
     const {image} = props;

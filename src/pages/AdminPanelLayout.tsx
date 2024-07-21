@@ -4,12 +4,16 @@ import AdminHeader from "@/pages/admin/components/AdminHeader/AdminHeader";
 import {motion} from "framer-motion";
 import {useTokenInfo} from "@/pages/admin/use-effects/use-token-info";
 import AdminSignIn from "@/pages/admin/components/AdminSignIn/AdminSignIn";
+import AdminLoader from "@/pages/admin/components/AdminLoader";
+import {useDispatch, useSelector} from "react-redux";
 
 const AdminPanelLayout = (props: LayoutProps) => {
     const {children} = props;
-    const {tokenInfo} = useTokenInfo();
+    const {tokenInfo} = useSelector((state: any) => state.token);
+    const dispatch = useDispatch();
+    useTokenInfo(dispatch);
 
-    if (tokenInfo === undefined) return null;
+    if (tokenInfo === undefined) return <AdminLoader/>
     return (
         <motion.div
             initial={{opacity: 0}}

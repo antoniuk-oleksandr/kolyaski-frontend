@@ -1,10 +1,10 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {ProductData} from "@/types/ProductData";
 import {getProductRequest} from "@/api/get-product-request";
+import {ProductResponseData} from "@/types/ProductResponseData";
 
 export const useProductItem = () => {
-    const [productItem, setProductItem] = useState<null | ProductData>(null);
+    const [productItem, setProductItem] = useState<null | ProductResponseData>(null);
     const router = useRouter();
 
     useEffect(() => {

@@ -1,4 +1,4 @@
-import {HomeDataElement} from "@/types/HomeDataElement";
+import {RestrictedProduct} from "@/types/RestrictedProduct";
 
 export const getPopularProductListTitle = (value: string) => {
     switch (value) {
@@ -19,7 +19,7 @@ export const getPopularProductListTitle = (value: string) => {
     }
 }
 
-export const makeChunksOfHomeLists = (array: HomeDataElement[], chunkSize: number) => {
+export const makeChunksOfHomeLists = (array: RestrictedProduct[], chunkSize: number) => {
     if (array.length === 0) return [];
 
     const result = [];

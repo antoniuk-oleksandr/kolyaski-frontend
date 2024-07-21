@@ -1,10 +1,9 @@
 export type TokenInfo = {
-    access: {
-        token: string,
-        expiration: number,
-    },
-    refresh: {
-        token: string,
-        expiration: number,
-    }
+    access: TokenData,
+    refresh: TokenData;
+}
+
+export type TokenData = {
+    token: string,
+    expiration: number,
 }

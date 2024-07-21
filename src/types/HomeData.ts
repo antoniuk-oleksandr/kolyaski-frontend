@@ -1,10 +1,10 @@
-import {HomeDataElement} from "@/types/HomeDataElement";
+import {RestrictedProduct} from "@/types/RestrictedProduct";
 
 export type HomeData = {
-    "strollers": HomeDataElement[],
-    "carSeats": HomeDataElement[],
-    "cots": HomeDataElement[],
-    "feedingChairs": HomeDataElement[],
-    "recommendedProducts": HomeDataElement[],
-    "specialOffers": HomeDataElement[],
+    "strollers": RestrictedProduct[],
+    "carSeats": RestrictedProduct[],
+    "cots": RestrictedProduct[],
+    "feedingChairs": RestrictedProduct[],
+    "recommendedProducts": RestrictedProduct[],
+    "specialOffers": RestrictedProduct[],
 }

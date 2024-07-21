@@ -12,6 +12,7 @@ type PopularProductsCarouselControllersProps = {
 const PopularProductsCarouselControllers = (props: PopularProductsCarouselControllersProps) => {
     const {numberOfCircles, carouselIndex} = props;
 
+    if(numberOfCircles === 1) return null;
     return (
         <PopularProductsCarouselControllersLayout>
             {Array.from({length: numberOfCircles}, (_, index) => (

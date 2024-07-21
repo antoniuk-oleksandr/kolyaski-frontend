@@ -8,5 +8,11 @@ export const setTokenInfoToCookies = (tokenInfo: TokenInfo) => {
 }
 
 export const getTokenInfoFromCookies = () => {
-    return Cookies.get(token);
+    const data = Cookies.get(token);
+    if(!data) return null;
+    return JSON.parse(data) as TokenInfo;
+}
+
+export const clearTokenInfoFromCookies = () => {
+    Cookies.remove(token);
 }

@@ -3,9 +3,17 @@ import Chart from "@/pages/admin/components/Chart/Chart";
 import PageTitle from "@/common-components/PageTitle";
 import AdminChartColumn from "@/pages/admin/components/AdminChartColumn";
 import AdminPageLayout from "@/pages/admin/AdminPageLayout";
+import {useDispatch, useSelector} from "react-redux";
+import {TokenInfo} from "@/types/TokenInfo";
+
+// refresh token has no access token....
 
 const AdminPage = () => {
-    useSales();
+    const {tokenInfo} = useSelector((state: any) => state.token) as { tokenInfo: TokenInfo | null };
+    console.log(tokenInfo);
+
+    const dispatch = useDispatch();
+    useSales(tokenInfo, dispatch);
 
     const data = [
         {date: '1 Черв.', "Прибуток": 23456},

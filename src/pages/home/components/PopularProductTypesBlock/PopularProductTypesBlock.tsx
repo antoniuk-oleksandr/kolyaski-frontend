@@ -4,7 +4,6 @@ import PopularProductTypeItem
     from "@/pages/home/components/PopularProductTypesBlock/components/PopularProductTypeItem/PopularProductTypeItem";
 
 const PopularProductTypesBlock = () => {
-
     return (
         <PopularProductTypesBlockLayout>
             <h2 className={"text-2xl text-primary pb-3"}>Популярні категорії товарів</h2>

@@ -1,9 +1,9 @@
 import HomeRightSideProductLayout from "./HomeRightSideProductLayout";
-import {HomeDataElement} from "@/types/HomeDataElement";
+import {RestrictedProduct} from "@/types/RestrictedProduct";
 import HomeRightSideProductImage from "@/pages/home/components/HomeRightSideProductImage/HomeRightSideProductImage";
 import {NumberFormatter} from "@mantine/core";
 
-type HomeRightSideProductProps = HomeDataElement;
+type HomeRightSideProductProps = RestrictedProduct;
 
 const HomeRightSideProduct = (props: HomeRightSideProductProps) => {
     const {name, price} = props;

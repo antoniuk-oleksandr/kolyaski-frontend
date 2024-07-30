@@ -1,24 +1,28 @@
 import {Dispatch, useEffect, useState} from "react";
-import {getSalesInfo} from "@/api/get-sales-info";
+import {getSalesInfoRequest} from "@/api/get-sales-info-request";
 import {TokenInfo} from "@/types/TokenInfo";
-import {tryToRefreshToken} from "@/utils/token-utils";
+import {clearTokenInfo, tryToRefreshToken} from "@/utils/token-utils";
 import {UnknownAction} from "redux";
+import {SalesData} from "@/types/SalesData";
 
 export const useSales = (
     tokenInfo: TokenInfo | null,
     dispatch: Dispatch<UnknownAction>
 ) => {
-    const [idk, setIdk] = useState<any>(null);
+    const [sales, setSales] = useState<null | SalesData>(null);
 
     useEffect(() => {
         const getData = async () => {
             if (tokenInfo === null || tokenInfo === undefined) return null;
 
             await tryToRefreshToken(tokenInfo, dispatch);
-            const response = await getSalesInfo(tokenInfo.refresh.token);
-            console.log(response);
+            const response = await getSalesInfoRequest(tokenInfo.access.token);
+            if(!response) clearTokenInfo(dispatch);
+            setSales(response);
         }
 
         getData();
     }, []);
+
+    return {sales};
 }

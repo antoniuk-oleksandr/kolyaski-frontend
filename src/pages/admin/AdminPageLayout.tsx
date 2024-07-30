@@ -4,7 +4,7 @@ const AdminPageLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"h-[2000px] flex flex-col"}>
+        <div className={"flex h-fit flex-col grow"}>
             {children}
         </div>
     )

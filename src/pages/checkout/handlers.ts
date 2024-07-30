@@ -32,7 +32,6 @@ export const handleCheckoutFormSubmit = async (
         products: products.map(({product, quantity}) => ({
             id: product.id,
             quantity,
-            totalPrice: product.price * quantity
         }))
     };
 

@@ -33,10 +33,12 @@ const config: Config = {
                 66: "16.625rem",
                 140: "35rem",
                 75: "17.75rem",
+                18: "4.5rem",
                 headerSearchInput: "calc(100% - 6rem)",
                 62: "15.375rem",
                 67.5: "16.875rem",
                 20: "5rem",
+                180: "45rem",
             },
             height: {
                 140: "35rem",
@@ -45,11 +47,14 @@ const config: Config = {
                 67.5: "16.875rem",
                 116: "29rem",
                 20: "5rem",
+                adminSidebar: "calc(100svh - 57px)",
+                adminLoader: "calc(100vh - 57px - 12px * 2)",
             },
             inset: {
                 13: "3.25rem",
             },
             minHeight: {
+                adminSidebar: "calc(100svh - 57px)",
                 7.5: "1.875rem",
                 40.5: "10.125rem",
                 pageLayout: "calc(100svh - 10.125rem)",
@@ -62,6 +67,7 @@ const config: Config = {
                 primary: "#A696D2",
                 secondary: "#BDE9E0",
                 babyCarriage: "#CE4ADA",
+                comments: "#f8f9fa",
             },
             gridTemplateColumns: {
                 headerColumns: "18.75rem, 1fr, 18.75rem",
@@ -70,13 +76,13 @@ const config: Config = {
                 cartPhoneElement: "5rem, 1fr, auto",
                 checkoutCartElement: "5rem, 1fr, 10rem, 7.5rem",
                 checkoutCartPhoneElement: "5rem, 1fr, auto",
+                commentElement: "20px, 200px, 1fr, 72px",
             },
             gridTemplateRows: {},
             screens: {
                 phone: {max: "960px"}
             },
             gradientColorStops: {},
-
         },
     },
     plugins: [

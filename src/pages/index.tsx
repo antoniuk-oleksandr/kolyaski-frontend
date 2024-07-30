@@ -6,7 +6,6 @@ import HomeBottomContent from "@/pages/home/components/HomeBottom/HomeBottomCont
 import HomeCenterRightSide from "@/pages/home/components/HomeRightSide/HomeCenterRightSide";
 import HomeCenterLeftSide from "@/pages/home/components/HomeLeftSide/HomeCenterLeftSide";
 import {useHomeData} from "@/pages/home/use-home-data";
-import {Loader} from "@mantine/core";
 import LoaderElement from "@/common-components/LoaderElement";
 
 export default function Home() {

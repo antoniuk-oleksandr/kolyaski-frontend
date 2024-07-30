@@ -14,5 +14,6 @@ export const getTokenInfoFromCookies = () => {
 }
 
 export const clearTokenInfoFromCookies = () => {
+    console.log("clear tokenInfoFromCookies");
     Cookies.remove(token);
 }

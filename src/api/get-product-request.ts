@@ -1,8 +1,8 @@
 import axios from "axios";
-import {getIpAddress} from "@/utils/utils";
+import {getHost} from "@/utils/utils";
 
 export const getProductRequest = async (id: number) => {
-    const host = getIpAddress();
+    const host = getHost();
     const url = `http://${host}/api/product/${id}`;
 
     try {

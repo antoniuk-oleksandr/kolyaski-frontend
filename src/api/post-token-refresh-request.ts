@@ -1,8 +1,8 @@
-import {getIpAddress} from "@/utils/utils";
+import {getHost} from "@/utils/utils";
 import axios from "axios";
 
 export const postTokenRefreshRequest = async (refreshToken: string) => {
-    const host = getIpAddress();
+    const host = getHost();
     const url = `http://${host}/api/token/refresh`;
 
     try {
@@ -11,6 +11,7 @@ export const postTokenRefreshRequest = async (refreshToken: string) => {
         });
         return response.data;
     } catch (error) {
-        console.error(error)
+        // @ts-ignore
+        console.error(error.response);
     }
 }

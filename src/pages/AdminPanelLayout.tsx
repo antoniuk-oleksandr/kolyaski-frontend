@@ -25,7 +25,7 @@ const AdminPanelLayout = (props: LayoutProps) => {
                 <AdminSidebar hide={tokenInfo === null}/>
                 {tokenInfo === null ? <AdminSignIn/> :
                     (
-                        <div className={"flex-1 p-3"}>
+                        <div className={"flex-1 p-3 flex"}>
                             {children}
                         </div>
                     )

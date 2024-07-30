@@ -9,12 +9,16 @@ export const tryToRefreshToken = async (
     tokenInfo: TokenInfo,
     dispatch: Dispatch<UnknownAction>
 ) => {
+    // if (tokenInfo.access.expiration > Date.now()) return;
 
-    if (tokenInfo.access.expiration > Date.now()) return;
+    let tokenCopy = {...tokenInfo};
+    tokenCopy.access = await postTokenRefreshRequest(tokenCopy.refresh.token);
+    if (!tokenCopy.access) clearTokenInfoFromCookies();
+    else setTokenInfoToCookies(tokenCopy);
+    dispatch(setTokenInfo(tokenCopy));
+}
 
-    const response = await postTokenRefreshRequest(tokenInfo.refresh.token);
-    if (!response) clearTokenInfoFromCookies();
-    else setTokenInfoToCookies(response);
-    dispatch(setTokenInfo(response));
-    return response;
+export const clearTokenInfo = (dispatch: Dispatch<UnknownAction>) => {
+    dispatch(setTokenInfo(null));
+    clearTokenInfoFromCookies();
 }

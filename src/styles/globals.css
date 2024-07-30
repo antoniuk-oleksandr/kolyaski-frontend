@@ -75,3 +75,33 @@ p:has(> strong) {
     width: 0;
     height: 0;
 }
+
+.mantine-Accordion-content {
+    padding: 0 !important;
+}
+
+.mantine-Accordion-item {
+    border: none !important;
+}
+
+.mantine-Accordion-chevron {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px !important;
+    height: 20px !important;
+    margin-left: 24px !important;
+    margin-right: 12px !important;
+}
+
+.mantine-Accordion-label {
+    font-weight: 500 !important;
+}
+
+.mantine-Tooltip-tooltip {
+    font-size: 14px !important;
+}
+
+.mantine-Accordion-chevron {
+    justify-content: center !important;
+}

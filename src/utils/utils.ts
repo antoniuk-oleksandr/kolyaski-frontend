@@ -31,6 +31,6 @@ export const getPageTitle = (router: NextRouter) => {
     return pageTitles[router.pathname as keyof typeof pageTitles];
 }
 
-export const getIpAddress = () => {
+export const getHost = () => {
     return "localhost:8080";
 }

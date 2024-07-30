@@ -1,12 +1,12 @@
 import {MutableRefObject} from "react";
 import axios, {CancelTokenSource} from "axios";
-import {getIpAddress} from "@/utils/utils";
+import {getHost} from "@/utils/utils";
 
 export const getCityRequest = async (
     cityInput: string,
     cancelToken: MutableRefObject<CancelTokenSource | null> | null,
 ) => {
-    const host = getIpAddress();
+    const host = getHost();
     const url = `http://${host}/api/novaposhta/cities?partName=${cityInput}`;
 
     try {

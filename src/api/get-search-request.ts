@@ -1,5 +1,5 @@
 import {SearchParams} from "@/types/SearchParams";
-import {getEnumKeyByValue, getIpAddress} from "@/utils/utils";
+import {getEnumKeyByValue, getHost} from "@/utils/utils";
 import {SortEnum} from "@/types/SortEnum";
 import axios from "axios";
 import {tryToRemovePrice} from "@/pages/catalog/helpers";
@@ -11,7 +11,7 @@ export const getSearchRequest = async (searchParams: SearchParams) => {
     }
     tryToRemovePrice(paramsCopy);
     const res = new URLSearchParams(paramsCopy as unknown as Record<string, string>);
-    const host = getIpAddress();
+    const host = getHost();
     const url = `http://${host}/api/search?${res.toString()}`;
 
     console.log(url);

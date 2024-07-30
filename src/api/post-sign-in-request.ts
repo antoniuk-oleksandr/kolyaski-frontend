@@ -1,9 +1,9 @@
 import axios from "axios";
 import {TokenInfo} from "@/types/TokenInfo";
-import {getIpAddress} from "@/utils/utils";
+import {getHost} from "@/utils/utils";
 
 export const postSignInRequest = async (data: any) => {
-    const host = getIpAddress();
+    const host = getHost();
     const url = `http://${host}/api/admin/sign-in`;
 
     try {

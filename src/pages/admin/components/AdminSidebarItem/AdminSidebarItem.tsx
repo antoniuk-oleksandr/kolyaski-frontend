@@ -4,6 +4,7 @@ import {AdminSidebarItemType} from "@/types/AdminSidebarItemType";
 type AdminSidebarItemProps = {
     item: AdminSidebarItemType,
     isSelected: boolean,
+    clickAction? : () => void,
 }
 
 const AdminSidebarItem = (props: AdminSidebarItemProps) => {

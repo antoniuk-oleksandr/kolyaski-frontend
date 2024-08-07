@@ -29,6 +29,8 @@ export const checkoutFormScheme = z.object({
     city: z.object({
         cityName: z.string(),
         regionName: z.string(),
+        description: z.string(),
+        ref: z.string(),
     }).refine((value) => value !== undefined || value !== null),
     products: z.array(z.object({
         quantity: z.number(),

@@ -14,8 +14,6 @@ export const getSearchRequest = async (searchParams: SearchParams) => {
     const host = getHost();
     const url = `http://${host}/api/search?${res.toString()}`;
 
-    console.log(url);
-
     try {
         const response = await axios.get(url);
         return response.data;

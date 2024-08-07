@@ -5,7 +5,7 @@ import {tryToRefreshToken} from "@/utils/token-utils";
 import {UnknownAction} from "redux";
 import {useRouter} from "next/router";
 import {Comment} from "@/types/Comment";
-import {getCommentsParams} from "@/pages/admin/comments/helpers";
+import {getAdminPageParams} from "@/pages/admin/comments/helpers";
 import {setCommentsSearchData} from "@/redux/comments-slice";
 
 export const useCommentById = (
@@ -21,7 +21,7 @@ export const useCommentById = (
         const getData = async () => {
             const id = parseInt(router.query.id as string);
 
-            const data = await getCommentsParams(router);
+            const data = await getAdminPageParams(router, `/admin/comments/${id}?page=1`);
             if (data.value === null || data.page === null) return;
             dispatch(setCommentsSearchData({...data}));
 

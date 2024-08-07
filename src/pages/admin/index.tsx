@@ -1,6 +1,5 @@
 import {useSales} from "@/pages/admin/use-effects/use-sales";
 import Chart from "@/pages/admin/components/Chart/Chart";
-import PageTitle from "@/common-components/PageTitle";
 import AdminChartColumn from "@/pages/admin/components/AdminChartColumn";
 import AdminPageLayout from "@/pages/admin/AdminPageLayout";
 import {useDispatch, useSelector} from "react-redux";
@@ -17,7 +16,6 @@ const AdminPage = () => {
     return (
         <AdminPageLayout>
             <AdminElementLayout>
-                {/*<PageTitle text={'Адмін панель'}/>*/}
                 <AdminChartColumn>
                     <Chart text={'Дохід за тиждень'} data={sales.week}/>
                     <Chart text={'Дохід за місяць'} data={sales.month}/>

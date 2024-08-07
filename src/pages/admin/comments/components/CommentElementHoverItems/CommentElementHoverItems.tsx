@@ -6,6 +6,7 @@ import {handleChangeReadTypeButtonClick, handleDeleteCommentButtonClick} from "@
 import {useDispatch, useSelector} from "react-redux";
 import {TokenInfo} from "@/types/TokenInfo";
 import {CommentType} from "@/types/CommentType";
+import {useViewportSize} from "@mantine/hooks";
 
 type CommentElementHoverItemsProps = {
     commentHovered: boolean,
@@ -21,7 +22,10 @@ const CommentElementHoverItems = (props: CommentElementHoverItemsProps) => {
     const {deleteRequestSending, changeReadTypeRequestSending} =
         useSelector((state: any) => state.comments);
     const dispatch = useDispatch();
+    const {width} = useViewportSize();
+    const isMobile = width < 960;
 
+    if(isMobile) return null;
     return (
         <CommentElementHoverItemsLayout {...props}>
             <Tooltip label={'Видалити'}>

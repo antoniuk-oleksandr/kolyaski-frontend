@@ -11,7 +11,8 @@ type WarehouseSelector = {
     warehouseInputValue: string,
     setWarehouseInputValue: Dispatch<SetStateAction<string>>
     isWarehouseRequestSending: boolean,
-    setIsWarehouseRequestSending: Dispatch<SetStateAction<boolean>>
+    setIsWarehouseRequestSending: Dispatch<SetStateAction<boolean>>,
+    renderWorkTime?: boolean,
 }
 
 const WareHouseSelector = (props: WarehouseSelector) => {

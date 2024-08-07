@@ -59,15 +59,18 @@ const config: Config = {
                 40.5: "10.125rem",
                 pageLayout: "calc(100svh - 10.125rem)",
                 pageLayoutMobile: "calc(100svh - 18rem)",
+                34: "8.5rem",
+                150: "37.5rem"
             },
             maxHeight: {
                 44: "11rem",
             },
             colors: {
-                primary: "#A696D2",
                 secondary: "#BDE9E0",
+                primary: "#A696D2",
+                primaryHover: "#B3A3D8",
                 babyCarriage: "#CE4ADA",
-                comments: "#f8f9fa",
+                comments: "hsl(210,16.7%,95.6%)",
             },
             gridTemplateColumns: {
                 headerColumns: "18.75rem, 1fr, 18.75rem",
@@ -76,7 +79,12 @@ const config: Config = {
                 cartPhoneElement: "5rem, 1fr, auto",
                 checkoutCartElement: "5rem, 1fr, 10rem, 7.5rem",
                 checkoutCartPhoneElement: "5rem, 1fr, auto",
+                ordersCartElement: "5rem, 1fr, 9rem, 16rem, auto",
+                ordersCartPhoneElement: "5rem, 1fr, auto",
                 commentElement: "20px, 200px, 1fr, 72px",
+                commentPhoneElement: "auto, 1fr, auto",
+                ordersColumns: '6rem 1fr 1fr 1fr 1fr 1fr',
+                ordersPhoneColumns: 'auto auto 1fr 1fr 1fr 1.6fr',
             },
             gridTemplateRows: {},
             screens: {

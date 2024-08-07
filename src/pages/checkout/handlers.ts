@@ -11,22 +11,30 @@ import {it} from "node:test";
 import {postOrderRequest} from "@/api/post-order-request";
 import {removeAllCartProductsFromLocalStorage} from "@/utils/local-storage-utils";
 import {UnknownAction} from "redux";
-import { removeAllCartProducts } from "@/redux/cart-slice";
+import {removeAllCartProducts} from "@/redux/cart-slice";
+import {em} from "@mantine/core";
 
 export const handleCheckoutFormSubmit = async (
     data: CheckoutFormType,
     setIsOrderCompleted: Dispatch<SetStateAction<boolean>>,
     setIsOrderRequestSending: Dispatch<SetStateAction<boolean>>,
     dispatch: Dispatch<UnknownAction>
-)  => {
+) => {
     setIsOrderRequestSending(true);
 
     const {name, surname, phoneNumber, email, message, city, warehouse, products} = data;
+
     const requestBody = {
-        user: {name, surname, phoneNumber, email, message},
+        user: {
+            name, surname, phoneNumber,
+            email: email === undefined ? null : email,
+            message: message === undefined ? null : message,
+        },
         delivery: {
-            city: city.cityName,
-            region: city.regionName,
+            ref: city.ref,
+            description: city.description,
+            cityName: city.cityName,
+            regionName: city.regionName,
             warehouse: warehouse.warehouse
         },
         products: products.map(({product, quantity}) => ({
@@ -107,6 +115,7 @@ export const handleSelectCityButtonClick = (
     setWarehouseInputValue: Dispatch<SetStateAction<string>>,
 ) => {
     citySelectorCloseSignal.value = ++citySelectorCloseSignal.value;
+
     setSelectedCity(cityInput);
     setWarehouseInputValue("");
     setWarehouse(undefined);

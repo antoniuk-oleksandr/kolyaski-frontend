@@ -15,7 +15,7 @@ import AdminPanelLayout from "@/pages/AdminPanelLayout";
 export default function App({Component, pageProps}: AppProps) {
     const router = useRouter();
     const {pageTitle} = usePageTitle(router);
-    const pagesToExclude = ["/admin", "/admin/comments", "/admin/orders", "/admin/products", "/admin/comments/[id]"];
+    const pagesToExclude = ["/admin", "/admin/comments", "/admin/orders", "/admin/orders/[id]", "/admin/products", "/admin/products/[id]", "/admin/comments/[id]"];
     const exclude = pagesToExclude.includes(router.pathname);
 
     return (

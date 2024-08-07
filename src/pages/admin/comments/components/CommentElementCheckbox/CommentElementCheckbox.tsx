@@ -23,11 +23,6 @@ const CommentElementCheckbox = (props: CommentElementCheckboxProps) => {
 
     return (
         <CommentElementCheckboxLayout>
-            {/*<CommentElementCheckboxOverlay*/}
-            {/*    isHovered={isHovered}*/}
-            {/*    setIsHovered={setIsHovered}*/}
-            {/*    {...props}*/}
-            {/*/>*/}
             <Checkbox
                 className={`duration-200 ease-out hover:ring-[8px] ring-neutral-200 hover:bg-neutral-200 rounded-full 
                 ${isSelected ? 'hover:bg-opacity-30 ring-opacity-30' : ''}`}

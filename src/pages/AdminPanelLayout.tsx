@@ -21,7 +21,7 @@ const AdminPanelLayout = (props: LayoutProps) => {
             transition={{duration: 0.5, easings: "easeOut"}}
         >
             <AdminHeader hide={tokenInfo === null}/>
-            <div className={"w-full flex"}>
+            <div className={"w-full flex phone:min-h-adminSidebar"}>
                 <AdminSidebar hide={tokenInfo === null}/>
                 {tokenInfo === null ? <AdminSignIn/> :
                     (

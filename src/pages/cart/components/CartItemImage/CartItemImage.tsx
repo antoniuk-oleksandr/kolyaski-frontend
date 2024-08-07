@@ -15,7 +15,7 @@ const CartItemImage = (props: CartItemImageProps) => {
         <CartItemImageLayout>
             <Image
                 onClick={() => router.push(`/product/${id}`)}
-                className={"object-center object-contain cursor-pointer"}
+                className={"size-full object-center object-contain cursor-pointer"}
                 src={image}
                 alt={'img'}
                 width={80}

@@ -1,5 +1,7 @@
 import AdminHeaderLayout from "./AdminHeaderLayout";
 import Image from "next/image";
+import React from "react";
+import AdminDrawer from "@/pages/admin/components/AdminDrawer/AdminDrawer";
 
 type AdminHeaderProps = {
     hide: boolean,
@@ -19,6 +21,7 @@ const AdminHeader = (props: AdminHeaderProps) => {
                 src={"/images/logo.png"}
                 alt={"logo"}
             />
+            <AdminDrawer/>
         </AdminHeaderLayout>
     )
 }

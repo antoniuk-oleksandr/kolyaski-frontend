@@ -18,9 +18,9 @@ const CommentElement = (props: CommentElementProps) => {
     return (
         <CommentElementLayout {...props} setCommentHovered={setCommentHovered}>
             <CommentElementCheckbox {...props}/>
-            <span className={"truncate"}>{name}</span>
-            <span className={"truncate"}>{message}</span>
-            <span className={"text-end"}>{dateStringFormat}</span>
+            <span className={"truncate text-base"}>{name}</span>
+            <span className={"truncate phone:col-start-2 phone:row-start-2"}>{message}</span>
+            <span className={"text-end phone:text-xs"}>{dateStringFormat}</span>
             <CommentElementHoverItems {...props} commentHovered={commentHovered}/>
         </CommentElementLayout>
     )

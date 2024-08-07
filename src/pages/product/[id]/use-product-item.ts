@@ -1,6 +1,6 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
-import {getProductRequest} from "@/api/get-product-request";
+import {getProductByIdRequest} from "@/api/get-product-by-id-request";
 import {ProductResponseData} from "@/types/ProductResponseData";
 
 export const useProductItem = () => {
@@ -12,7 +12,7 @@ export const useProductItem = () => {
 
         const getData = async () => {
             const id = parseInt(router.query.id as string);
-            const response = await getProductRequest(id);
+            const response = await getProductByIdRequest(id);
             setProductItem(response);
         }
 

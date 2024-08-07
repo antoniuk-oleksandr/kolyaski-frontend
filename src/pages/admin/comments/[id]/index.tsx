@@ -4,7 +4,8 @@ import {ReduxState} from "@/types/ReduxState";
 import CommentBody from "@/pages/admin/comments/[id]/components/CommentBody/CommentBody";
 import {useCommentById} from "@/pages/admin/use-effects/use-comment-by-id";
 import AdminLoader from "@/pages/admin/components/AdminLoader";
-import CommentsSearchbar from "@/pages/admin/comments/components/CommentsSearchbar/CommentsSearchbar";
+import AdminSearchbar from "@/pages/admin/comments/components/CommentsSearchbar/AdminSearchbar";
+import {commentsSearchSubmitAction} from "@/pages/admin/helpers";
 
 const AdminPanelComments = () => {
     const {tokenInfo} = useSelector((state: ReduxState) => state.token);
@@ -15,7 +16,11 @@ const AdminPanelComments = () => {
     if(!comment || !page || value === null) return <AdminLoader/>;
     return (
         <AdminElementLayout>
-            <CommentsSearchbar/>
+            <AdminSearchbar
+                value={value}
+                page={page}
+                submitAction={commentsSearchSubmitAction}
+            />
             <CommentBody {...comment}/>
         </AdminElementLayout>
     )

@@ -3,10 +3,15 @@ import {City} from "@/types/City";
 import Cookies from "js-cookie";
 import {citySignal} from "@/pages/checkout/signals/city-signal";
 
-export const useSelectedCity = () => {
+export const useSelectedCity = (value?: City) => {
     const [selectedCity, setSelectedCity] = useState<City | null>(null);
 
     useEffect(() => {
+        if(value !== undefined){
+            setSelectedCity(value);
+            return;
+        }
+
         let cityFromCookies = Cookies.get("kolyaskiCity") as string | undefined | City;
         if (cityFromCookies === undefined) {
             cityFromCookies = {

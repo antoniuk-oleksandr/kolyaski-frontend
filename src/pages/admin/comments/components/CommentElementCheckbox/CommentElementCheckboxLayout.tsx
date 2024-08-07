@@ -4,7 +4,7 @@ const CommentElementCheckboxLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"relative"}>
+        <div className={"relative phone:row-span-2"}>
             {children}
         </div>
     )

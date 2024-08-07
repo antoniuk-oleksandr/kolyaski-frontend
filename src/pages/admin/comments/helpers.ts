@@ -10,13 +10,13 @@ import {CommentType} from "@/types/CommentType";
 import {CommentsState} from "@/types/CommentsState";
 import {NextRouter} from "next/router";
 
-export const getCommentsParams = async (router: NextRouter) => {
+export const getAdminPageParams = async (router: NextRouter, link: string,) => {
     const {page, value} = router.query as { page: string, value: string };
     if (page === undefined) {
-        await router.push("/admin/comments?page=1");
+        await router.push(link);
         return {
             page: null,
-            value: null,
+            value: "",
         }
     }
 
@@ -37,6 +37,7 @@ export const getComments = async (
 
     await tryToRefreshToken(tokenInfo, dispatch);
     let data = await getCommentsRequest(tokenInfo.access.token, value, page);
+    console.log(data);
     if(data.status === 404) data.comments = [];
     if (!data.comments) clearTokenInfo(dispatch);
     dispatch(setCommentsData({...data}));

@@ -9,6 +9,7 @@ type MessageFromInputProps = {
     textArea?: boolean,
     required?: boolean,
     type?: "text" | "number" | "password",
+    autoFocus?: boolean,
 }
 
 const MessageFromInput = (props: MessageFromInputProps) => {

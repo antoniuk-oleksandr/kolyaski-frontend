@@ -6,14 +6,15 @@ import {NumberFormatter} from "@mantine/core";
 import Button from "@/common-components/Button";
 import {FaCheck} from "react-icons/fa6";
 import {useRouter} from "next/router";
+import {CartItem} from "@/types/CartItem";
 
 type CartRightSideProps = {
-    cart: CartState,
+    products: CartItem[],
 }
 
 const CartRightSide = (props: CartRightSideProps) => {
-    const {cart} = props;
-    const totalCartPrice = calcTotalCartPrice(cart.products);
+    const {products} = props;
+    const totalCartPrice = calcTotalCartPrice(products);
     const router = useRouter();
 
     return (

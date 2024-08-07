@@ -17,6 +17,9 @@ import {CommentItemType} from "@/types/CommentItemType";
 import {successDialogSignal} from "@/common-components/SuccessDialog/success-dialog-signal";
 import {commentsSignal} from "@/pages/admin/signals/comments-signal";
 import {NextRouter} from "next/router";
+import {AdminSubmitActionType} from "@/types/AdminSubmitActionType";
+import {SortOrderEnum} from "@/types/SortOrderEnum";
+import {OrdersSortByEnum} from "@/types/OrdersSortByEnum";
 
 export const handleCommentCheckboxChange = (
     id: number,
@@ -129,15 +132,18 @@ export const handleCommentElementClick = (
     router.push(`/admin/comments/${id}?page=${page}${value === "" ? "" : `&value=${value}`}`);
 }
 
-export const handleCommentsSearchSubmit = (
+export const handleAdminSearchSubmit = (
     data: any,
     router: NextRouter,
     page: number,
     value: string,
     dispatch: Dispatch<UnknownAction>,
+    submitAction: AdminSubmitActionType,
+    sortBy?: OrdersSortByEnum,
+    sortOrder?: SortOrderEnum,
 ) => {
     const {search} = data as { search: string };
-    dispatch(setCommentsSearchValue(value));
     commentsSignal.value = 0;
-    router.push(`/admin/comments?page=${page}${search === "" ? "" : `&value=${value}`}`);
+    const params = {page, value, sortBy, sortOrder, search};
+    submitAction(router, dispatch, params);
 }

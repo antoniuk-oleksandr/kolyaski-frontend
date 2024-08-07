@@ -11,6 +11,8 @@ import CartItemName from "@/pages/cart/components/CartItemName";
 
 type CartItemElementProps = CartItem & {
     bottomBorderShown: boolean,
+    gridCols?: string,
+    gridColsPhone?: string,
 }
 
 const CartItemElement = (props: CartItemElementProps) => {

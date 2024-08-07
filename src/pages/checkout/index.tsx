@@ -6,7 +6,6 @@ import {CartState} from "@/types/CartState";
 import CheckoutFormLayout from "@/pages/checkout/components/CheckoutForm/CheckoutFormLayout";
 import NoCartItemsMessage from "@/pages/cart/components/NoCartItemsMessage";
 import {useCommonCities} from "@/pages/checkout/use-effects/use-common-cities";
-import {Loader} from "@mantine/core";
 import {useState} from "react";
 import SuccessfulOrder from "@/pages/checkout/components/SuccessfulOrder/SuccessfulOrder";
 import LoaderElement from "@/common-components/LoaderElement";

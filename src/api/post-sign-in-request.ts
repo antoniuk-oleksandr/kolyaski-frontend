@@ -5,14 +5,17 @@ import {getHost} from "@/utils/utils";
 export const postSignInRequest = async (data: any) => {
     const host = getHost();
     const url = `http://${host}/api/admin/sign-in`;
-
     try {
         const response = await axios.post(url, data, {});
         return {
+            status: response.status,
             data: response.data as TokenInfo,
         }
     } catch (error) {
         console.error(error);
-        return {data: null};
+        return {
+            status: (error as any).response.status,
+            data: null
+        };
     }
 }

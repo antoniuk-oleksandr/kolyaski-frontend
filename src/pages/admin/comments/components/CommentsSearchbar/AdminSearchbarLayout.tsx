@@ -13,10 +13,12 @@ type CommentsSearchbarProps = LayoutProps & {
     submitAction: AdminSubmitActionType,
     sortBy?: OrdersSortByEnum,
     sortOrder?: SortOrderEnum,
+    type?: string,
+    sortType?: string,
 }
 
 const AdminSearchbarLayout = (props: CommentsSearchbarProps) => {
-    const {inputValue, page, submitAction, sortBy, sortOrder} = props;
+    const {inputValue, page, submitAction, sortBy, sortOrder, type, sortType} = props;
     const {children, } = props;
     const methods = useForm();
     const router = useRouter();
@@ -27,7 +29,7 @@ const AdminSearchbarLayout = (props: CommentsSearchbarProps) => {
         <FormProvider {...methods}>
             <form
                 onSubmit={methods.handleSubmit((data) =>
-                    handleAdminSearchSubmit(data, router, page, inputValue, dispatch, submitAction, sortBy, sortOrder))}
+                    handleAdminSearchSubmit(data, router, page, inputValue, dispatch, submitAction, sortBy, sortOrder, type, sortType))}
                 className={"w-180 phone:w-full items-center rounded-full bg-white my-2 flex"}
             >
                 {children}

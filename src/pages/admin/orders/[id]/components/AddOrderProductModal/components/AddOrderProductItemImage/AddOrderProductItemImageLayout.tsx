@@ -1,10 +1,15 @@
 import {LayoutProps} from "@/types/LayoutProps";
 
-const AddOrderProductItemImageLayout = (props: LayoutProps) => {
-    const {children} = props;
+type AddOrderProductItemImageLayoutProps = LayoutProps & {
+    size?: string,
+}
+
+const AddOrderProductItemImageLayout = (props: AddOrderProductItemImageLayoutProps) => {
+    const {children, size} = props;
 
     return (
-        <div className={"size-20 bg-white rounded-md aspect-1x1 flex justify-center items-center"}>
+        <div className={`bg-white rounded-md aspect-1x1 flex justify-center items-center 
+             ${size === undefined ? 'size-20' : size}`}>
             {children}
         </div>
     )

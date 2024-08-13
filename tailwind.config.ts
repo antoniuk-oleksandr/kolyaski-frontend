@@ -83,8 +83,9 @@ const config: Config = {
                 ordersCartPhoneElement: "5rem, 1fr, auto",
                 commentElement: "20px, 200px, 1fr, 72px",
                 commentPhoneElement: "auto, 1fr, auto",
-                ordersColumns: '6rem 1fr 1fr 1fr 1fr 1fr',
-                ordersPhoneColumns: 'auto auto 1fr 1fr 1fr 1.6fr',
+                ordersColumns: "6rem 1fr 1fr 1fr 1fr 1fr",
+                ordersPhoneColumns: "auto auto 1fr 1fr 1fr 1.6fr",
+                adminProductsColumns: "3rem, 4rem, 1fr, 6rem, 12rem, 6rem",
             },
             gridTemplateRows: {},
             screens: {

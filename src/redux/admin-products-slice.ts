@@ -2,9 +2,14 @@ import {createSlice} from "@reduxjs/toolkit";
 import {AdminProductsState} from "@/types/AdminProductsState";
 
 const initialState: AdminProductsState = {
+    productById: null,
     products: null,
     page: null,
     value: null,
+    onPageCount: null,
+    totalCount: null,
+    sortType: null,
+    type: null,
 }
 
 const adminProductsSlice = createSlice({
@@ -15,13 +20,10 @@ const adminProductsSlice = createSlice({
             Object.entries(action.payload).forEach(([key, value]) => {
                 (state as any)[key] = value;
             });
-        },
-        setAdminProducts: (state, action) => {
-            state.products = action.payload;
         }
     }
 });
 
-export const {setAdminProducts, setAdminProductsData} = adminProductsSlice.actions;
+export const {setAdminProductsData} = adminProductsSlice.actions;
 
 export default adminProductsSlice.reducer;

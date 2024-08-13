@@ -7,6 +7,6 @@ export type CommentsState = {
     changeReadTypeRequestSending: boolean,
     page: number | null,
     value: string | null,
-    commentsOnPageCount: number | null,
-    totalCommentsCount: number | null,
+    onPageCount: number | null,
+    totalCount: number | null,
 }

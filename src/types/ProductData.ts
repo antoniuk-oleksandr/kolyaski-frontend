@@ -5,6 +5,7 @@ export type ProductData = {
     name: string,
     price: number,
     id: number,
+    quantity: number,
     type?: string,
     subType?: string,
     description: string,

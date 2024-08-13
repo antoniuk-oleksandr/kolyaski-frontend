@@ -17,7 +17,7 @@ const AdminDrawer = () => {
     return (
         <AdminDrawerLayout>
             <IoMenu onClick={open} className={"text-2xl"}/>
-            <Drawer.Root opened={opened} position={"right"} onClose={close}>
+            <Drawer.Root size={"100%"} opened={opened} position={"right"} onClose={close}>
                 <Drawer.Overlay/>
                 <Drawer.Content>
                     <Drawer.Body className={"!p-0"}>

@@ -28,6 +28,7 @@ export const getPageTitle = (router: NextRouter) => {
         if (type !== undefined) return capitalizeFirstLetter(type as string);
         else return "Магазин";
     }
+    if(router.pathname.includes("admin")) return "Панель адміністратора";
     return pageTitles[router.pathname as keyof typeof pageTitles];
 }
 

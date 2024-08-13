@@ -2,12 +2,10 @@
     display: none;
 }
 
-/* Hide scrollbar for Firefox */
 .hide-scrollbar {
     scrollbar-width: none; /* For Firefox */
 }
 
-/* General styles */
 .hide-scrollbar {
     -ms-overflow-style: none; /* For Internet Explorer and Edge */
 }
@@ -22,4 +20,9 @@
 
 *::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
+}
+
+
+.product-images::-webkit-scrollbar {
+    height: 8px;
 }

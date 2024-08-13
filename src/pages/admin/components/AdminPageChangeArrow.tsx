@@ -4,20 +4,26 @@ import {Tooltip} from "@mantine/core";
 import {useRouter} from "next/router";
 import {OrdersState} from "@/types/OrdersState";
 import {CommentsState} from "@/types/CommentsState";
+import {AdminProductsState} from "@/types/AdminProductsState";
 
 type CommentPageChangeArrowProps = {
     left: boolean,
     onePageItems: number,
-    state: OrdersState | CommentsState,
+    state: OrdersState | CommentsState | AdminProductsState,
+    link: string,
+    linkParams?: string,
 }
 
 const AdminPageChangeArrow = (props: CommentPageChangeArrowProps) => {
-    const {left, onePageItems, state} = props;
-    const {commentsOnPageCount, totalCommentsCount, page, value} = state;
+    const {left, onePageItems, state, link, linkParams} = props;
+    const {onPageCount, totalCount, page, value} = state;
     const router = useRouter();
-    if (!page || !commentsOnPageCount || !totalCommentsCount) return;
-    const isArrowDisabled = left ? page === 1 : ((page - 1) * onePageItems + commentsOnPageCount === totalCommentsCount);
-    const link = `/admin/comments?page=${left ? page - 1 : page + 1}${value === '' ? '' : `?value=${value}`}`;
+    if (!page || !onPageCount || !totalCount) return;
+    const isArrowDisabled = left ? page === 1 : ((page - 1) * onePageItems + onPageCount === totalCount);
+    const pagePart = `?page=${left ? page - 1 : page + 1}`;
+    const valuePart = value === "" ? "" : `?value=${value}`;
+    const linkParamsPart = linkParams === undefined ? "" : linkParams;
+    const pushLink = `${link}${pagePart}${valuePart}${linkParamsPart}`;
 
     return (
         <Tooltip
@@ -26,7 +32,7 @@ const AdminPageChangeArrow = (props: CommentPageChangeArrowProps) => {
         >
             <div className={`ml-5 ${isArrowDisabled ? 'text-neutral-400' : ''}`}>
                 <ComponentElementIcon
-                    action={() => router.push(link)}
+                    action={() => router.push(pushLink)}
                     isDisabled={isArrowDisabled}
                     icon={left ? <FaChevronLeft/> : <FaChevronRight/>}/>
             </div>

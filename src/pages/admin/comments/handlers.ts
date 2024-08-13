@@ -141,9 +141,11 @@ export const handleAdminSearchSubmit = (
     submitAction: AdminSubmitActionType,
     sortBy?: OrdersSortByEnum,
     sortOrder?: SortOrderEnum,
+    type?: string,
+    sortType?: string,
 ) => {
     const {search} = data as { search: string };
     commentsSignal.value = 0;
-    const params = {page, value, sortBy, sortOrder, search};
+    const params = {page, value, sortBy, sortOrder, search, type, sortType};
     submitAction(router, dispatch, params);
 }

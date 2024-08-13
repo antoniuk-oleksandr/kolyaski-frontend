@@ -9,7 +9,7 @@ const OrdersButtonList = () => {
 
     return (
         <OrdersButtonListLayout>
-            <AdminPageChangeElement state={ordersState}/>
+            <AdminPageChangeElement onePageItems={20} link={"/admin/orders"} state={ordersState}/>
         </OrdersButtonListLayout>
     )
 }

@@ -15,6 +15,8 @@ type CommentsSearchbarProps = {
     submitAction: AdminSubmitActionType,
     sortBy?: OrdersSortByEnum,
     sortOrder?: SortOrderEnum,
+    type?: string,
+    sortType?: string,
 }
 
 const AdminSearchbar = (props: CommentsSearchbarProps) => {

@@ -10,8 +10,8 @@ const initialState: CommentsState = {
     changeReadTypeRequestSending: false,
     page: null,
     value: null,
-    commentsOnPageCount: null,
-    totalCommentsCount: null,
+    onPageCount: null,
+    totalCount: null,
 };
 
 const commentsSlice = createSlice({
@@ -35,8 +35,8 @@ const commentsSlice = createSlice({
 
             state.unreadComments = comments.filter((item: Comment) => item.isUnread);
             state.readComments = comments.filter((item: Comment) => !item.isUnread);
-            state.commentsOnPageCount = commentsOnPageCount;
-            state.totalCommentsCount = totalCommentsCount;
+            state.onPageCount = commentsOnPageCount;
+            state.totalCount = totalCommentsCount;
         },
         removeComment: (state, action) => {
             const {idToRemove, commentType} = action.payload;

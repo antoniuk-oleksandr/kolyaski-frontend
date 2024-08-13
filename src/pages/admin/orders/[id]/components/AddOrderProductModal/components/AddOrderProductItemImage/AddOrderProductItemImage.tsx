@@ -3,13 +3,14 @@ import Image from "next/image";
 
 type AddOrderProductItemImageProps = {
     src: string,
+    size?: string,
 }
 
 const AddOrderProductItemImage = (props: AddOrderProductItemImageProps) => {
     const {src} = props;
 
     return (
-        <AddOrderProductItemImageLayout>
+        <AddOrderProductItemImageLayout {...props}>
             <Image
                 className={"size-full object-contain object-center"}
                 priority

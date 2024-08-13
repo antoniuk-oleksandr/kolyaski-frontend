@@ -1,24 +1,45 @@
-import {useAdminProducts} from "@/pages/admin/use-effects/use-admin-products";
+import {useAllAdminProducts} from "@/pages/admin/use-effects/use-all-admin-products";
 import {useRouter} from "next/router";
 import AdminElementLayout from "@/pages/admin/components/AdminElementLayout";
 import {useDispatch, useSelector} from "react-redux";
 import {ReduxState} from "@/types/ReduxState";
 import AdminLoader from "@/pages/admin/components/AdminLoader";
-import {Table} from "@mantine/core";
-import ProductsListElement from "@/pages/admin/products/components/ProductsListElement/ProductsListElement";
+import AdminProductsListElement
+    from "@/pages/admin/products/components/AdminProductsListElement/AdminProductsListElement";
+import AdminProductListHead from "@/pages/admin/products/components/AdminProductListHead/AdminProductListHead";
+import AdminSearchbar from "@/pages/admin/comments/components/CommentsSearchbar/AdminSearchbar";
+import {productsSearchSubmitAction} from "@/pages/admin/helpers";
+import ProductPageHead from "@/pages/admin/products/components/ProductPageHead/ProductPageHead";
+import AdminProductsNavigationBar
+    from "@/pages/admin/products/components/AdminProductsNavigationBar/AdminProductsNavigationBar";
+import NoCommentsFound from "@/pages/admin/comments/components/NoCommentsFound";
+import AdminProductList from "@/pages/admin/products/components/AdminProductList/AdminProductList";
 
 const AdminPanelProducts = () => {
     const router = useRouter();
     const dispatch = useDispatch();
-    useAdminProducts(router, dispatch);
-    const {page, value, products} = useSelector((state: ReduxState) => state.adminProductsState);
+    const {tokenInfo} = useSelector((state: ReduxState) => state.token);
+    const adminProductsState = useSelector((state: ReduxState) => state.adminProductsState);
+    useAllAdminProducts(router, dispatch, tokenInfo);
+    const {page, value, products, sortType} = adminProductsState;
 
-    if (!page || value === null || products === null) return <AdminLoader/>;
+    if (!page || value === null || products === null || sortType === null) return <AdminLoader/>;
     return (
         <AdminElementLayout>
-            {products.map((product, index) => (
-                <ProductsListElement key={index} item={product}/>
-            ))}
+            <ProductPageHead
+                state={adminProductsState}
+                hideNewProductButton={products.length === 0}
+            />
+            <AdminProductsNavigationBar state={adminProductsState}/>
+            {products.length === 0 ? <NoCommentsFound/> : (
+                <>
+                    <AdminProductListHead/>
+                    <AdminProductList
+                        adminProductsState={adminProductsState}
+                        products={products}
+                    />
+                </>
+            )}
         </AdminElementLayout>
     )
 }

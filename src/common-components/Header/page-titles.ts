@@ -8,10 +8,4 @@ export const pageTitles = {
     '/wishlist': 'Пакунок малюка',
     '/cart': 'Мій кошик',
     '/checkout': 'Оформлення замовлення',
-    "/admin": "Панель адміністратора",
-    "/admin/comments": "Панель адміністратора",
-    "/admin/comments/[id]": "Панель адміністратора",
-    "/admin/products": "Панель адміністратора",
-    "/admin/orders": "Панель адміністратора",
-    "/admin/orders/[id]": "Панель адміністратора",
 }

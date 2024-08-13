@@ -25,7 +25,7 @@ const CommentsBlockButtons = (props: CommentsBlockButtonsProps) => {
             <CommentsSelectButton {...props}/>
             <CommentsReloadButton/>
             <CommentsMainMarkButton {...props}/>
-            <AdminPageChangeElement state={commentsState}/>
+            <AdminPageChangeElement onePageItems={50} link={"/admin/comments"} state={commentsState}/>
         </CommentsBlockButtonsLayout>
     )
 }

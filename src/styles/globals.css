@@ -109,3 +109,21 @@ p:has(> strong) {
 .mantine-Select-input {
     color: #525252 !important;
 }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-user-select: all !important;
+}
+
+#price::-webkit-outer-spin-button,
+#price::-webkit-inner-spin-button,
+#quantity::-webkit-outer-spin-button,
+#quantity::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* For Firefox */
+#price, #quantity {
+    -moz-appearance: textfield;
+}

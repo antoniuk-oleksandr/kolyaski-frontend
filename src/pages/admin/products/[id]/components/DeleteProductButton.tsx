@@ -16,20 +16,20 @@ type DeleteProductButtonProps = {
 }
 
 export const DeleteProductButton = (props: DeleteProductButtonProps) => {
-    const {setSending, id, tokenInfo, sending} = props;
+    const {sending} = props;
 
 
     return (
-        <>
+        <div className={"phone:flex phone:justify-end"}>
             <button
                 disabled={sending}
                 type={"button"}
                 onClick={() => editProductConfirmModalSignal.value++}
-                className={`bg-red-500 w-32 flex justify-center items-center text-white outline-none rounded-md duration-200 ease-out active:scale-95`}
+                className={`bg-red-500 w-32 h-11  flex justify-center items-center text-white outline-none rounded-md duration-200 ease-out active:scale-95`}
             >
                 {sending === true ? <Loader size={"sm"} color={"#ffffff"}/> : "Видалити"}
             </button>
             <EditProductConfirmModal {...props}/>
-        </>
+        </div>
     )
 }

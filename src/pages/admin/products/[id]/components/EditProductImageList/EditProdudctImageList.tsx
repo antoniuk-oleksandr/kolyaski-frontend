@@ -12,22 +12,24 @@ import EditProductImageDropZone
     from "@/pages/admin/products/[id]/components/EditProductImageDropZone/EditProductImageDropZone";
 
 type EditProductImageListProps = {
-    product: ProductData
+    images: string[],
+    isErrorPresent: boolean,
 }
 
 const EditProductImageList = (props: EditProductImageListProps) => {
-    const {product} = props;
-    const [items, setItems] = useState(product.images);
+    const {images} = props;
+    const [items, setItems] = useState(images);
     const [dragging, setDragging] = useState(false);
-    const {setValue} = useFormContext();
+    const {setValue, clearErrors} = useFormContext();
 
     useEffect(() => {
         setValue("images", items);
+        clearErrors("images");
     }, [items]);
 
     return (
         <EditProductImageListLayout items={items} setItems={setItems}>
-            <EditProductImageDropZone setItems={setItems}/>
+            <EditProductImageDropZone {...props} setItems={setItems}/>
             {items.map((item, index) => (
                 <Reorder.Item
                     onDragStart={() => setDragging(true)}

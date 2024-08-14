@@ -12,7 +12,6 @@ export const postSignInRequest = async (data: any) => {
             data: response.data as TokenInfo,
         }
     } catch (error) {
-        console.error(error);
         return {
             status: (error as any).response.status,
             data: null

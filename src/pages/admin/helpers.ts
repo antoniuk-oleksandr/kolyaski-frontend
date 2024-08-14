@@ -27,12 +27,12 @@ export const ordersSearchSubmitAction = (
     router.push(`/admin/orders?page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}${search === "" ? "" : `&value=${value}`}`);
 }
 
-export const productsSearchSubmitAction = (
+export const productsSearchSubmitAction = async (
     router: NextRouter,
     dispatch: Dispatch<UnknownAction>,
     params: any,
 ) => {
-    const {page, value, search, type, sortType, id} = params;
+    const {value} = params;
     dispatch(setOrdersSearchValue(value));
-    router.push(makeProductsLink(params as AdminProductsState));
+    await router.push(makeProductsLink(params as AdminProductsState));
 }

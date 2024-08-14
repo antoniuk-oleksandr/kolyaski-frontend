@@ -54,3 +54,9 @@ export const checkEditProductData = (
 
     return differentData;
 }
+
+export const getEditProductRichTextEditorStyles = (isErrorPresent: boolean) => ({
+    "root": {borderColor: isErrorPresent ? "red" : "", color: isErrorPresent ? "red" : ""},
+    "toolbar": {borderColor: isErrorPresent ? "red" : ""},
+    "control": {borderColor: isErrorPresent ? "red" : "", color: isErrorPresent ? "red" : ""}
+});

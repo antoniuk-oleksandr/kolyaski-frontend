@@ -16,7 +16,7 @@ const SubmitProductEditingButton = (props: SubmitProductEditingButtonProps) => {
     return (
         <Button
             disabled={disabled}
-            className={"w-32"}
+            className={"w-32 h-11"}
             sending={sending}
             type={"submit"}
         >Підтвердити</Button>

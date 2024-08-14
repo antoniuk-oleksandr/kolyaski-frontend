@@ -7,16 +7,21 @@ import {useRouter} from "next/router";
 import {Html} from "next/document";
 import EditProductImageList from "@/pages/admin/products/[id]/components/EditProductImageList/EditProdudctImageList";
 import {ProductData} from "@/types/ProductData";
+import MessageFormError from "@/pages/contacts/components/MessageFormError";
+import {useFormContext} from "react-hook-form";
 
 type EditProductImagesBlockProps = {
-    product: ProductData,
+    images: string[],
 }
 
 const EditProductImagesBlock = (props: EditProductImagesBlockProps) => {
+    const error = useFormContext().formState.errors.images;
+
     return (
         <EditProductImagesBlockLayout>
             <h2 className="text-xl font-semibold col-span-2">Зображення</h2>
-            <EditProductImageList {...props}/>
+            <EditProductImageList isErrorPresent={!!error} {...props}/>
+            <MessageFormError error={error}/>
         </EditProductImagesBlockLayout>
     )
 }

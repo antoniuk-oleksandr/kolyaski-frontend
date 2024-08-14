@@ -4,7 +4,7 @@ const EditProductDescriptionElementLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"mb-6"}>
+        <div className={"mb-5 pb-1 relative"}>
             {children}
         </div>
     )

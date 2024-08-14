@@ -9,6 +9,7 @@ import EditProductButtons from "@/pages/admin/products/[id]/components/EditProdu
 import {useRef, useState} from "react";
 import {useSelector} from "react-redux";
 import {ReduxState} from "@/types/ReduxState";
+import NewProductButtons from "@/pages/admin/products/new/components/NewProductButtons/NewProductButtons";
 
 type EditProductBlockProps = {
     adminProductsState: AdminProductsState;
@@ -23,7 +24,7 @@ const EditProductBlock = (props: EditProductBlockProps) => {
     if (!productById) return null;
 
     const initialProductData = useRef(productById);
-    const {id, description} = productById;
+    const {id, description, images} = productById;
 
     return (
         <EditProductBlockLayout
@@ -33,9 +34,9 @@ const EditProductBlock = (props: EditProductBlockProps) => {
             tokenInfo={tokenInfo}
         >
             <h1 className="text-2xl font-bold mb-3">Редагувати товар №{id}</h1>
-            <EditProductGeneralData product={productById}/>
+            <EditProductGeneralData {...productById}/>
             <EditProductDescriptionElement description={description}/>
-            <EditProductImagesBlock product={productById}/>
+            <EditProductImagesBlock images={images}/>
             <EditProductButtons
                 tokenInfo={tokenInfo}
                 id={id}

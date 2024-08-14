@@ -1,7 +1,7 @@
 import {useFormContext} from "react-hook-form";
 import {useMessageFormError} from "@/pages/contacts/components/use-message-form-error";
 import MessageFormError from "@/pages/contacts/components/MessageFormError";
-import {useEffect, useRef, useState} from "react";
+import {Dispatch, SetStateAction, useEffect, useRef, useState} from "react";
 import MessageFormInputIcon from "@/pages/contacts/components/MessageFormInputIcon/MessageFormInputIcon";
 import {useMessageFormInputFocus} from "@/pages/contacts/use-meessage-form-input-focus";
 
@@ -10,12 +10,15 @@ type MessageFormInputElementProps = {
     required?: boolean,
     type?: "text" | "number" | "password",
     autoFocus?: boolean,
+    isErrorPresent: boolean,
+    setIsErrorPresent: Dispatch<SetStateAction<boolean>>,
+    error: any,
 }
 
 const MessageFormInputElement = (props: MessageFormInputElementProps) => {
-    const {id, required, type, autoFocus} = props;
-    const {register, formState: {errors}} = useFormContext();
-    const {isErrorPresent, setIsErrorPresent} = useMessageFormError(errors[id]);
+    const {id, required, autoFocus, isErrorPresent, setIsErrorPresent, type} = props;
+    const {register} = useFormContext();
+
     const [passwordShown, setPasswordShown] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -27,7 +30,7 @@ const MessageFormInputElement = (props: MessageFormInputElementProps) => {
             <input
                 id={id}
                 autoComplete={"off"}
-                {...register(id, {required})}
+                {...register(id, {required, valueAsNumber: type === "number"})}
                 ref={(ref) => {
                     formRef(ref);
                     inputRef.current = ref;
@@ -39,7 +42,7 @@ const MessageFormInputElement = (props: MessageFormInputElementProps) => {
                 autoFocus={autoFocus}
             />
             <MessageFormInputIcon {...props} passwordShown={passwordShown} setPasswordShown={setPasswordShown}/>
-            <MessageFormError error={errors[id]}/>
+            <MessageFormError {...props}/>
         </>
     )
 }

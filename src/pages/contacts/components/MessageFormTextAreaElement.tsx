@@ -1,19 +1,21 @@
 import {useFormContext} from "react-hook-form";
 import {useMessageFormError} from "@/pages/contacts/components/use-message-form-error";
 import MessageFormError from "@/pages/contacts/components/MessageFormError";
-import {useRef} from "react";
+import {Dispatch, SetStateAction, useRef} from "react";
 import {useMessageFormInputFocus} from "@/pages/contacts/use-meessage-form-input-focus";
 
 type MessageFormTextAreaElementProps = {
     id: string,
     required?: boolean,
     autoFocus?: boolean,
+    isErrorPresent: boolean,
+    setIsErrorPresent: Dispatch<SetStateAction<boolean>>,
+    error: any,
 }
 
 const MessageFormTextAreaElement = (props: MessageFormTextAreaElementProps) => {
-    const {id, required, autoFocus} = props;
+    const {id, required, autoFocus, isErrorPresent, setIsErrorPresent} = props;
     const {register, formState: {errors}} = useFormContext();
-    const {isErrorPresent, setIsErrorPresent} = useMessageFormError(errors[id]);
     const textAreaRef = useRef<HTMLElement | null>(null);
 
     let {ref: formRef} = register(id);
@@ -34,7 +36,7 @@ const MessageFormTextAreaElement = (props: MessageFormTextAreaElementProps) => {
                 className={`outline-none rounded-md text-sm mb-1 py-2 px-3 ring-1 ring-neutral-200 duration-200 ease-out focus:ring-primary hover:ring-primary 
                 ${isErrorPresent ? '!ring-red-500' : ''}`}
             />
-            <MessageFormError error={errors[id]}/>
+            <MessageFormError {...props}/>
         </>
     )
 }

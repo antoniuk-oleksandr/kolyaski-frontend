@@ -9,7 +9,7 @@ const EditProductImageLayout = (props: EditProductImageLayoutProps) => {
 
     return (
         <div
-            className={`relative bg-white ring-neutral-200 m-0.5 p-3 ring-1 flex-shrink-0 w-52 aspect-[3/4] rounded-md
+            className={`h-full  relative bg-white ring-neutral-200 m-0.5 p-3 ring-1 flex-shrink-0 w-52 aspect-3x4 rounded-md
             ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         >
             {children}

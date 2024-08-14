@@ -4,7 +4,7 @@ const EditProductButtonsLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className="flex justify-end space-x-3 h-11">
+        <div className="flex justify-end gap-3 phone:justify-between phone:grid phone:grid-cols-2">
             {children}
         </div>
     )

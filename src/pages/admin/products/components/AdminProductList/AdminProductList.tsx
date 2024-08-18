@@ -18,12 +18,13 @@ const AdminProductList = (props: AdminProductListProps) => {
     const {width} = useViewportSize();
     const isMobile = width < 960;
 
+    if(width === 0) return null;
     return (
         <AdminProductListLayout>
             {products.map((product, index) => (
                 <Fragment key={index}>
                     {isMobile
-                        ? <AdminMobileProductListElement item={product}/>
+                        ? <AdminMobileProductListElement {...props} item={product}/>
                         : <AdminProductsListElement
                             {...props}
                             last={index === products.length - 1}

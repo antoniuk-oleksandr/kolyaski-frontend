@@ -14,12 +14,12 @@ import {patchCommentsRequest} from "@/api/patch-comments-request";
 import {CommentType} from "@/types/CommentType";
 import {CommentsState} from "@/types/CommentsState";
 import {CommentItemType} from "@/types/CommentItemType";
-import {successDialogSignal} from "@/common-components/SuccessDialog/success-dialog-signal";
 import {commentsSignal} from "@/pages/admin/signals/comments-signal";
 import {NextRouter} from "next/router";
 import {AdminSubmitActionType} from "@/types/AdminSubmitActionType";
 import {SortOrderEnum} from "@/types/SortOrderEnum";
 import {OrdersSortByEnum} from "@/types/OrdersSortByEnum";
+import {setNotification} from "@/utils/utils";
 
 export const handleCommentCheckboxChange = (
     id: number,
@@ -60,9 +60,11 @@ export const handleDeleteCommentButtonClick = async (
     dispatch(setCommentDeleteRequestSending(true));
     await tryToRefreshToken(tokenInfo, dispatch);
     const token = tokenInfo.access.token;
-    await deleteCommentRequest(token, idToRemove);
+    const status = await deleteCommentRequest(token, idToRemove);
     dispatch(removeComment({idToRemove, commentType}));
     dispatch(setCommentDeleteRequestSending(false));
+    if (status === 200) setNotification(`Коментар було успішно видалено`, true);
+    else setNotification(`Виникла помилка під час видалення коментаря`, false);
 }
 
 export const handleChangeReadTypeButtonClick = async (
@@ -82,10 +84,7 @@ export const handleChangeReadTypeButtonClick = async (
 
 export const handleCommentsReloadButtonClick = () => {
     commentsSignal.value = ++commentsSignal.value
-    successDialogSignal.value = {
-        value: ++successDialogSignal.value.value,
-        text: "Коментарі оновлено!"
-    };
+    setNotification("Коментарі оновлено!", true);
 }
 
 export const markAllComments = async (

@@ -7,6 +7,7 @@ import {patchCommentsRequest} from "@/api/patch-comments-request";
 import {deleteCommentRequest} from "@/api/delete-comment-request";
 import {ChangeHandler} from "react-hook-form";
 import {commentsSignal} from "@/pages/admin/signals/comments-signal";
+import {setNotification} from "@/utils/utils";
 
 export const handleCommentsReturnBackButtonClick = (
     router: NextRouter,
@@ -27,10 +28,12 @@ export const handleDeleteCommentElementButtonClick = async (
     setIsDisabled(true);
     await tryToRefreshToken(tokenInfo, dispatch);
     const token = tokenInfo.access.token;
-    await deleteCommentRequest(token, idToRemove);
+    const status = await deleteCommentRequest(token, idToRemove);
     commentsSignal.value = 0;
     await router.push("/admin/comments");
     setIsDisabled(false);
+    if (status === 200) setNotification(`Коментар було успішно видалено`, true);
+    else setNotification(`Виникла помилка під час видалення коментаря`, false);
 }
 
 export const handleChangeReadTypeToUnreadButtonClick = async (

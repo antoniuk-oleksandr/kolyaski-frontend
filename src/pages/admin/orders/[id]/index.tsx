@@ -9,7 +9,7 @@ import OrderBlock from "@/pages/admin/orders/[id]/components/OrderBlock/OrderBlo
 import {useCommonCities} from "@/pages/checkout/use-effects/use-common-cities";
 import {useRef} from "react";
 import AddOrderProductModal from "@/pages/admin/orders/[id]/components/AddOrderProductModal/AddOrderProductModal";
-import {AddOrderProductModalSignalType} from "@/types/AddOrderProductModalSignalType";
+import {AdminModalSignalType} from "@/types/AdminModalSignalType";
 
 const OrderByIdPage = () => {
     const {token, ordersState} = useSelector((state: ReduxState) => state);
@@ -17,7 +17,7 @@ const OrderByIdPage = () => {
     const dispatch = useDispatch();
     const {initialOrderData} = useOrderById(token.tokenInfo, dispatch);
     const {commonCities} = useCommonCities();
-    const prevModalValue = useRef<AddOrderProductModalSignalType>({toggle: 0, close: 0});
+    const prevModalValue = useRef<AdminModalSignalType>({open: 0, close: 0});
 
     if (!page || value === null || !commonCities || !orderById || !sortOrder || !sortBy) return <AdminLoader/>
     return (

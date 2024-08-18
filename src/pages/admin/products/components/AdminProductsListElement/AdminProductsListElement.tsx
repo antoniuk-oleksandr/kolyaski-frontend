@@ -23,7 +23,7 @@ const AdminProductsListElement = (props: ProductsListElementProps) => {
             <span>{quantity}</span>
             <div className={"flex items-center gap-x-3"}>
                 <Badge color="gray">{type}</Badge>
-                <Badge color="gray">{subType}</Badge>
+                {subType && <Badge color="gray">{subType}</Badge>}
             </div>
             <NumberFormatter value={price} thousandSeparator={","} suffix={" грн."}/>
         </AdminProductsListElementLayout>

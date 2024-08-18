@@ -7,7 +7,6 @@ import {AdminProductsState} from "@/types/AdminProductsState";
 
 type ProductPageHeadProps = {
     state: AdminProductsState,
-    hideNewProductButton: boolean,
 }
 
 const ProductPageHead = (props: ProductPageHeadProps) => {

@@ -1,11 +1,9 @@
 import {Dispatch, useEffect, useRef} from "react";
-import {getAllOrdersRequest} from "@/api/get-all-orders-request";
 import {TokenInfo} from "@/types/TokenInfo";
 import {tryToRefreshToken} from "@/utils/token-utils";
 import {UnknownAction} from "redux";
 import {setOrdersData} from "@/redux/orders-slice";
 import {useRouter} from "next/router";
-import {getAdminPageParams} from "@/pages/admin/comments/helpers";
 import {getOrdersPageParams} from "@/pages/admin/orders/helpers";
 import {getOrderByIdRequest} from "@/api/get-order-by-id-request";
 import {setCartProducts} from "@/redux/cart-slice";

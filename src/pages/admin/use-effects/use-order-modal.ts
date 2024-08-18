@@ -1,24 +1,28 @@
 import {MutableRefObject, useEffect} from "react";
 import {effect} from "@preact/signals-react";
 import {orderModalSignal} from "@/pages/admin/signals/order-modal-signal";
-import {AddOrderProductModalSignalType} from "@/types/AddOrderProductModalSignalType";
+import {AdminModalSignalType} from "@/types/AdminModalSignalType";
 
 export const useOrderModal = (
-    toggle: () => void,
+    open: () => void,
     close: () => void,
-    prevModalValue: MutableRefObject<AddOrderProductModalSignalType>,
+    prevModalValue: MutableRefObject<AdminModalSignalType>,
 ) => {
 
     useEffect(() => {
-        effect(() => {
+        orderModalSignal.value = {open: 0, close: 0};
+
+        const clear = effect(() => {
             const {value} = orderModalSignal;
 
-            if(prevModalValue.current.close < value.close) close();
+            if (prevModalValue.current.close < value.close) close();
 
-            if (value.toggle === 0) return;
-            if(prevModalValue.current.toggle < value.toggle) toggle();
+            if (value.open === 0) return;
+            if (prevModalValue.current.open < value.open) open();
 
-            prevModalValue.current = {close: value.close, toggle: value.toggle};
+            prevModalValue.current = {close: value.close, open: value.open};
         });
+
+        return () => clear();
     }, [orderModalSignal]);
 }

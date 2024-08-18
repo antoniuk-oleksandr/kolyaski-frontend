@@ -4,6 +4,7 @@ import {handleMessageFormSubmit} from "@/pages/contacts/handlers";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useRouter} from "next/router";
+import {Dispatch, SetStateAction} from "react";
 
 const schema = z.object({
     email: z.string().email("Неправильна електронна адреса"),
@@ -11,8 +12,12 @@ const schema = z.object({
     message: z.string().min(1, "Повідомлення є обов'язковим"),
 });
 
-const MessageFormLayout = (props: LayoutProps) => {
-    const {children} = props;
+type MessageFormLayoutProps = LayoutProps & {
+    setSending: Dispatch<SetStateAction<boolean>>,
+}
+
+const MessageFormLayout = (props: MessageFormLayoutProps) => {
+    const {children, setSending} = props;
     const methods = useForm({
         resolver: zodResolver(schema)
     });
@@ -23,7 +28,7 @@ const MessageFormLayout = (props: LayoutProps) => {
             <form
                 className={"flex flex-col gap-y-6 mt-12"}
                 onSubmit={methods.handleSubmit((data) =>
-                    handleMessageFormSubmit(data, router))
+                    handleMessageFormSubmit(data, router, setSending))
                 }
             >
                 {children}

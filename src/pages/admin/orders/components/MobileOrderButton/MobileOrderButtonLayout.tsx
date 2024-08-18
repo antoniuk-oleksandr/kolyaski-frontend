@@ -4,7 +4,7 @@ const MobileOrderButtonLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"mb-3 mx-3 mt-6"}>
+        <div className={"pb-3 px-3 pt-6 w-full"}>
             {children}
         </div>
     )

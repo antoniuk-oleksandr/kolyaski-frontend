@@ -2,7 +2,10 @@ import {NextRouter} from "next/router";
 import {SortEnum} from "@/types/SortEnum";
 import {ProductData} from "@/types/ProductData";
 
-export const getAdminProductByIdPageParams = async (router: NextRouter) => {
+export const getAdminProductByIdPageParams = async (
+    router: NextRouter,
+    linkType?: "new" | "edit" | "all",
+) => {
     const {page, sortType, type, value, id} = router.query as {
         page: string,
         value: string,
@@ -11,7 +14,9 @@ export const getAdminProductByIdPageParams = async (router: NextRouter) => {
         id: string,
     };
     if (page === undefined || sortType === undefined) {
-        await router.push(`/admin/products/${id}?sortType=${SortEnum.POPULARITY}&page=1`);
+        if (linkType === "new")
+            await router.push(`/admin/products/new/${id}?sortType=${SortEnum.POPULARITY}&page=1`);
+        else await router.push(`/admin/products/${id}?sortType=${SortEnum.POPULARITY}&page=1`);
         return {
             page: null,
             value: "",

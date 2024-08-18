@@ -4,7 +4,7 @@ const NewProductButtonsLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"flex justify-end gap-x-3 phone:justify-between"}>
+        <div className={"flex items-center justify-end gap-x-3 phone:justify-between"}>
             {children}
         </div>
     )

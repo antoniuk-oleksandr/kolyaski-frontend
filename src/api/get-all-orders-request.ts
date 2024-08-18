@@ -17,10 +17,12 @@ export const getAllOrdersRequest = async (
         const response = await axios.get(url, {
             headers: {Authorization: `Bearer ${token}`}
         });
-        console.log(response.data);
-        return response.data;
+        console.log(response);
+        return response;
     } catch (error) {
-        console.error(error);
-        return null;
+        return {
+            data: null,
+            status: (error as any).response.status
+        }
     }
 }

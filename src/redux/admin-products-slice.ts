@@ -10,6 +10,7 @@ const initialState: AdminProductsState = {
     totalCount: null,
     sortType: null,
     type: null,
+    id: null,
 }
 
 const adminProductsSlice = createSlice({

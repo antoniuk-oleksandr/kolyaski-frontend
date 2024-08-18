@@ -29,7 +29,6 @@ export const useAllAdminProducts = (
 
             await tryToRefreshToken(tokenInfo, dispatch);
             const response = await getSearchRequest({value, page, type, sortType});
-            console.log(response);
             dispatch(setAdminProductsData({
                 products: response.products,
                 onPageCount: response.productsOnPageCount,

@@ -12,9 +12,9 @@ export const deleteCommentRequest = async (
         const response = await axios.delete(url, {
             headers: {Authorization: `Bearer ${token}`},
         });
-        return response.data;
+        return response.status;
     } catch (error) {
         console.error(error);
-        return null;
+        return (error as any).response.status;
     }
 }

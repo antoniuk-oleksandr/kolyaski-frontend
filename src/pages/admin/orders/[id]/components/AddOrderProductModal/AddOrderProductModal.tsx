@@ -7,10 +7,10 @@ import AddOrderProductFormLayout
 import AddOrderProductForm
     from "@/pages/admin/orders/[id]/components/AddOrderProductModal/components/AddOrderProductForm/AddOrderProductForm";
 import {MutableRefObject} from "react";
-import {AddOrderProductModalSignalType} from "@/types/AddOrderProductModalSignalType";
+import {AdminModalSignalType} from "@/types/AdminModalSignalType";
 
 type AddOrderProductModalProps = {
-    prevModalValue: MutableRefObject<AddOrderProductModalSignalType>;
+    prevModalValue: MutableRefObject<AdminModalSignalType>;
 }
 
 const AddOrderProductModal = (props: AddOrderProductModalProps) => {

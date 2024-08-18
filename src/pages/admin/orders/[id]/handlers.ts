@@ -24,9 +24,9 @@ export const handleAddOrderProductItemClick = (
     };
 }
 
-export const handleOrderModalToggle = () => {
+export const handleOrderModalOpen = () => {
     orderModalSignal.value = {
         ...orderModalSignal.value,
-        toggle: ++orderModalSignal.value.toggle,
+        open: ++orderModalSignal.value.open,
     }
 }

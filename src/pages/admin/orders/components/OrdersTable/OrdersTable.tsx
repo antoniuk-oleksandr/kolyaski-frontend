@@ -4,6 +4,7 @@ import OrdersTableBody from "@/pages/admin/orders/components/OrdersTableBody";
 import {OrderType} from "@/types/OrderType";
 import {useViewportSize} from "@mantine/hooks";
 import MobileOrdersList from "@/pages/admin/orders/components/MobileOrdersList/MobileOrdersList";
+import { useRouter } from "next/router";
 
 type OrderTypeProps = {
     orders: OrderType[],
@@ -15,6 +16,7 @@ const OrdersTable = (props: OrderTypeProps) => {
     const {width} = useViewportSize();
     const isMobile = width < 960;
 
+    if(width === 0) return null;
     return (
         <OrdersTableLayout>
             <OrdersTableHead isMobile={isMobile} tableCellStyles={tableCellStyles}/>

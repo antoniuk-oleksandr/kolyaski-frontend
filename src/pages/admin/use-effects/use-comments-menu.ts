@@ -14,13 +14,16 @@ export const useCommentsMenu = (
     }
 
     useEffect(() => {
-        effect(() => {
+        const clear = effect(() => {
             const {value} = commentsSelectMenuSignal;
             setIsMenuOpen(value);
         });
 
         document.addEventListener("click", handleClick);
-        return () => document.removeEventListener("click", handleClick);
+        return () => {
+            document.removeEventListener("click", handleClick);
+            clear();
+        }
     }, []);
 
     return {isMenuOpen};

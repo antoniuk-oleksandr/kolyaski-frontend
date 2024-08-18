@@ -6,7 +6,7 @@ import CommentsBlock from "@/pages/admin/comments/components/CommentsBlock/Comme
 import AdminElementLayout from "@/pages/admin/components/AdminElementLayout";
 import {useRouter} from "next/router";
 import AdminSearchbar from "@/pages/admin/comments/components/CommentsSearchbar/AdminSearchbar";
-import NoCommentsFound from "@/pages/admin/comments/components/NoCommentsFound";
+import NoDataFound from "@/pages/admin/comments/components/NoDataFound";
 import {ReduxState} from "@/types/ReduxState";
 import {commentsSearchSubmitAction} from "@/pages/admin/helpers";
 
@@ -28,7 +28,7 @@ const AdminPanelComments = () => {
                 submitAction={commentsSearchSubmitAction}
             />
             {numberOfComments === 0
-                ? <NoCommentsFound/>
+                ? <NoDataFound type={"comments"}/>
                 : <CommentsBlock/>
             }
         </AdminElementLayout>

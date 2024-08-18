@@ -43,11 +43,10 @@ export const handleCheckoutFormSubmit = async (
         }))
     };
 
-    console.log(requestBody);
     await postOrderRequest(requestBody);
     setIsOrderCompleted(true);
-    setIsOrderRequestSending(false);
     removeAllCartProductsFromLocalStorage();
+    setIsOrderRequestSending(false);
     dispatch(removeAllCartProducts());
 };
 

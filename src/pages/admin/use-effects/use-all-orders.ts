@@ -4,17 +4,16 @@ import {TokenInfo} from "@/types/TokenInfo";
 import {tryToRefreshToken} from "@/utils/token-utils";
 import {UnknownAction} from "redux";
 import {setOrdersData} from "@/redux/orders-slice";
-import {useRouter} from "next/router";
-import {getAdminPageParams} from "@/pages/admin/comments/helpers";
 import {getOrdersPageParams} from "@/pages/admin/orders/helpers";
-import {OrdersPageParams} from "@/types/OrdersPageParams";
+import {NextRouter} from "next/router";
 
-export const useAllOrders = (tokenInfo: TokenInfo, dispatch: Dispatch<UnknownAction>) => {
-    const router = useRouter();
-
+export const useAllOrders = (
+    tokenInfo: TokenInfo,
+    dispatch: Dispatch<UnknownAction>,
+    router: NextRouter,
+) => {
     useEffect(() => {
         if (!router.isReady) return;
-
 
         const getData = async () => {
             const link = '/admin/orders?page=1&sortBy=ID&sortOrder=ASC';
@@ -24,7 +23,11 @@ export const useAllOrders = (tokenInfo: TokenInfo, dispatch: Dispatch<UnknownAct
 
             await tryToRefreshToken(tokenInfo, dispatch);
             const response = await getAllOrdersRequest(tokenInfo.access.token, page, value, sortBy, sortOrder);
-            dispatch(setOrdersData({...response, ...params}));
+            let orders = [];
+            if(response.status === 200){
+                orders = response.data.orders;
+            }
+            dispatch(setOrdersData({orders, ...params}));
         }
 
         getData();

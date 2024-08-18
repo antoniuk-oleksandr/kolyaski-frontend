@@ -41,7 +41,6 @@ export const checkoutFormScheme = z.object({
     })),
     name: z.string().min(1, "Ім'я є обов'язковим"),
     surname: z.string().min(1, "Прізвище є обов'язковим"),
-    phoneNumber: z.string()
-        .min(9, "Номер телефона є обов'язковим")
-        .max(13, "Номер телефона не може бути таким довгих"),
+    phoneNumber: z.number().int().min(100000000, "Номер телефона є обов'язковим")
+        .max(999999999, "Номер телефона не може бути таким довгим"),
 });

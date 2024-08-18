@@ -42,12 +42,20 @@ export const handleAdminProductsChange = (
     router.push(`/admin/products?page=1${valuePart}${sortTypePart}${typePart}`);
 }
 
-export const makeProductsLink = (adminProductsState: AdminProductsState, id?: number) => {
+export const makeProductsLink = (
+    adminProductsState: AdminProductsState,
+    id?: number,
+    linkType?: "new" | "edit" | "all",
+) => {
     const {page, value, sortType, type} = adminProductsState;
     const pagePart = `page=${page}`;
     const valuePart = value === undefined ? "" : `&value${value}`;
     const sortTypePart = `&sortType=${sortType}`;
-    const typePart = type === undefined ? "" : `&type=${type}`;
+    const typePart = [undefined, "", null].includes(type)  ? "" : `&type=${type}`;
     const idPart = id === undefined ? "" : `/${id}`;
+
+    if(linkType === "new")
+        return `/admin/products/new${idPart}?${pagePart}${valuePart}${sortTypePart}${typePart}`;
+
     return `/admin/products${idPart}?${pagePart}${valuePart}${sortTypePart}${typePart}`;
 }

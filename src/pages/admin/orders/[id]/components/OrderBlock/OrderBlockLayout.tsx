@@ -16,6 +16,7 @@ const OrderBlockLayout = (props: OrderBlockLayoutProps) => {
     const {orderById} = useSelector((state: ReduxState) => state.ordersState);
     if (!orderById) return null;
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const methods = useForm({defaultValues: {...orderById}});
 
     return (

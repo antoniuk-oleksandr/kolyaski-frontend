@@ -11,14 +11,15 @@ import {useRouter} from "next/router";
 import HeadElement from "@/common-components/HeadElement";
 import {usePageTitle} from "@/general-use-effects/use-page-title";
 import AdminPanelLayout from "@/pages/AdminPanelLayout";
+import ErrorBoundary from "@/common-components/ErrorBoundary/ErrorBoundary";
 
-export default function App({Component, pageProps}: AppProps) {
+const App = ({Component, pageProps}: AppProps) => {
     const router = useRouter();
     const {pageTitle} = usePageTitle(router);
     const exclude = router.pathname.includes("admin");
 
     return (
-        <>
+        <ErrorBoundary>
             <HeadElement pageTitle={pageTitle}/>
             <AppLayout>
                 <SuccessDialog/>
@@ -35,6 +36,8 @@ export default function App({Component, pageProps}: AppProps) {
                 )}
                 {!exclude && <Footer/>}
             </AppLayout>
-        </>
+        </ErrorBoundary>
     )
 }
+
+export default App;

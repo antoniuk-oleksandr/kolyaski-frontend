@@ -1,6 +1,7 @@
 import {SortEnum} from "@/types/SortEnum";
 import {NextRouter} from "next/router";
 import {pageTitles} from "@/common-components/Header/page-titles";
+import {successDialogSignal} from "@/common-components/SuccessDialog/success-dialog-signal";
 
 export const createCatalogUrl = (type: string, subType?: string,) => {
     return encodeURI(`/catalog?type=${type}${subType ? '&subType=' + subType : ''}&sortType=${SortEnum.POPULARITY}&page=1&priceFrom=10900&priceTo=21600`);
@@ -34,4 +35,12 @@ export const getPageTitle = (router: NextRouter) => {
 
 export const getHost = () => {
     return "localhost:8080";
+}
+
+export const setNotification = (text: string, success: boolean) => {
+    successDialogSignal.value = {
+        value: ++successDialogSignal.value.value,
+        text,
+        success
+    }
 }

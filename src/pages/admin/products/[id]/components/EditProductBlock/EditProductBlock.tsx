@@ -39,6 +39,7 @@ const EditProductBlock = (props: EditProductBlockProps) => {
             <EditProductDescriptionElement description={description}/>
             <EditProductImagesBlock images={images}/>
             <EditProductButtons
+                {...props}
                 tokenInfo={tokenInfo}
                 id={id}
                 setSending={setSending}

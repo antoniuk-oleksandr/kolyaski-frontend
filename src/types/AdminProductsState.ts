@@ -10,4 +10,5 @@ export type AdminProductsState = {
     sortType: SortEnum | null,
     type: string | null,
     productById: ProductData | null,
+    id: number | null,
 }

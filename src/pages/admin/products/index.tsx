@@ -4,15 +4,11 @@ import AdminElementLayout from "@/pages/admin/components/AdminElementLayout";
 import {useDispatch, useSelector} from "react-redux";
 import {ReduxState} from "@/types/ReduxState";
 import AdminLoader from "@/pages/admin/components/AdminLoader";
-import AdminProductsListElement
-    from "@/pages/admin/products/components/AdminProductsListElement/AdminProductsListElement";
 import AdminProductListHead from "@/pages/admin/products/components/AdminProductListHead/AdminProductListHead";
-import AdminSearchbar from "@/pages/admin/comments/components/CommentsSearchbar/AdminSearchbar";
-import {productsSearchSubmitAction} from "@/pages/admin/helpers";
 import ProductPageHead from "@/pages/admin/products/components/ProductPageHead/ProductPageHead";
 import AdminProductsNavigationBar
     from "@/pages/admin/products/components/AdminProductsNavigationBar/AdminProductsNavigationBar";
-import NoCommentsFound from "@/pages/admin/comments/components/NoCommentsFound";
+import NoDataFound from "@/pages/admin/comments/components/NoDataFound";
 import AdminProductList from "@/pages/admin/products/components/AdminProductList/AdminProductList";
 
 const AdminPanelProducts = () => {
@@ -26,12 +22,9 @@ const AdminPanelProducts = () => {
     if (!page || value === null || products === null || sortType === null) return <AdminLoader/>;
     return (
         <AdminElementLayout>
-            <ProductPageHead
-                state={adminProductsState}
-                hideNewProductButton={products.length === 0}
-            />
+            <ProductPageHead state={adminProductsState}/>
             <AdminProductsNavigationBar state={adminProductsState}/>
-            {products.length === 0 ? <NoCommentsFound/> : (
+            {products.length === 0 ? <NoDataFound type={"products"}/> : (
                 <>
                     <AdminProductListHead/>
                     <AdminProductList

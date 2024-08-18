@@ -8,7 +8,7 @@ const AddOrderProductItemImageLayout = (props: AddOrderProductItemImageLayoutPro
     const {children, size} = props;
 
     return (
-        <div className={`bg-white rounded-md aspect-1x1 flex justify-center items-center 
+        <div className={`bg-white overflow-hidden rounded-md aspect-1x1 flex justify-center items-center 
              ${size === undefined ? 'size-20' : size}`}>
             {children}
         </div>

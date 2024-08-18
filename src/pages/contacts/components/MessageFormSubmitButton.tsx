@@ -1,9 +1,20 @@
-const MessageFormSubmitButton = () => {
+import Button from "@/common-components/Button";
+
+type MessageFormSubmitButtonProps = {
+    sending: boolean,
+}
+
+const MessageFormSubmitButton = (props: MessageFormSubmitButtonProps) => {
+    const {sending} = props;
+
     return (
-        <button
+        <Button
+            className={"h-11 w-36"}
             type={"submit"}
-            className={"text-base font-semibold py-3 px-4 bg-primary rounded-md text-white duration-200 ease-out hover:bg-white hover:text-neutral-600 mt-4 w-fit outline-none active:scale-95"}
-        >Відправити</button>
+            sending={sending}
+        >
+            Відправити
+        </Button>
     )
 }
 

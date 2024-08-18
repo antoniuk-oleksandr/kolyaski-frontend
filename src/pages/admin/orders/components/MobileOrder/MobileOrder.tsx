@@ -13,6 +13,7 @@ type MobileOrderProps = {
 const MobileOrder = (props: MobileOrderProps) => {
     const {order} = props;
     const {id, date, firstName, surname} = order;
+    const link = `/admin/orders/${id}`;
 
     return (
         <MobileOrderLayout>
@@ -21,7 +22,7 @@ const MobileOrder = (props: MobileOrderProps) => {
             <MobileOrderElement text={"Дата"} value={date}/>
             <MobileOrderElement text={"Ім'я"} value={firstName}/>
             <MobileOrderElement text={"Прізвище"} value={surname}/>
-            <MobileOrderButton {...order}/>
+            <MobileOrderButton link={link} {...order}/>
         </MobileOrderLayout>
     )
 }

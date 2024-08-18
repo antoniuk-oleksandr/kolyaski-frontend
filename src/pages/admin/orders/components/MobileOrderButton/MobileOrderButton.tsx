@@ -4,16 +4,17 @@ import {useRouter} from "next/router";
 
 type MobileOrderButtonProps = {
     id: number,
+    link: string,
 }
 
 const MobileOrderButton = (props: MobileOrderButtonProps) => {
-    const {id} = props;
+    const {id, link} = props;
     const router = useRouter();
 
     return (
         <MobileOrderButtonLayout>
             <Button
-                onClick={() => router.push(`/admin/orders/${id}`)}
+                onClick={() => router.push(link)}
                 className={"!w-full"}
             >Переглянути деталі</Button>
         </MobileOrderButtonLayout>

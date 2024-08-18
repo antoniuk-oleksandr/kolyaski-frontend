@@ -7,7 +7,8 @@ type AddOrderProductItemImageProps = {
 }
 
 const AddOrderProductItemImage = (props: AddOrderProductItemImageProps) => {
-    const {src} = props;
+    const {src, size} = props;
+    const sizeNumber = size === undefined ? 80 : Number.parseInt(size.slice(5))  * 4;
 
     return (
         <AddOrderProductItemImageLayout {...props}>
@@ -16,8 +17,8 @@ const AddOrderProductItemImage = (props: AddOrderProductItemImageProps) => {
                 priority
                 src={src}
                 alt={"img"}
-                width={80}
-                height={80}
+                width={sizeNumber}
+                height={sizeNumber}
             />
         </AddOrderProductItemImageLayout>
     )

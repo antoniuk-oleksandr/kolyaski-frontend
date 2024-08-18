@@ -1,9 +1,9 @@
-import {NumberFormatter, Table} from "@mantine/core";
+import {NumberFormatter} from "@mantine/core";
 import OrderStatusElement from "@/pages/admin/orders/components/OrderStatusElement/OrderStatusElement";
 import {OrderType} from "@/types/OrderType";
-import {router} from "next/client";
 import {useSelector} from "react-redux";
 import {ReduxState} from "@/types/ReduxState";
+import router from "next/router";
 
 type OrdersTableBodyProps = {
     orders: OrderType[],
@@ -13,8 +13,6 @@ type OrdersTableBodyProps = {
 const OrdersTableBody = (props: OrdersTableBodyProps) => {
     const {orders, tableCellStyles} = props;
     const {page, value, sortBy, sortOrder} = useSelector((state: ReduxState) => state.ordersState);
-
-    console.log(orders)
 
     return (
         <div>

@@ -9,10 +9,12 @@ export const deleteProductRequest = async (
     const url = `http://${host}/api/admin/products/${id}`;
 
     try {
-        await axios.delete(url, {
+        const response = await axios.delete(url, {
             headers: {Authorization: `Bearer ${token}`,},
         });
-    } catch (e) {
-        console.log(e);
+        return response.status;
+    } catch (error) {
+        console.log(error);
+        return (error as any).response.status;
     }
 }

@@ -5,6 +5,7 @@ import {TokenInfo} from "@/types/TokenInfo";
 import {DeleteProductButton} from "@/pages/admin/products/[id]/components/DeleteProductButton";
 import CancelProductEditingButton from "@/pages/admin/products/[id]/components/CancelProductEditingButton";
 import SubmitProductEditingButton from "@/pages/admin/products/[id]/components/SubmitProductEditingButton";
+import {AdminProductsState} from "@/types/AdminProductsState";
 
 type EditProductButtonsProps = {
     sending: boolean,
@@ -12,6 +13,7 @@ type EditProductButtonsProps = {
     setSending: Dispatch<SetStateAction<boolean>>,
     id: number,
     tokenInfo: TokenInfo,
+    adminProductsState: AdminProductsState;
 }
 
 const EditProductButtons = (props: EditProductButtonsProps) => {
@@ -19,7 +21,7 @@ const EditProductButtons = (props: EditProductButtonsProps) => {
         <EditProductButtonsLayout>
             <SubmitProductEditingButton {...props}/>
             <DeleteProductButton {...props}/>
-            <CancelProductEditingButton/>
+            <CancelProductEditingButton linkType={"all"} {...props}/>
         </EditProductButtonsLayout>
     )
 }

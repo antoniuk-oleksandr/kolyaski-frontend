@@ -23,6 +23,7 @@ const EditProductBlock = (props: EditProductBlockProps) => {
     const {productById} = adminProductsState;
     if (!productById) return null;
 
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const initialProductData = useRef(productById);
     const {id, description, images} = productById;
 

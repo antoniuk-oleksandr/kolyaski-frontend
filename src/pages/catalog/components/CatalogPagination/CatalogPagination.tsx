@@ -4,24 +4,26 @@ import {SearchParams} from "@/types/SearchParams";
 import {handlePageItemClick} from "@/pages/catalog/handlers";
 import {useRouter} from "next/router";
 import {CatalogData} from "@/types/CatalogData";
+import {CatalogSlice} from "@/types/CatalogSlice";
+import { useDispatch } from "react-redux";
 
 type CatalogPaginationProps = {
-    searchParams: SearchParams,
-    catalogData: CatalogData | null,
+    catalogSlice: CatalogSlice,
 }
 
 const CatalogPagination = (props: CatalogPaginationProps) => {
-    const {searchParams, catalogData} = props;
-    const {page} = searchParams;
+    const {catalogSlice} = props;
+    const {page, pagesCount} = catalogSlice;
     const router = useRouter();
 
-    if(!catalogData) return null;
+    if (!page || !pagesCount) return null;
     return (
         <CatalogPaginationLayout>
             <Pagination
-                onChange={(value) => handlePageItemClick(searchParams, value, router)}
-                value={page}
-                total={catalogData.pagesCount}
+                siblings={2}
+                onChange={(value) => handlePageItemClick(catalogSlice, value, router)}
+                value={parseInt(page as string)}
+                total={pagesCount}
                 color="violet"
                 radius="md"
             />

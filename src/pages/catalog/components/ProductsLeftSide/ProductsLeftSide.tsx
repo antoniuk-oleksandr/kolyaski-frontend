@@ -3,9 +3,10 @@ import Sidebar from "@/common-components/Sidebar/Sidebar";
 import SideCard from "@/common-components/SideCard/SideCard";
 import ProductPriceSlider from "@/pages/catalog/components/ProductPriceSlider/ProductPriceSlider";
 import {SearchParams} from "@/types/SearchParams";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
 type ProductsLeftSideProps = {
-    searchParams: SearchParams;
+    catalogSlice: CatalogSlice,
 }
 
 const ProductsLeftSide = (props: ProductsLeftSideProps) => {

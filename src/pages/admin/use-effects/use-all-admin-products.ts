@@ -8,6 +8,7 @@ import {getAdminProductsPageParams} from "@/pages/admin/products/helpers";
 import {SortEnum} from "@/types/SortEnum";
 import {TokenInfo} from "@/types/TokenInfo";
 import {tryToRefreshToken} from "@/utils/token-utils";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
 export const useAllAdminProducts = (
     router: NextRouter,
@@ -28,7 +29,7 @@ export const useAllAdminProducts = (
             if (page === null) return;
 
             await tryToRefreshToken(tokenInfo, dispatch);
-            const response = await getSearchRequest({value, page, type, sortType});
+            const response = await getSearchRequest({value, page, type, sortType} as CatalogSlice);
             dispatch(setAdminProductsData({
                 products: response.products,
                 onPageCount: response.productsOnPageCount,

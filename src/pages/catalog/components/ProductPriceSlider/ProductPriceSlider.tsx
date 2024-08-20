@@ -1,27 +1,28 @@
 import ProductPriceSliderLayout from "./ProductPriceSliderLayout";
 import {RangeSlider} from "@mantine/core";
-import {SearchParams} from "@/types/SearchParams";
 import ProductPriceInput from "@/pages/catalog/components/ProductPriceInput/ProductPriceInput";
-import {handlePriceInputChange} from "@/pages/catalog/handlers";
+import {CatalogSlice} from "@/types/CatalogSlice";
+import {useDispatch} from "react-redux";
 import {usePriceData} from "@/pages/catalog/usePriceData";
 
 type ProductPriceSliderProps = {
-    searchParams: SearchParams;
+    catalogSlice: CatalogSlice,
 };
 
 const ProductPriceSlider = (props: ProductPriceSliderProps) => {
-    const {searchParams} = props;
-    const {priceData, setPriceData} = usePriceData(searchParams);
+    const {catalogSlice} = props;
+    const {priceData, setPriceData, initialValues} = usePriceData(catalogSlice);
+    const firstRender = initialValues.some(value => value === -1);
 
     return (
-        <ProductPriceSliderLayout {...props} priceData={priceData}>
-            <ProductPriceInput priceData={priceData} setPriceData={setPriceData}/>
+        <ProductPriceSliderLayout initialValues={initialValues} priceData={priceData} {...props}>
+            <ProductPriceInput setPriceData={setPriceData} priceData={priceData}/>
             <RangeSlider
-                value={priceData.sliderValue}
-                onChange={(value) => handlePriceInputChange(value, setPriceData)}
+                value={firstRender ? [0, 100] : priceData}
+                onChange={(value) => setPriceData(value)}
                 minRange={100}
-                min={10900}
-                max={21600}
+                min={firstRender ? 0 : initialValues[0]}
+                max={firstRender ? 100 : initialValues[1]}
                 step={100}
             />
         </ProductPriceSliderLayout>

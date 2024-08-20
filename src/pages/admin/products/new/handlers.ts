@@ -18,7 +18,10 @@ export const handleNewProductButtonSubmit = async (
 ) => {
     setSending(true);
     await tryToRefreshToken(tokenInfo, dispatch);
-    const status = await postProductRequest(data, tokenInfo.access.token);
+    let copy = {...data};
+    // @ts-ignore
+    copy.subType = copy.subType === "" ? null : copy.subType;
+    const status = await postProductRequest(copy, tokenInfo.access.token);
     await router.push("/admin/products");
     setSending(false);
     if (status === 200) setNotification(`Товар було успішно створено`, true);

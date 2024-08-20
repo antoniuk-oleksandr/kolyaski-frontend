@@ -5,18 +5,18 @@ import CatalogPagination from "@/pages/catalog/components/CatalogPagination/Cata
 import {SearchParams} from "@/types/SearchParams";
 import {CatalogData} from "@/types/CatalogData";
 import NoProductsFoundMessage from "@/pages/catalog/components/NoProductsFoundMessage";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
 type CatalogProductsDataProps = {
-    searchParams: SearchParams,
-    catalogData: CatalogData | null,
+    catalogSlice: CatalogSlice,
 }
 
 const CatalogProductsData = (props: CatalogProductsDataProps) => {
-    const {catalogData} = props;
+    const {catalogSlice} = props;
 
-    if(catalogData && catalogData.products.length === 0) return <NoProductsFoundMessage/>
+    if(catalogSlice.products && catalogSlice.products.length === 0) return <NoProductsFoundMessage/>
     return (
-        <CatalogProductsDataLayout isShown={catalogData && catalogData.products.length > 0}>
+        <CatalogProductsDataLayout isShown={catalogSlice.products && catalogSlice.products.length > 0}>
             <ProductsTopLine {...props}/>
             <ProductCardGrid {...props}/>
             <CatalogPagination {...props}/>

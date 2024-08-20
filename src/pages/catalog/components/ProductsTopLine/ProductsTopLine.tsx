@@ -6,27 +6,27 @@ import {useRouter} from "next/router";
 import {handleProductSortTypeChange} from "../../handlers";
 import ProductShownBlock from "../ProductShownBlock/ProductShownBlock";
 import {CatalogData} from "@/types/CatalogData";
+import {CatalogSlice} from "@/types/CatalogSlice";
+import { useDispatch } from "react-redux";
 
 type ProductsTopLineProps = {
-    searchParams: SearchParams,
-    catalogData: CatalogData | null,
+    catalogSlice: CatalogSlice,
 }
 
 const ProductsTopLine = (props: ProductsTopLineProps) => {
-    const {searchParams, catalogData} = props;
-    const {sortType, page} = searchParams;
+    const {catalogSlice} = props;
+    const {sortType} = catalogSlice;
     const router = useRouter();
 
-    if(!catalogData) return null;
     return (
         <ProductsTopLineLayout>
-            <ProductShownBlock page={page} {...props}/>
+            <ProductShownBlock {...props}/>
             <Select
                 size={"sm"}
                 radius={6}
                 value={sortType}
                 onChange={(value) =>
-                    handleProductSortTypeChange(value as SortEnum, router, searchParams)
+                    handleProductSortTypeChange(value as SortEnum, catalogSlice, router)
                 }
                 allowDeselect={false}
                 data={Object.values(SortEnum)}

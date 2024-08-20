@@ -5,8 +5,8 @@ import ProductPriceInputElement from "@/pages/catalog/components/ProductPriceInp
 import {PriceData} from "@/types/PriceData";
 
 type ProductPriceInputProps = {
-    priceData: PriceData,
-    setPriceData: Dispatch<SetStateAction<PriceData>>,
+    priceData: [number, number],
+    setPriceData: Dispatch<SetStateAction<[number, number]>>,
 }
 
 const ProductPriceInput = (props: ProductPriceInputProps) => {

@@ -14,10 +14,10 @@ const ProductImageViewCarouselSlideLayout = (props: ProductImageViewCarouselSlid
     return (
         <div
             ref={backDropRef}
-            className={"grid place-items-center h-full"}
+            className={"flex items-center justify-center h-full"}
             onClick={(e) => handleSlideBackdropClick(e, setIsViewShown, backDropRef)}
         >
-            <div className={"aspect-3x4 object-cover object-center h-full phone:h-fit phone:w-full"}>
+            <div className={"aspect-3x4 flex items-center justify-center phone:bg-white h-full phone:h-fit phone:w-full"}>
                 {children}
             </div>
         </div>

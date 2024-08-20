@@ -1,25 +1,19 @@
-import {useEffect, useState} from "react";
-import {PriceData} from "@/types/PriceData";
-import {convertToArrOfString, getProductPriceSliderValue} from "@/pages/catalog/helpers";
-import {InvalidPrice} from "@/types/InvalidPrice";
-import {SearchParams} from "@/types/SearchParams";
+import {useEffect, useRef, useState} from "react";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
-export const usePriceData = (searchParams: SearchParams) => {
-    const value = getProductPriceSliderValue(searchParams);
-    const [priceData, setPriceData] = useState<PriceData>({
-        priceInputValue: convertToArrOfString(value),
-        sliderValue: value,
-        error: InvalidPrice.Nothing,
-    })
+export const usePriceData = (
+    catalogSlice: CatalogSlice,
+) => {
+    const [priceData, setPriceData] = useState([-1, -1] as [number, number]);
+    const {priceFrom, priceTo} = catalogSlice;
+    const initialValues = useRef<[number, number]>([-1, -1]);
 
     useEffect(() => {
-        const value = getProductPriceSliderValue(searchParams);
-        setPriceData((prev) => ({
-            ...prev,
-            sliderValue: value,
-            priceInputValue: convertToArrOfString(value),
-        }))
-    }, [searchParams]);
+        if (!priceFrom || !priceTo) return;
 
-    return {priceData, setPriceData};
+        initialValues.current = [priceFrom, priceTo];
+        setPriceData([priceFrom, priceTo]);
+    }, [priceFrom, priceTo]);
+
+    return {priceData, setPriceData, initialValues: initialValues.current}
 }

@@ -2,9 +2,10 @@ import {SortEnum} from "@/types/SortEnum";
 import {NextRouter} from "next/router";
 import {pageTitles} from "@/common-components/Header/page-titles";
 import {successDialogSignal} from "@/common-components/SuccessDialog/success-dialog-signal";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
 export const createCatalogUrl = (type: string, subType?: string,) => {
-    return encodeURI(`/catalog?type=${type}${subType ? '&subType=' + subType : ''}&sortType=${SortEnum.POPULARITY}&page=1&priceFrom=10900&priceTo=21600`);
+    return encodeURI(`/catalog?type=${type}${subType ? '&subType=' + subType : ''}&sortType=${SortEnum.POPULARITY}&page=1`);
 }
 
 export const capitalizeFirstLetter = (str: string) => {
@@ -29,7 +30,7 @@ export const getPageTitle = (router: NextRouter) => {
         if (type !== undefined) return capitalizeFirstLetter(type as string);
         else return "Магазин";
     }
-    if(router.pathname.includes("admin")) return "Панель адміністратора";
+    if (router.pathname.includes("admin")) return "Панель адміністратора";
     return pageTitles[router.pathname as keyof typeof pageTitles];
 }
 
@@ -43,4 +44,17 @@ export const setNotification = (text: string, success: boolean) => {
         text,
         success
     }
+}
+
+export const makeSearchParams = (catalogSlice: CatalogSlice) => {
+    const {page, type, subType, value, priceFrom, priceTo, sortType} = catalogSlice;
+    const sortTypeParam = sortType ? `sortType=${sortType}` : '';
+    const pageParam = page ? `page=${page}` : '';
+    const typeParam = type ? `type=${type}` : '';
+    const subTypeParam = subType ? `subType=${subType}` : '';
+    const valueParam = value ? `value=${value}` : '';
+    const priceFromParam = priceFrom ? `priceFrom=${priceFrom}` : '';
+    const priceToParam = priceTo ? `priceTo=${priceTo}` : '';
+    return [valueParam, typeParam, subTypeParam, sortTypeParam, pageParam, priceFromParam, priceToParam]
+        .filter((item) => item !== '').join('&');
 }

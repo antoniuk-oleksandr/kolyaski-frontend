@@ -20,7 +20,7 @@ const OrderBlock = (props: OrderBlockProps) => {
     const [sending, setSending] = useState(false);
 
     return (
-        <OrderBlockLayout setSending={setSending} {...props}>
+        <OrderBlockLayout id={orderById.id} setSending={setSending} {...props}>
             <h1 className="text-2xl font-bold mb-3">Редагувати замовлення №{orderById.id}</h1>
             <OrderDetails {...props}/>
             <OrderClientInformation/>

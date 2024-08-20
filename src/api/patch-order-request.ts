@@ -1,20 +1,20 @@
 import {getHost} from "@/utils/utils";
+import {OrderType} from "@/types/OrderType";
 import axios from "axios";
-import {ProductData} from "@/types/ProductData";
 
-export const patchProductRequest = async (
+export const patchOrderRequest = async (
     id: number,
-    data: ProductData,
+    data: OrderType,
     token: string,
 ) => {
     const host = getHost();
-    const url = `http://${host}/api/admin/products/${id}`;
+    const url = `http://${host}/api/admin/orders/${id}`;
 
     console.log(data);
 
     try {
         const response = await axios.patch(url, data, {
-            headers: {'Authorization': `Bearer ${token}`}
+            headers: {Authorization: `Bearer ${token}`},
         });
         return response.status;
     } catch (error) {

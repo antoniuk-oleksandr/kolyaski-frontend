@@ -22,7 +22,7 @@ const MobileOrder = (props: MobileOrderProps) => {
             <MobileOrderElement text={"Дата"} value={date}/>
             <MobileOrderElement text={"Ім'я"} value={firstName}/>
             <MobileOrderElement text={"Прізвище"} value={surname}/>
-            <MobileOrderButton link={link} {...order}/>
+            <MobileOrderButton link={link}/>
         </MobileOrderLayout>
     )
 }

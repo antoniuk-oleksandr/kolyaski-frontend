@@ -17,7 +17,6 @@ export const getAllOrdersRequest = async (
         const response = await axios.get(url, {
             headers: {Authorization: `Bearer ${token}`}
         });
-        console.log(response);
         return response;
     } catch (error) {
         return {

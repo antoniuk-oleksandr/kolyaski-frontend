@@ -8,8 +8,8 @@ const OrderClientInformation = () => {
             <MessageFormInput id="firstName" label="Ім'я" required/>
             <MessageFormInput id="surname" label="Прізвище" required/>
             <MessageFormInput id="phoneNumber" label="Номер телефону" required/>
-            <MessageFormInput id="email" label="Електронна пошта" required/>
-            <MessageFormInput id="message" textArea label="Повідомлення" required/>
+            <MessageFormInput id="email" label="Електронна пошта"/>
+            <MessageFormInput id="message" textArea label="Повідомлення"/>
         </OrderClientInformationLayout>
     )
 }

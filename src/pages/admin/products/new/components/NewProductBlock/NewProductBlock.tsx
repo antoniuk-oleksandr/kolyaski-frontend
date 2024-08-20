@@ -9,7 +9,6 @@ import NewProductButtons from "@/pages/admin/products/new/components/NewProductB
 import {useRef, useState} from "react";
 import {AdminProductsState} from "@/types/AdminProductsState";
 import NewProductModal from "@/pages/admin/products/new/components/NewProductModal/NewProductModal";
-import {TokenInfo} from "@/types/TokenInfo";
 import {AdminModalSignalType} from "@/types/AdminModalSignalType";
 
 type NewProductBlockProps = {

@@ -1,91 +1,46 @@
 import {SortEnum} from "@/types/SortEnum";
 import {NextRouter} from "next/router";
-import {SearchParams} from "@/types/SearchParams";
 import {RangeSliderValue} from "@mantine/core";
 import {ChangeEvent, Dispatch, SetStateAction} from "react";
-import {PriceData} from "@/types/PriceData";
 import {isPositiveNumber} from "@/utils/utils";
-import {convertToArrOfNumber, convertToArrOfString, priceInputSchema, tryToRemovePrice} from "@/pages/catalog/helpers";
-import {z} from "zod";
-import {InvalidPrice} from "@/types/InvalidPrice";
+import {makeCatalogUrl} from "@/pages/catalog/helpers";
 import {UnknownAction} from "redux";
-import {ProductData} from "@/types/ProductData";
-import {CartState} from "@/types/CartState";
-import {addCartProduct, setCartProductQuantity} from "@/redux/cart-slice";
+import {setCatalogData} from "@/redux/catalog-slice";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
-export const handleProductSortTypeChange = (
-    value: SortEnum,
+export const handleProductSortTypeChange = async (
+    newSortValue: SortEnum,
+    catalogSlice: CatalogSlice,
     router: NextRouter,
-    searchParams: SearchParams,
 ) => {
-    searchParams.sortType = value.toLowerCase() as SortEnum;
-
-    tryToRemovePrice(searchParams);
-
-    const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
-    router.push(`/catalog?${res.toString()}`);
+    const params = {...catalogSlice, sortType: newSortValue};
+    await router.push(makeCatalogUrl(params));
 }
 
-export const handlePriceFormSubmit = (
+export const handlePriceFormSubmit = async (
     value: RangeSliderValue,
-    searchParams: SearchParams,
+    catalogSlice: CatalogSlice,
     router: NextRouter,
 ) => {
-    searchParams.sortType = (searchParams.sortType as string).toLowerCase() as SortEnum;
-    searchParams.priceFrom = value[0];
-    searchParams.priceTo = value[1];
-    searchParams.page = 1;
-    const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
-    router.push(`/catalog?${res.toString()}`)
+    const params = {priceFrom: value[0], priceTo: value[1], page: 1};
+    await router.push(makeCatalogUrl({...catalogSlice, ...params}));
 }
 
 export const handlePriceInput = (
     e: ChangeEvent<HTMLInputElement>,
-    setPriceData: Dispatch<SetStateAction<PriceData>>,
+    setPriceData: Dispatch<SetStateAction<[number, number]>>,
 ) => {
     let {id, value} = e.currentTarget;
+    if(value === "") value = "0";
     const index = parseInt(id.slice(id.length - 1)) as number;
 
     if (!isPositiveNumber(value)) return;
 
     setPriceData((prev) => {
-        const newPriceData = {...prev};
-        newPriceData.priceInputValue = [...prev.priceInputValue];
-        newPriceData.priceInputValue[index] = value;
-
-        try {
-            priceInputSchema.parse(convertToArrOfNumber(newPriceData.priceInputValue));
-            newPriceData.error = InvalidPrice.Nothing;
-        } catch (error) {
-            if (error instanceof z.ZodError) {
-                newPriceData.error = error.errors[0]?.message as InvalidPrice;
-            }
-        }
-
-        return newPriceData;
+        const newArr = [...prev] as [number, number];
+        newArr[index] = parseInt(value);
+        return newArr;
     });
-}
-
-export const handlePriceInputChange = (
-    value: [number, number],
-    setPriceData: Dispatch<SetStateAction<PriceData>>,
-) => {
-    setPriceData((prev) => {
-        let newPriceData = {...prev};
-        newPriceData.priceInputValue = convertToArrOfString(value);
-        newPriceData.sliderValue = value;
-
-        try {
-            priceInputSchema.parse(value);
-            newPriceData.error = InvalidPrice.Nothing;
-        } catch (error) {
-            if (error instanceof z.ZodError) {
-                newPriceData.error = error.errors[0]?.message as InvalidPrice;
-            }
-        }
-
-        return newPriceData;
-    })
 }
 
 export const handleProductBuyInputChange = (
@@ -99,17 +54,10 @@ export const handleProductBuyInputChange = (
 }
 
 
-export const handlePageItemClick = (
-    searchParams: SearchParams,
+export const handlePageItemClick = async (
+    catalogSlice: CatalogSlice,
     nextPage: number,
     router: NextRouter,
 ) => {
-    searchParams.sortType = (searchParams.sortType as string).toLowerCase() as SortEnum;
-    searchParams.page = nextPage;
-
-    tryToRemovePrice(searchParams);
-
-    console.log(searchParams);
-    const res = new URLSearchParams(searchParams as unknown as Record<string, string>);
-    router.push(`/catalog?${res.toString()}`);
+    await router.push(makeCatalogUrl({ ...catalogSlice, page: nextPage}));
 }

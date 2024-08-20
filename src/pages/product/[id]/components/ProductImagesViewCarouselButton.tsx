@@ -18,7 +18,7 @@ const ProductImagesViewCarouselButton = (props: ProductImagesViewCarouselButtonP
         <AnimatePresence>
             {!idle && (
                 <motion.div
-                    className={"grid text-white place-items-center text-2xl active:scale-95 outline-none hover:text-primary duration-200 ease-out size-fit cursor-pointer"}>
+                    className={"grid text-white phone:text-neutral-600 place-items-center text-2xl active:scale-95 outline-none hover:text-primary duration-200 ease-out size-fit cursor-pointer"}>
                     {direction === 'right'
                         ? <FaArrowRight
                             onClick={() =>

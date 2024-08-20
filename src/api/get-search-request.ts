@@ -1,18 +1,18 @@
-import {SearchParams} from "@/types/SearchParams";
-import {getEnumKeyByValue, getHost} from "@/utils/utils";
-import {SortEnum} from "@/types/SortEnum";
+import {getEnumKeyByValue, getHost, makeSearchParams} from "@/utils/utils";
 import axios from "axios";
-import {tryToRemovePrice} from "@/pages/catalog/helpers";
+import { CatalogSlice } from "@/types/CatalogSlice";
+import {SortEnum} from "@/types/SortEnum";
 
-export const getSearchRequest = async (searchParams: SearchParams) => {
-    const paramsCopy = {...searchParams};
-    if (paramsCopy.sortType !== undefined) {
-        paramsCopy.sortType = getEnumKeyByValue(SortEnum, paramsCopy.sortType) as SortEnum;
-    }
-    tryToRemovePrice(paramsCopy);
-    const res = new URLSearchParams(paramsCopy as unknown as Record<string, string>);
+export const getSearchRequest = async (
+    catalogSlice: CatalogSlice,
+) => {
+    let copy = {...catalogSlice};
+    copy.sortType = getEnumKeyByValue(SortEnum, catalogSlice.sortType as string) as string;
+
     const host = getHost();
-    const url = `http://${host}/api/search?${res.toString()}`;
+    const params = makeSearchParams(copy);
+
+    const url = `http://${host}/api/search?${params}`;
 
     try {
         const response = await axios.get(url);

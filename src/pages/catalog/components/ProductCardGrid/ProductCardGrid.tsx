@@ -1,18 +1,20 @@
 import ProductCard from "../ProductCard/ProductCard";
 import ProductCardGridLayout from "./ProductCardGridLayout";
 import {CatalogData} from "@/types/CatalogData";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
 type ProductCardGridProps = {
-    catalogData: CatalogData | null,
+    catalogSlice: CatalogSlice,
 }
 
 const ProductCardGrid = (props: ProductCardGridProps) => {
-    const {catalogData} = props;
+    const {catalogSlice} = props;
+    const {products} = catalogSlice;
 
-    if(!catalogData) return null;
+    if(!products) return null;
     return (
         <ProductCardGridLayout>
-            {catalogData.products.map((element, index) => (
+            {products.map((element, index) => (
                 <ProductCard {...element} key={index}/>
             ))}
         </ProductCardGridLayout>

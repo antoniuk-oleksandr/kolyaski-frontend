@@ -1,21 +1,22 @@
 import PageContentLayout from "@/common-components/PageContentLayout";
-import { useSearchParams } from "./use-search-params";
 import ProductsLeftSide from "./components/ProductsLeftSide/ProductsLeftSide";
 import ProductsRightSide from "./components/ProductsRightSide/ProductsRightSide";
-import {useCatalogProducts} from "@/pages/catalog/use-catalog-products";
+import {useDispatch, useSelector} from "react-redux";
+import {ReduxState} from "@/types/ReduxState";
+import {useCatalogSearchParams} from "@/pages/catalog/use-effects/use-catalog-search-params";
+import {useRouter} from "next/router";
 
 const ProductsPage = () => {
-    const {searchParams} = useSearchParams();
-    const {catalogData} = useCatalogProducts(searchParams);
+    const catalogSlice = useSelector((state: ReduxState) => state.catalogSlice);
+    const dispatch = useDispatch();
+    const router = useRouter();
+    useCatalogSearchParams(dispatch, router);
 
-    if (!searchParams) return;
     return (
-        <>
-            <PageContentLayout>
-                <ProductsLeftSide searchParams={searchParams}/>
-                <ProductsRightSide catalogData={catalogData} searchParams={searchParams}/>
-            </PageContentLayout>
-        </>
+        <PageContentLayout>
+            <ProductsLeftSide catalogSlice={catalogSlice}/>
+            <ProductsRightSide catalogSlice={catalogSlice}/>
+        </PageContentLayout>
     )
 }
 

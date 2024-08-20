@@ -3,6 +3,7 @@ import {SortEnum} from "@/types/SortEnum";
 import {ProductData} from "@/types/ProductData";
 import {CatalogData} from "@/types/CatalogData";
 import {CartItem} from "@/types/CartItem";
+import {CatalogSlice} from "@/types/CatalogSlice";
 
 export const getProductItemPageBreadcrumbs = (productItem: ProductData): BreadcrumbsItemType[] => {
     let {type, subType, name} = productItem;
@@ -25,11 +26,14 @@ export const getProductItemPageBreadcrumbs = (productItem: ProductData): Breadcr
     ].filter((item): item is BreadcrumbsItemType => item !== undefined);
 }
 
-export const getPagesCountText = (catalogData: CatalogData, page: number) => {
-    const {pagesCount, totalCount, products} = catalogData;
+export const getPagesCountText = (
+    catalogSlice: CatalogSlice,
+) => {
+    const {pagesCount, totalCount, page} = catalogSlice;
+    if(!page || !totalCount) return '';
 
-    const first = 16 * (page - 1) + 1;
-    let second = 16 * page;
+    const first = 16 * (parseInt(page as string) - 1) + 1;
+    let second = 16 * parseInt(page as string);
     if (pagesCount === page) second = totalCount;
     return `Показано ${first}–${second} із ${totalCount}`;
 }

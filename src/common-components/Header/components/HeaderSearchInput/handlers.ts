@@ -1,6 +1,10 @@
 import {NextRouter} from "next/router";
+import {SortEnum} from "@/types/SortEnum";
 
-export const onHeaderFormSubmit = (data: any, router: NextRouter) => {
+export const onHeaderFormSubmit = async (
+    data: any,
+    router: NextRouter
+) => {
     const value = data.search;
-    router.push(`/catalog?value=${encodeURIComponent(value)}&sortType=за+полулярністю&page=1`);
+    await router.push(`/catalog?value=${value}&sortType=${SortEnum.POPULARITY}&page=1`);
 }

@@ -13,7 +13,7 @@ const ProductImageViewCarouselSlide = (props: ProductImageViewCarouselSlideProps
     return (
         <ProductImageViewCarouselSlideLayout {...props}>
             <Image
-                className={"size-full object-center object-cover aspect-3x4"}
+                className={"size-full object-contain object-center"}
                 priority
                 width={700}
                 height={850}

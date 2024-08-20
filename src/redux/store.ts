@@ -4,6 +4,7 @@ import tokenSlice from "@/redux/token-slice";
 import commentsSlice from "@/redux/comments-slice";
 import ordersSlice from "@/redux/orders-slice";
 import adminProductsSlice from "@/redux/admin-products-slice";
+import catalogSlice from "./catalog-slice";
 
 export const store = configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
         comments: commentsSlice,
         ordersState: ordersSlice,
         adminProductsState: adminProductsSlice,
+        catalogSlice: catalogSlice,
     }
 });

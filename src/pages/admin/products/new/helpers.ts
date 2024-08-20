@@ -13,6 +13,7 @@ export const newProductFormScheme = z.object({
     description: z.string().min(1, {message: "Опис товару не може бути пустим"}),
     images: z.array(z.string()).nonempty({message: "Додайте хоча б одне зображення"}),
     type: z.string().min(1, {message: "Виберіть категорію товару"}),
+    subType: z.any(),
 });
 
 export const incrementNewProductModalSignal = (type: keyof AdminModalSignalType) => {

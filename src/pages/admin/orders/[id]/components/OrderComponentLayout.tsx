@@ -4,7 +4,7 @@ const OrderComponentLayout = (props: LayoutProps) => {
     const {children} = props;
 
     return (
-        <div className={"mb-6"}>
+        <div className={"pb-1 mb-6 relative"}>
             {children}
         </div>
     )

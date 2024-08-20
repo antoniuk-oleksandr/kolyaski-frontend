@@ -3,9 +3,9 @@ import {DeliveryType} from "@/types/DeliveryType";
 import {CartItem} from "@/types/CartItem";
 
 export type OrderType = {
-    id: number,
-    totalPrice: number,
-    date: string,
+    id?: number,
+    totalPrice?: number,
+    date?: string,
     firstName: string,
     surname: string,
     message: string | null,

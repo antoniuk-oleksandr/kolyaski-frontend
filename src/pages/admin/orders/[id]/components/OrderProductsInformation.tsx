@@ -7,11 +7,13 @@ import {useEffect} from "react";
 import {useFormContext} from "react-hook-form";
 import {useOrdersProducts} from "@/pages/admin/use-effects/use-orders-products";
 import AddOrderProductButton from "@/pages/admin/orders/[id]/components/AddOrderProductButton";
+import MessageFormError from "@/pages/contacts/components/MessageFormError";
 
 const OrderProductsInformation = () => {
     const {products} = useSelector((state: ReduxState) => state.cart);
     const {setValue} = useFormContext();
     useOrdersProducts(setValue, products);
+    const error = useFormContext().formState.errors.products;
 
     return (
         <OrderComponentLayout>
@@ -27,6 +29,7 @@ const OrderProductsInformation = () => {
                 ))}
             </div>
             <AddOrderProductButton/>
+            <MessageFormError error={error}/>
         </OrderComponentLayout>
     )
 }

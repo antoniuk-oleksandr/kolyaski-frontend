@@ -21,9 +21,6 @@ export const getOrderByIdRequest = async (
         let response = await axios.get(url, {
             headers: {Authorization: "Bearer " + token}
         });
-        console.log(response.data);
-        // response.data = {...response.data, ...response.data.user}
-        // delete response.data.user;
         return response.data;
     }
     catch (error) {

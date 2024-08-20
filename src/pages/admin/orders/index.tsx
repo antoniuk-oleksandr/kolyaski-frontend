@@ -35,10 +35,6 @@ const AdminPanelOrders = () => {
             }
         </AdminElementLayout>
     )
-
-    return (
-        <div>WTF???</div>
-    )
 }
 
 export default AdminPanelOrders;

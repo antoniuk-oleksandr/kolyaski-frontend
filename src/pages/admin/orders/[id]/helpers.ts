@@ -1,26 +1,52 @@
 import {OrderType} from "@/types/OrderType";
 import {MutableRefObject} from "react";
 import {CartItem} from "@/types/CartItem";
+import {z} from "zod";
+import {OrdersSortByEnum} from "@/types/OrdersSortByEnum";
+import {SortOrderEnum} from "@/types/SortOrderEnum";
+import {DeliveryType} from "@/types/DeliveryType";
+import {OrderStatusEnum} from "@/types/OrderStatusEnum";
+
+export const nullOrder = {
+    firstName: null,
+    surname: null,
+    message: null,
+    phoneNumber: null,
+    email: null,
+    delivery: null,
+    products: null,
+    status: null,
+};
+
+const cleanInitialOrderData = (
+    initialData: OrderType,
+) => {
+    let cleanInitialData = {...initialData};
+    delete cleanInitialData.id;
+    delete cleanInitialData.totalPrice;
+    delete cleanInitialData.date;
+    return cleanInitialData;
+}
 
 export const compareOrderDataPieces = (
     initialDataRef: MutableRefObject<OrderType | null>,
     editedData: OrderType | null
-): OrderType | null => {
-    let differentData = {} as OrderType;
-    const initialData = initialDataRef.current;
-    if (!initialData || !editedData) return null;
+): OrderType => {
+    let differentData = {...nullOrder} as unknown as OrderType;
+
+    if(!initialDataRef.current || !editedData) return differentData;
+    let initialData = cleanInitialOrderData(initialDataRef.current);
 
     Object.entries(initialData).forEach(([key, value]) => {
         if (key === "delivery" || key === "products") return;
 
         if ((editedData as any)[key] !== value) {
             if (key === "") return;
-            (differentData as any)[key] = value;
+            (differentData as any)[key] = (editedData as any)[key];
         }
     });
     checkOrderDeliveryData(initialData, editedData, differentData);
     checkOrderProductsData(initialData, editedData, differentData);
-
     return differentData;
 }
 
@@ -29,6 +55,8 @@ export const checkOrderDeliveryData = (
     editedData: OrderType,
     differentData: OrderType,
 ) => {
+    if (!editedData.delivery.warehouse) return;
+
     if (initialData.delivery.city.ref !== editedData.delivery.city.ref) {
         differentData.delivery = {
             ...((differentData as any).delivery),
@@ -41,7 +69,9 @@ export const checkOrderDeliveryData = (
             warehouse: editedData.delivery.warehouse,
         }
     }
-}
+
+    delete differentData.delivery?.warehouse.schedule;
+};
 
 export const checkOrderProductsData = (
     initialData: OrderType,
@@ -49,7 +79,7 @@ export const checkOrderProductsData = (
     differentData: OrderType,
 ) => {
     if (initialData.products.length !== editedData.products.length) {
-        (differentData as any) = formatProducts(editedData.products);
+        differentData.products = formatProducts(editedData.products);
         return;
     }
     initialData.products.forEach((value: CartItem, index) => {
@@ -74,7 +104,8 @@ export const checkIfOrders = (
     const differentData = compareOrderDataPieces(initialDataRef, editedData);
 
     if (!differentData) return true;
-    return Object.keys(differentData).length === 0;
+
+    return !Object.values(differentData).some((value) => value !== null);
 }
 
 export const formatProducts = (products: CartItem[]) => {
@@ -83,5 +114,27 @@ export const formatProducts = (products: CartItem[]) => {
         product: {
             id: product.product.id,
         }
-    }));
+    })) as CartItem[];
 }
+
+export const editOrderScheme = z.object({
+    firstName: z.string().min(1, {message: "Ім'я не може бути порожнім"}),
+    surname: z.string().min(1, {message: "Прізвище не може бути порожнім"}),
+    phoneNumber: z.string().min(1, {message: "Телефон не може бути порожнім"}),
+    delivery: z.object({
+        city: z.object({
+            cityName: z.string(),
+            ref: z.string(),
+            description: z.string(),
+            regionName: z.string(),
+        }),
+        warehouse: z.object({warehouse: z.string()}),
+    }),
+    products: z.array(z.object({
+        quantity: z.number(),
+        product: z.object({id: z.number()})
+    })).min(1, {message: "Додайте хоча б один товар"}),
+    status: z.string(),
+    email: z.string().nullable(),
+    message: z.any().nullable(),
+});

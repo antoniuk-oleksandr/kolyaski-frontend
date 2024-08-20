@@ -3,12 +3,11 @@ import Button from "@/common-components/Button";
 import {useRouter} from "next/router";
 
 type MobileOrderButtonProps = {
-    id: number,
     link: string,
 }
 
 const MobileOrderButton = (props: MobileOrderButtonProps) => {
-    const {id, link} = props;
+    const {link} = props;
     const router = useRouter();
 
     return (

@@ -1,6 +1,6 @@
 export type Warehouse = {
     warehouse: string,
-    schedule: {
+    schedule?: {
         [key: string]: string
     } | null,
 }

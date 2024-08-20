@@ -4,7 +4,7 @@ import OrderStatusElement from "@/pages/admin/orders/components/OrderStatusEleme
 import {OrderStatusEnum} from "@/types/OrderStatusEnum";
 
 type MobileOrderPriceProps = {
-    totalPrice: number,
+    totalPrice?: number,
     status: OrderStatusEnum,
 }
 

@@ -1,6 +1,8 @@
 import {NextRouter} from "next/router";
 import {SortEnum} from "@/types/SortEnum";
 import {ProductData} from "@/types/ProductData";
+import {PopularProductType} from "@/types/PopularProductType";
+import {z} from "zod";
 
 export const getAdminProductByIdPageParams = async (
     router: NextRouter,
@@ -47,17 +49,26 @@ export const checkEditProductData = (
     initialProductData: ProductData,
     newProductData: ProductData,
 ) => {
-    let differentData = {} as any;
+    let differentData = {...nullProduct} as unknown as ProductData;
     Object.entries(initialProductData).forEach(([key, value]) => {
-        if (key === "images") return;
+        if (["images", "subType"].includes(key)) return;
         if (value !== (newProductData as any)[key]) {
             (differentData as any)[key] = (newProductData as any)[key];
         }
     });
     if (checkEditProductImages(initialProductData.images, newProductData.images))
         differentData.images = newProductData.images;
-
+    if(checkEditProductSubType(initialProductData.subType, newProductData.subType))
+        differentData.subType = newProductData.subType;
     return differentData;
+}
+
+export const checkEditProductSubType = (
+    initial: string | null | undefined,
+    edited: string | null | undefined,
+) => {
+    if(initial === null && edited === "Жоден") return false;
+    return initial !== edited;
 }
 
 export const getEditProductRichTextEditorStyles = (isErrorPresent: boolean) => ({
@@ -65,3 +76,13 @@ export const getEditProductRichTextEditorStyles = (isErrorPresent: boolean) => (
     "toolbar": {borderColor: isErrorPresent ? "red" : ""},
     "control": {borderColor: isErrorPresent ? "red" : "", color: isErrorPresent ? "red" : ""}
 });
+
+const nullProduct = {
+    images: null,
+    name: null,
+    price: null,
+    quantity: null,
+    type: null,
+    subType: null,
+    description: null,
+}

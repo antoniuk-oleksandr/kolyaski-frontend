@@ -6,7 +6,6 @@ import {NextRouter} from "next/router";
 import {tryToRefreshToken} from "@/utils/token-utils";
 import {TokenInfo} from "@/types/TokenInfo";
 import {setAdminProductsData} from "@/redux/admin-products-slice";
-import {SortEnum} from "@/types/SortEnum";
 
 export const useAdminProductById = (
     dispatch: Dispatch<UnknownAction>,
@@ -15,6 +14,7 @@ export const useAdminProductById = (
 ) => {
     useEffect(() => {
         if (!router.isReady) return;
+        dispatch(setAdminProductsData({productById: null, value: null}));
 
         const getData = async () => {
             const params = await getAdminProductByIdPageParams(router);

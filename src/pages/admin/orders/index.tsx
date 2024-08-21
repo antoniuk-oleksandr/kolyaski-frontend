@@ -11,8 +11,6 @@ import {useRouter} from "next/router";
 
 const AdminPanelOrders = () => {
     const router = useRouter();
-
-
     const {token, ordersState} = useSelector((state: ReduxState) => state);
     const {page, value, sortOrder, sortBy} = ordersState;
     const dispatch = useDispatch();

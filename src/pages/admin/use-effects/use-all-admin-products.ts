@@ -18,6 +18,7 @@ export const useAllAdminProducts = (
 
     useEffect(() => {
         if (!router.isReady) return;
+        dispatch(setAdminProductsData({productById: null, value: null}));
 
         const getData = async () => {
             const {

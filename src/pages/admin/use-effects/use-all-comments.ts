@@ -6,6 +6,7 @@ import {commentsSignal} from "@/pages/admin/signals/comments-signal";
 import {getComments, getAdminPageParams} from "@/pages/admin/comments/helpers";
 import {NextRouter} from "next/router";
 import {setCommentsSearchData} from "@/redux/comments-slice";
+import {setAdminProductsData} from "@/redux/admin-products-slice";
 
 export const useAllComments = (
     tokenInfo: TokenInfo | null,
@@ -16,6 +17,7 @@ export const useAllComments = (
 ) => {
     useEffect(() => {
         if (!router.isReady) return;
+        dispatch(setCommentsSearchData({value: null}));
 
         const getData = async () => {
             const data = await getAdminPageParams(router, "/admin/comments?page=1");

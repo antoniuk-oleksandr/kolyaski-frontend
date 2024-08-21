@@ -27,7 +27,7 @@ export const getAdminProductsPageParams = async (router: NextRouter, link: strin
     }
 }
 
-export const handleAdminProductsChange = (
+export const handleAdminProductsChange = async (
     router: NextRouter,
     state: AdminProductsState,
     newSortType?: null | string,
@@ -39,7 +39,7 @@ export const handleAdminProductsChange = (
     const sortTypePart = newSortType ? `&sortType=${newSortType}` : `&sortType=${sortType}`;
     const typePart = newType ? `&type=${newType}` : `&type=${type}`;
 
-    router.push(`/admin/products?page=1${valuePart}${sortTypePart}${typePart}`);
+    await router.push(`/admin/products?page=1${valuePart}${sortTypePart}${typePart}`);
 }
 
 export const makeProductsLink = (
@@ -49,7 +49,7 @@ export const makeProductsLink = (
 ) => {
     const {page, value, sortType, type} = adminProductsState;
     const pagePart = `page=${page}`;
-    const valuePart = value === undefined ? "" : `&value${value}`;
+    const valuePart = value === undefined ? "" : `&value=${value}`;
     const sortTypePart = `&sortType=${sortType}`;
     const typePart = [undefined, "", null].includes(type)  ? "" : `&type=${type}`;
     const idPart = id === undefined ? "" : `/${id}`;

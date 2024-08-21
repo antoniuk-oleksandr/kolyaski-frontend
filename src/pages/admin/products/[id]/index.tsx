@@ -13,10 +13,10 @@ import EditProductImagesBlock
 const ProductByIdPage = () => {
     const dispatch = useDispatch();
     const router = useRouter();
-    const adminProductsState = useSelector((state: ReduxState) => state.adminProductsState);
-    const {value, page, productById, sortType} = adminProductsState;
     const {tokenInfo} = useSelector((state: ReduxState) => state.token);
     useAdminProductById(dispatch, router, tokenInfo);
+    const adminProductsState = useSelector((state: ReduxState) => state.adminProductsState);
+    const {value, page, productById, sortType} = adminProductsState;
 
     if (page === null || productById === null || sortType === null || value === null) return <AdminLoader/>;
     return (

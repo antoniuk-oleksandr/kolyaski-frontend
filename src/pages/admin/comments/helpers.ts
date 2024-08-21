@@ -37,7 +37,6 @@ export const getComments = async (
 
     await tryToRefreshToken(tokenInfo, dispatch);
     let data = await getCommentsRequest(tokenInfo.access.token, value, page);
-    console.log(data);
     if(data.status === 404) data.comments = [];
     if (!data.comments) clearTokenInfo(dispatch);
     dispatch(setCommentsData({...data}));

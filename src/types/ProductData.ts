@@ -7,7 +7,7 @@ export type ProductData = {
     id: number,
     quantity: number,
     type?: string,
-    subType?: string,
+    subType?: string | null,
     description: string,
     relatedProducts: PopularProductType[],
 }

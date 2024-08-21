@@ -11,7 +11,8 @@ type SubmitProductEditingButtonProps = {
 const SubmitProductEditingButton = (props: SubmitProductEditingButtonProps) => {
     const {sending, initialProductData} = props;
     const {watch} = useFormContext();
-    const disabled = Object.keys(checkEditProductData(initialProductData, watch() as ProductData)).length === 0;
+    const differentData = checkEditProductData(initialProductData, watch() as ProductData);
+    const disabled = Object.values(differentData).every(value => !value);
 
     return (
         <Button

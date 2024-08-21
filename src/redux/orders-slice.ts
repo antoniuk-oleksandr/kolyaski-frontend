@@ -24,11 +24,6 @@ export const ordersSlice = createSlice({
                 (state as any)[key] = value;
             });
         },
-        setOrderByIdParam: (state, action) => {
-            const {key, value} = action.payload;
-            if(!state.orderById) return;
-            (state.orderById as any)[key] = value;
-        },
         setOrdersSearchValue: (state, action) => {
             state.value = action.payload;
         },
@@ -36,7 +31,6 @@ export const ordersSlice = createSlice({
 });
 
 export const {
-    setOrderByIdParam,
     setOrdersSearchValue,
     setOrdersData
 } = ordersSlice.actions;

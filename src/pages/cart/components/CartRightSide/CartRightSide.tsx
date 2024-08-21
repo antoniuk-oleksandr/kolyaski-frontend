@@ -33,7 +33,7 @@ const CartRightSide = (props: CartRightSideProps) => {
                 className={"mt-3"}
             >
                 <FaCheck/>
-                <span>Перейти до оплати</span>
+                <span>Перейти до оформлення</span>
             </Button>
         </CartRightSideLayout>
     );

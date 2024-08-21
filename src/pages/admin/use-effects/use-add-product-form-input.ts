@@ -16,7 +16,7 @@ export const useAddProductInput = (
 
         const getData = async () => {
             const response = await getProductsRequest(value, cancelTokenRef);
-            console.log(response);
+            if(!response) return;
             receivedProducts(response.products);
         }
 

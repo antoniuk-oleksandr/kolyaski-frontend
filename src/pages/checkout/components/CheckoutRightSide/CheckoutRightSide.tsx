@@ -20,7 +20,7 @@ const CheckoutRightSide = (props: CheckoutRightSideProps) => {
         <CheckoutRightSideLayout>
             <PageTitle text={'Разом'}/>
             <CheckoutBillTopLine products={products}/>
-            <CheckoutBillDeliveryPrice deliveryPrice={deliveryPrice}/>
+            {/*<CheckoutBillDeliveryPrice deliveryPrice={deliveryPrice}/>*/}
             <CheckoutBillGrandTotal deliveryPrice={deliveryPrice} products={products}/>
             <Button
                 disabled={isOrderRequestSending}

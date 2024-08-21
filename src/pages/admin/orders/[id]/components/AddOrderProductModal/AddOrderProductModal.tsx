@@ -19,7 +19,7 @@ const AddOrderProductModal = (props: AddOrderProductModalProps) => {
     useOrderModal(toggle, close, prevModalValue);
 
     return (
-        <Modal.Root radius={"md"} size={"xl"} centered opened={opened} onClose={close}>
+        <Modal.Root className={"z-30"} radius={"md"} size={"xl"} centered opened={opened} onClose={close}>
             <Modal.Overlay/>
             <Modal.Content>
                 <Modal.Header>

@@ -10,8 +10,6 @@ export const patchOrderRequest = async (
     const host = getHost();
     const url = `http://${host}/api/admin/orders/${id}`;
 
-    console.log(data);
-
     try {
         const response = await axios.patch(url, data, {
             headers: {Authorization: `Bearer ${token}`},

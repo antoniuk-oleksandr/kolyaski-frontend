@@ -25,7 +25,7 @@ const EditProductDescriptionElement = (props: EditProductDescriptionElementProps
     const error = formState.errors.description;
 
     useEffect(() => {
-        setValue("description", content);
+        setValue("description", content === "<p></p>" ? "" : content);
         clearErrors("description");
     }, [content])
 

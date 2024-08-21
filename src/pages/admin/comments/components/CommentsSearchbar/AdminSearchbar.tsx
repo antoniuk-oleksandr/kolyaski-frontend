@@ -1,5 +1,5 @@
 import AdminSearchbarLayout from "./AdminSearchbarLayout";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import AdminSearchbarSearchElement from "@/pages/admin/comments/components/AdminSearchbarSearchElement";
 import AdminSearchbarButton from "@/pages/admin/comments/components/AdminSearchbarButton";
 import AdminSearchbarClearButton from "@/pages/admin/comments/components/AdminSearchbarClearButton";
@@ -8,6 +8,7 @@ import {ReduxState} from "@/types/ReduxState";
 import {AdminSubmitActionType} from "@/types/AdminSubmitActionType";
 import {OrdersSortByEnum} from "@/types/OrdersSortByEnum";
 import {SortOrderEnum} from "@/types/SortOrderEnum";
+import {useAdminSearchbar} from "@/pages/admin/use-effects/use-admin-searchbar";
 
 type CommentsSearchbarProps = {
     value: string,
@@ -21,7 +22,7 @@ type CommentsSearchbarProps = {
 
 const AdminSearchbar = (props: CommentsSearchbarProps) => {
     const {value} = props;
-    const [inputValue, setInputValue] = useState(value);
+    const {inputValue, setInputValue} = useAdminSearchbar(value);
 
     return (
         <AdminSearchbarLayout {...props} inputValue={inputValue}>

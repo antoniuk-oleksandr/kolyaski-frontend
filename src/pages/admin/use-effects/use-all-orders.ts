@@ -14,6 +14,7 @@ export const useAllOrders = (
 ) => {
     useEffect(() => {
         if (!router.isReady) return;
+        dispatch(setOrdersData({value: null}));
 
         const getData = async () => {
             const link = '/admin/orders?page=1&sortBy=ID&sortOrder=ASC';

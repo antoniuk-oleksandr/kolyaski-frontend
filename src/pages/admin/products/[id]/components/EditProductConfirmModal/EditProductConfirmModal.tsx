@@ -8,16 +8,18 @@ import {useRouter} from "next/router";
 import {useDispatch} from "react-redux";
 import {TokenInfo} from "@/types/TokenInfo";
 import {handleDeleteProductButtonClick} from "@/pages/admin/products/[id]/handlers";
+import {AdminProductsState} from "@/types/AdminProductsState";
 
 type EditProductConfirmModalProps = {
     setSending: Dispatch<SetStateAction<boolean>>,
     id: number,
     tokenInfo: TokenInfo,
     sending: boolean,
+    adminProductsState: AdminProductsState;
 }
 
 const EditProductConfirmModal = (props: EditProductConfirmModalProps) => {
-    const {setSending, id, tokenInfo, sending} = props;
+    const {setSending, id, tokenInfo, sending, adminProductsState} = props;
     const [opened, {open, close}] = useDisclosure(false);
     const router = useRouter();
     const dispatch = useDispatch();
@@ -36,7 +38,7 @@ const EditProductConfirmModal = (props: EditProductConfirmModalProps) => {
         <EditProductConfirmModalLayout close={close} opened={opened}>
             <Button
                 loading={sending}
-                onClick={() => handleDeleteProductButtonClick(setSending, id, tokenInfo, dispatch, router)}
+                onClick={() => handleDeleteProductButtonClick(setSending, id, tokenInfo, dispatch, router, adminProductsState)}
                 className={"!w-16 !flex !justify-center !items-center"}
                 color={"green"}
             >Так</Button>

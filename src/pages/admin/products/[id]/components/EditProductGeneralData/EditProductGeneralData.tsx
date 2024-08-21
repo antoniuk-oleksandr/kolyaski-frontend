@@ -9,13 +9,13 @@ import EditProductSelect from "@/pages/admin/products/[id]/components/EditProduc
 
 type EditProductGeneralDataProps = {
     type?: string | undefined,
-    subType?: string | undefined;
+    subType?: string | undefined | null;
 }
 
 const EditProductGeneralData = (props: EditProductGeneralDataProps) => {
     const {type, subType} = props;
     const selectTypes = sidebarItemListText.map((item) => item.text);
-    const selectSubTypes = ["Коляски 2 в 1", "Коляски 3 в 1", "Прогулянкові коляски", "Коляски для двійні", "Матраси", "Постіль"];
+    const selectSubTypes = ["Коляски 2 в 1", "Коляски 3 в 1", "Прогулянкові коляски", "Коляски для двійні", "Матраси", "Постіль", "Жоден"];
 
     return (
         <EditProductGeneralDataLayout>
@@ -31,7 +31,7 @@ const EditProductGeneralData = (props: EditProductGeneralDataProps) => {
             <EditProductSelect
                 id={"subType"}
                 label={"Підкатегорія"}
-                defaultValue={subType as string}
+                defaultValue={!subType ? "Жоден" : subType as string}
                 data={selectSubTypes}
             />
             <MessageFormInput type={"number"} id="quantity" label="Кількість"/>

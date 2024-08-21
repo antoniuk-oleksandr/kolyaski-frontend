@@ -33,6 +33,7 @@ const EditProductBlock = (props: EditProductBlockProps) => {
             setSending={setSending}
             product={productById}
             tokenInfo={tokenInfo}
+            adminProductsState={adminProductsState}
         >
             <h1 className="text-2xl font-bold mb-3">Редагувати товар №{id}</h1>
             <EditProductGeneralData {...productById}/>

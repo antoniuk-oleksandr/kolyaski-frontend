@@ -19,7 +19,8 @@ const CheckoutBillGrandTotal = (props: CheckoutBillGrandTotalProps) => {
                 className={"text-2xl font-semibold"}
                 suffix={" грн."}
                 thousandSeparator={","}
-                value={totalCartPrice + deliveryPrice}/>
+                // value={totalCartPrice + deliveryPrice}/>
+                value={totalCartPrice}/>
         </CheckoutBillGrandTotalLayout>
     )
 }

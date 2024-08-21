@@ -15,7 +15,7 @@ type EditProductGeneralDataProps = {
 const EditProductGeneralData = (props: EditProductGeneralDataProps) => {
     const {type, subType} = props;
     const selectTypes = sidebarItemListText.map((item) => item.text);
-    const selectSubTypes = ["Коляски 2 в 1", "Коляски 3 в 1", "Прогулянкові коляски", "Коляски для двійні", "Матраси", "Постіль", "Жоден"];
+    const selectSubTypes = ["Коляски 2 в 1", "Коляски 3 в 1", "Прогулянкові коляски", "Коляски для двійні", "Матраси", "Постіль", "Жодна"];
 
     return (
         <EditProductGeneralDataLayout>
@@ -31,7 +31,7 @@ const EditProductGeneralData = (props: EditProductGeneralDataProps) => {
             <EditProductSelect
                 id={"subType"}
                 label={"Підкатегорія"}
-                defaultValue={!subType ? "Жоден" : subType as string}
+                defaultValue={!subType ? "Жодна" : subType as string}
                 data={selectSubTypes}
             />
             <MessageFormInput type={"number"} id="quantity" label="Кількість"/>

@@ -4,21 +4,21 @@ export const popularProductTypes = [
     {
         name: "Коляски",
         image: "/images/home-popular-types1.jpeg",
-        link: "/",
+        link: "/catalog?type=коляски",
     },
     {
         name: "Автокрісла",
         image: "/images/home-popular-types2.jpg",
-        link: "/",
+        link: "/catalog?type=автокрісла",
     },
     {
         name: "Ліжечка",
         image: "/images/home-popular-types3.jpg",
-        link: "/",
+        link: "/catalog?type=ліжечка",
     },
     {
         name: "Стільчики для годування",
         image: "/images/home-popular-types4.png",
-        link: "/",
+        link: "/catalog?type=стільчики для годування",
     },
 ] as PopularProductType[];

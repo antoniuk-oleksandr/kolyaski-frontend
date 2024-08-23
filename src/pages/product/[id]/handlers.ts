@@ -4,6 +4,7 @@ import {ProductData} from "@/types/ProductData";
 import {addCartProduct} from "@/redux/cart-slice";
 import {addCartProductToLocalStorage} from "@/utils/local-storage-utils";
 import {removeUnnecessaryFieldsFromProduct} from "@/pages/product/[id]/helpers";
+import {CartItem} from "@/types/CartItem";
 
 export const handleProductImageMouseMove = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
@@ -48,7 +49,7 @@ export const handleProductBuyFormSubmit = (
     product: ProductData,
 ) => {
     const copiedProduct = removeUnnecessaryFieldsFromProduct(product);
-    const newCartItem = {quantity: data.quantity, product: copiedProduct};
+    const newCartItem = {quantity: data.quantity, product: {id: copiedProduct.id}} as CartItem;
     dispatch(addCartProduct(newCartItem));
     addCartProductToLocalStorage(newCartItem);
 }

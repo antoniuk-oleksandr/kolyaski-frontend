@@ -16,7 +16,7 @@ const DeliveryAndReturnLeftSide = () => {
                 thirdLineTextStyle={"text-sm phone:text-xl"}
                 imageSrc={"/images/home-carousel1.jpg"}
                 buyButtonStyles={"bg-primary hover:bg-white hover:text-neutral-600"}
-                link={"/product?type=коляски&sortType=за+полулярністю"}
+                link={"/catalog?type=коляски"}
             />
         </DeliveryAndReturnLeftSideLayout>
     )

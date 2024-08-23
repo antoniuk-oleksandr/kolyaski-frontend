@@ -7,7 +7,6 @@ type HomeBottomItemProps = {
     src: string,
     title: string,
     link: string,
-    number: number,
 }
 
 const HomeBottomItem = (props: HomeBottomItemProps) => {

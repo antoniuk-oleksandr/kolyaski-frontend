@@ -5,15 +5,18 @@ import PageContentLayout from "@/common-components/PageContentLayout";
 import {useSelector} from "react-redux";
 import NoCartItemsMessage from "@/pages/cart/components/NoCartItemsMessage";
 import {ReduxState} from "@/types/ReduxState";
+import {useHeaderCartItems} from "@/common-components/Header/use-effects/use-header-cart-items";
 
 const CartPage: NextPage = () => {
-    const {products} = useSelector((state: ReduxState) => state.cart);
+    const cartState = useSelector((state: ReduxState) => state.cart);
+    const {cartItems} = useHeaderCartItems(cartState);
 
-    if (products.length === 0) return <NoCartItemsMessage/>
+    if(!cartItems) return null;
+    if (cartItems.length === 0) return <NoCartItemsMessage/>
     return (
         <PageContentLayout>
-            <CartLeftSide products={products}/>
-            <CartRightSide products={products}/>
+            <CartLeftSide cartItems={cartItems}/>
+            <CartRightSide cartItems={cartItems}/>
         </PageContentLayout>
     )
 }

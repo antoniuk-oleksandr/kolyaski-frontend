@@ -6,9 +6,11 @@ import CartHoverMenuOrderConfirmationButton
     from "@/common-components/Header/components/CartHoverMenuOrderConfirmationButton";
 import CartHoverMenuCartButton from "@/common-components/Header/components/CartHoverMenuCartButton";
 import {Dispatch, SetStateAction} from "react";
+import {ProductData} from "@/types/ProductData";
+import {CartItem} from "@/types/CartItem";
 
 type CartHoverMenuConclusionProps = {
-    cart: CartState,
+    cartItems: CartItem[],
     setIsShown: Dispatch<SetStateAction<boolean>>,
 }
 

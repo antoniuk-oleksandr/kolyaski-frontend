@@ -2,24 +2,26 @@ import CartHoverMenuTotalPriceLayout from "./CartHoverMenuTotalPriceLayout";
 import {NumberFormatter} from "@mantine/core";
 import {CartState} from "@/types/CartState";
 import {calcTotalCartPrice} from "@/common-components/Header/helpers";
+import {ProductData} from "@/types/ProductData";
+import {CartItem} from "@/types/CartItem";
 
 type CartHoverMenuTotalPriceProps = {
-    cart: CartState,
+    cartItems: CartItem[],
 }
 
 const CartHoverMenuTotalPrice = (props: CartHoverMenuTotalPriceProps) => {
-    const {cart} = props;
-    const totalPrice = calcTotalCartPrice(cart.products);
+    const {cartItems} = props;
+    const totalPrice = calcTotalCartPrice(cartItems);
 
     return (
         <CartHoverMenuTotalPriceLayout>
-                <span className={"w-16"}>Разом:</span>
-                <NumberFormatter
-                    className={"text-neutral-400"}
-                    value={totalPrice}
-                    thousandSeparator={","}
-                    suffix={" грн."}
-                />
+            <span className={"w-16"}>Разом:</span>
+            <NumberFormatter
+                className={"text-neutral-400"}
+                value={totalPrice}
+                thousandSeparator={","}
+                suffix={" грн."}
+            />
         </CartHoverMenuTotalPriceLayout>
     )
 }

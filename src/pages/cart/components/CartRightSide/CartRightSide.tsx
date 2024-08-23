@@ -9,12 +9,12 @@ import {useRouter} from "next/router";
 import {CartItem} from "@/types/CartItem";
 
 type CartRightSideProps = {
-    products: CartItem[],
+    cartItems: CartItem[],
 }
 
 const CartRightSide = (props: CartRightSideProps) => {
-    const {products} = props;
-    const totalCartPrice = calcTotalCartPrice(products);
+    const {cartItems} = props;
+    const totalCartPrice = calcTotalCartPrice(cartItems);
     const router = useRouter();
 
     return (

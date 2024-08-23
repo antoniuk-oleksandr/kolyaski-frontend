@@ -20,7 +20,7 @@ const HomeCenterRightSide = (props: HomeCenterRightSideProps) => {
                 thirdLineTextStyle={"text-sm phone:text-xl"}
                 imageSrc={"/images/home-center-right.jpg"}
                 buyButtonStyles={"bg-secondary hover:bg-white hover:text-neutral-600"}
-                link={"/product?type=стільчики+для+годування&sortType=за+полулярністю"}
+                link={"/catalog?type=заколисуючі центри"}
             />
             <HomeRightSideLists {...props}/>
         </HomeCenterRightSideLayout>

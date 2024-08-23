@@ -16,7 +16,7 @@ const PaymentMethodsLeftSide = () => {
                 thirdLineTextStyle={"text-sm phone:text-xl"}
                 imageSrc={"/images/payment-methods1.jpg"}
                 buyButtonStyles={"bg-secondary hover:bg-white hover:text-neutral-600"}
-                link={"/product?type=стільчики+для+годування&sortType=за+полулярністю"}
+                link={"/catalog?type=стільчики+для+годування"}
             />
         </PaymentMethodsLeftSideLayout>
     )

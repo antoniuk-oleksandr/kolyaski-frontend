@@ -23,7 +23,7 @@ const ProductsLeftSide = (props: ProductsLeftSideProps) => {
                 secondLineTextStyle={"text-lg font-semibold uppercase phone:text-3xl"}
                 imageSrc={"/images/products1.jpg"}
                 buyButtonStyles={"bg-secondary hover:bg-white hover:text-neutral-600"}
-                link={"/product?sortType=за+полулярністю"}
+                link={"/catalog"}
             />
         </ProductsLeftSideLayout>
     )

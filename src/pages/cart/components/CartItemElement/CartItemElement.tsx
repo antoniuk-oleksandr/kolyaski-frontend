@@ -6,7 +6,6 @@ import {NumberFormatter} from "@mantine/core";
 import {handleCartItemRemoveButtonClick} from "@/common-components/Header/handlers";
 import {useDispatch} from "react-redux";
 import {FaTrash} from "react-icons/fa6";
-import {useRouter} from "next/router";
 import CartItemName from "@/pages/cart/components/CartItemName";
 
 type CartItemElementProps = CartItem & {

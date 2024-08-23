@@ -41,6 +41,7 @@ export const checkoutFormScheme = z.object({
     })),
     name: z.string().min(1, "Ім'я є обов'язковим"),
     surname: z.string().min(1, "Прізвище є обов'язковим"),
-    phoneNumber: z.number().int().min(100000000, "Номер телефона є обов'язковим")
-        .max(999999999999, "Номер телефона не може бути таким довгим"),
+    phoneNumber: z.any().refine((value) => !isNaN(value), {message: "Номер телефона є обов'язковим"})
+        .refine((value) => value.toString().length > 8, {message: "Номер телефона не може бути таким коротким"})
+    .refine((value) => value.toString().length < 13, {message: "Номер телефона не може бути таким довгим"}),
 });

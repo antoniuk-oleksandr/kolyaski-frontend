@@ -5,13 +5,13 @@ import {calcTotalCartPrice} from "@/common-components/Header/helpers";
 import {CartItem} from "@/types/CartItem";
 
 type CheckoutBillTopLineProps = {
-    products: CartItem[],
+    cartItems: CartItem[],
 }
 
 const CheckoutBillTopLine = (props: CheckoutBillTopLineProps) => {
-    const {products} = props;
-    const totalCartQuantity = calcTotalCartQuantity(products);
-    const totalCartPrice = calcTotalCartPrice(products);
+    const {cartItems} = props;
+    const totalCartQuantity = calcTotalCartQuantity(cartItems);
+    const totalCartPrice = calcTotalCartPrice(cartItems);
     const wordEnding = getCartQuantityWordEnding(totalCartQuantity);
 
     return (

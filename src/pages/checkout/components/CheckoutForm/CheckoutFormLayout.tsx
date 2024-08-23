@@ -10,16 +10,18 @@ import {Dispatch, SetStateAction} from "react";
 import {useDispatch} from "react-redux";
 
 type CheckoutFormProps = LayoutProps & {
-    products: CartItem[],
+    cartItems: CartItem[],
     setIsOrderCompleted: Dispatch<SetStateAction<boolean>>,
     setIsOrderRequestSending: Dispatch<SetStateAction<boolean>>,
 };
 
 const CheckoutFormLayout = (props: CheckoutFormProps) => {
-    const {children, products, setIsOrderCompleted, setIsOrderRequestSending} = props;
+    const {children, cartItems, setIsOrderCompleted, setIsOrderRequestSending} = props;
     const methods = useForm({resolver: zodResolver(checkoutFormScheme)});
     const dispatch = useDispatch();
-    useCheckoutForm(methods, products);
+    useCheckoutForm(methods, cartItems);
+
+    console.log(methods.formState.errors)
 
     return (
         <FormProvider {...methods}>

@@ -4,13 +4,13 @@ import {calcTotalCartPrice} from "@/common-components/Header/helpers";
 import {CartItem} from "@/types/CartItem";
 
 type CheckoutBillGrandTotalProps = {
-    products: CartItem[],
+    cartItems: CartItem[],
     deliveryPrice: number,
 }
 
 const CheckoutBillGrandTotal = (props: CheckoutBillGrandTotalProps) => {
-    const {products, deliveryPrice} = props;
-    const totalCartPrice = calcTotalCartPrice(products);
+    const {cartItems, deliveryPrice} = props;
+    const totalCartPrice = calcTotalCartPrice(cartItems);
 
     return (
         <CheckoutBillGrandTotalLayout>

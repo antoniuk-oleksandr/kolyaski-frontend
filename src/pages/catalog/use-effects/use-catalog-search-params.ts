@@ -13,6 +13,7 @@ export const useCatalogSearchParams = (
 ) => {
     useEffect(() => {
         if (!router.isReady) return;
+        dispatch(setCatalogData({products: null, type: null, subType: null, value: null}));
 
         const getParams = async () => {
             const {sortType, page} = router.query;
@@ -21,9 +22,7 @@ export const useCatalogSearchParams = (
                 await router.push(makeCatalogUrl(params));
             } else {
                 const params = {...(router.query as unknown as CatalogSlice)};
-                console.log("params", params);
                 const response = await getSearchRequest(params);
-                console.log("response", response);
                 dispatch(setCatalogData({...params, ...response}));
             }
         }

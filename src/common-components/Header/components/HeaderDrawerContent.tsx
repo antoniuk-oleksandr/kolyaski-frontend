@@ -2,7 +2,7 @@ import {Drawer} from "@mantine/core";
 import {headerNavbarItemList} from "./HeaderNavbarItemList"
 import {Key} from "react";
 import HeaderNavbarItem from "@/common-components/Header/components/HeaderNavbarItem/HeaderNavbarItem";
-import {useCurrentPage} from "@/common-components/Header/use-current-page";
+import {useCurrentPage} from "@/common-components/Header/use-effects/use-current-page";
 
 type HeaderDrawerContentProps = {
     opened: boolean,

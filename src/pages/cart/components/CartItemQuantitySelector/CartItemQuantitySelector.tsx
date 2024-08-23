@@ -18,12 +18,12 @@ const CartItemQuantitySelector = (props: CartItemQuantitySelectorProps) => {
     return (
         <CartItemQuantitySelectorLayout>
             <CartItemQuantityButton
-                clickAction={() => changeQuantity(id,-1 + quantity, dispatch)}
+                clickAction={() => changeQuantity(id, -1 + quantity, dispatch)}
                 icon={<FaMinus/>}
             />
             <p className={"w-14 h-full rounded-md grid place-items-center ring-1 ring-neutral-200"}>{quantity}</p>
             <CartItemQuantityButton
-                clickAction={() => changeQuantity(id,1 + quantity, dispatch)}
+                clickAction={() => changeQuantity(id, 1 + quantity, dispatch)}
                 icon={<FaPlus/>}
             />
         </CartItemQuantitySelectorLayout>

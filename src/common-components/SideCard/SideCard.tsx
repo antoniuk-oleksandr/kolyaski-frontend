@@ -24,13 +24,12 @@ const SideCard = (props: SideCardProps) => {
 
     return (
         <SideCardLayout {...props}>
-            <Image
-                priority
+            <img
                 className={`size-full ${aspect  ? aspect : 'aspect-4x3'} rounded-md object-cover object-center`}
                 width={300}
                 height={200}
                 src={imageSrc}
-                alt={'img'}
+                alt="img"
             />
             <div className={"p-6"}>
                 <SideCardFirstLine {...props}/>

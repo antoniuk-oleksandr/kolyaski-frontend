@@ -11,6 +11,7 @@ type ProductBuyContainerProps = {
 
 const ProductBuyContainer = (props: ProductBuyContainerProps) => {
     const {product} = props;
+    const {quantity} = product;
     const {cart} = useSelector((state: any) => state);
     const {inCart} = useProductBuyButton(cart, product);
 
@@ -18,7 +19,7 @@ const ProductBuyContainer = (props: ProductBuyContainerProps) => {
     return (
         <ProductBuyContainerLayout {...props}>
             <ProductBuyInput/>
-            <ProductInfoBuyButton inCart={inCart}/>
+            <ProductInfoBuyButton notAvailable={quantity === 0} inCart={inCart}/>
         </ProductBuyContainerLayout>
     )
 }

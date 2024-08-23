@@ -10,9 +10,10 @@ export const getProductsBreadcrumbsItems = (
     const items: BreadcrumbsItemType[] = [];
     const {type, subType} = catalogSlice;
 
-    if (!type || !subType) return items;
-
+    if (!type) return items;
     items.push({name: type, link: `/catalog?type=${type}`});
+
+    if(!subType) return items;
     items.push({
         name: subType,
         link: `/catalog${items.length === 0 ? '?' : '&'}subType=${subType}`,

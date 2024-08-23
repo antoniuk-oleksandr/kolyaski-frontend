@@ -1,6 +1,5 @@
 import ProductsRightSideLayout from "./ProductsRightSideLayout";
 import Breadcrumbs from "@/common-components/Breadcrumbs/Breadcrumbs";
-import {BreadcrumbsItemType} from "@/types/BreadcrumbsItemType";
 import ProductsTitle from "../ProductsTitle";
 import {getProductsBreadcrumbsItems} from "../../helpers";
 import CatalogProductsData from "@/pages/catalog/components/CatalogProductsData/CatalogProductsData";
@@ -12,10 +11,9 @@ type ProductsRightSideProps = {
 
 const ProductsRightSide = (props: ProductsRightSideProps) => {
     const {catalogSlice} = props;
-
-    const breadcrumbsItems: BreadcrumbsItemType[] = [
+    const breadcrumbsItems = [
         {name: 'Головна', link: '/'},
-        {name: 'Магазин', link: '/catalog?page=1'},
+        {name: 'Магазин', link: '/catalog'},
         ...getProductsBreadcrumbsItems(catalogSlice)
     ]
 

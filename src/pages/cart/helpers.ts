@@ -2,6 +2,7 @@ import {setCartProductQuantity} from "@/redux/cart-slice";
 import {changeCartProductQuantityInLocalStorage} from "@/utils/local-storage-utils";
 import {UnknownAction} from "redux";
 import {Dispatch} from "react";
+import {CartItem} from "@/types/CartItem";
 
 export const changeQuantity = (
     id: number,

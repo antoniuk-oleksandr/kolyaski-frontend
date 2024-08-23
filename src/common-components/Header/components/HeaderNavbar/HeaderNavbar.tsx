@@ -1,6 +1,6 @@
 import HeaderNavbarLayout from "./HeaderNavbarLayout";
 import HeaderNavbarItem from "@/common-components/Header/components/HeaderNavbarItem/HeaderNavbarItem";
-import {useCurrentPage} from "@/common-components/Header/use-current-page";
+import {useCurrentPage} from "@/common-components/Header/use-effects/use-current-page";
 import {headerNavbarItemList} from "../HeaderNavbarItemList";
 import {Key} from "react";
 

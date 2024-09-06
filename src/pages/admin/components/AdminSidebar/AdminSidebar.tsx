@@ -1,6 +1,6 @@
 import AdminSidebarLayout from "./AdminSidebarLayout";
 import AdminSidebarItem from "@/pages/admin/components/AdminSidebarItem/AdminSidebarItem";
-import {adminSidebarItems} from "./admin-sidebar-items";
+import { items } from "@/utils/admin-sidebar-items";
 import {useAdminPage} from "@/pages/admin/use-admin-page";
 
 type AdminSidebarProps = {
@@ -14,7 +14,7 @@ const AdminSidebar = (props: AdminSidebarProps) => {
     if(hide) return null;
     return (
         <AdminSidebarLayout>
-            {adminSidebarItems.map((item, index) => (
+            {items.map((item, index) => (
                 <AdminSidebarItem isSelected={page === item.link} item={item} key={index}/>
             ))}
         </AdminSidebarLayout>

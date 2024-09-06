@@ -1,6 +1,7 @@
 import {NumberFormatter} from "@mantine/core";
 import OrderStatusElement from "@/pages/admin/orders/components/OrderStatusElement/OrderStatusElement";
 import {OrderType} from "@/types/OrderType";
+import { useRouter } from 'next/router';
 import {useSelector} from "react-redux";
 import {ReduxState} from "@/types/ReduxState";
 import router from "next/router";
@@ -14,6 +15,8 @@ const OrdersTableBody = (props: OrdersTableBodyProps) => {
     const {orders, tableCellStyles} = props;
     const {page, value, sortBy, sortOrder} = useSelector((state: ReduxState) => state.ordersState);
 
+    const router = useRouter();
+
     return (
         <div>
             {orders.map((item, index) => (
@@ -21,7 +24,7 @@ const OrdersTableBody = (props: OrdersTableBodyProps) => {
                     onClick={() => router.push(`/admin/orders/${item.id}?page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}${value === "" ? "" : `&value=${value}`}`)}
                     className={"last:rounded-b-md grid odd:bg-gray-50 grid-cols-ordersColumns hover:shadow hover:bg-comments cursor-pointer duration-200 ease-out"}
                     key={index}>
-                    <div className={`${tableCellStyles} 
+                    <div className={`${tableCellStyles}
                     ${index === orders.length - 1 ? 'rounded-bl-md' : ''} pl-6`}
                     >{item.id}</div>
                     <div className={`${tableCellStyles}`}>{item.date}</div>

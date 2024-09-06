@@ -3,7 +3,7 @@ import {IoMenu} from "react-icons/io5";
 import {Drawer} from "@mantine/core";
 import React from "react";
 import {useDisclosure, useViewportSize} from "@mantine/hooks";
-import {adminSidebarItems} from "@/pages/admin/components/AdminSidebar/admin-sidebar-items";
+import { items } from "@/utils/admin-sidebar-items";
 import AdminSidebarItem from "@/pages/admin/components/AdminSidebarItem/AdminSidebarItem";
 import {useAdminPage} from "@/pages/admin/use-admin-page";
 
@@ -25,7 +25,7 @@ const AdminDrawer = () => {
                             <Drawer.Title className={""}>Навігація</Drawer.Title>
                             <Drawer.CloseButton className={"!outline-none"}/>
                         </div>
-                        {adminSidebarItems.map((item, index) => (
+                        {items.map((item, index) => (
                             <AdminSidebarItem
                                 clickAction={close}
                                 isSelected={page === item.link}

@@ -10,7 +10,7 @@ const WishlistRightSide = () => {
                 thirdLineText={'З перших днів життя'}
                 imageSrc={'/images/wishlist-side-card.jpg'}
                 bgColor={'bg-primary'}
-                link={'/product?sortType=за+полулярністю'}
+                link={'/catalog'}
                 firstLineTextStyle={"text-[22px] phone:text-4xl uppercase font-semibold"}
                 secondLineTextStyle={"text-lg font-semibold uppercase phone:text-3xl"}
                 thirdLineTextStyle={"text-sm phone:text-xl"}

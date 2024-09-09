@@ -35,7 +35,7 @@ export const getPageTitle = (router: NextRouter) => {
 }
 
 export const getHost = () => {
-    return "localhost:8080";
+    return "167.172.104.57:8080";
 }
 
 export const setNotification = (text: string, success: boolean) => {

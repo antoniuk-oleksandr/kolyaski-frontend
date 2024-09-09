@@ -56,9 +56,10 @@ export const handleDeleteCommentButtonClick = async (
     idToRemove: number,
     tokenInfo: TokenInfo,
     commentType: CommentType,
+    router: NextRouter,
 ) => {
     dispatch(setCommentDeleteRequestSending(true));
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     const token = tokenInfo.access.token;
     const status = await deleteCommentRequest(token, idToRemove);
     dispatch(removeComment({idToRemove, commentType}));
@@ -73,9 +74,10 @@ export const handleChangeReadTypeButtonClick = async (
     changeValue: boolean,
     tokenInfo: TokenInfo,
     commentType: CommentType,
+    router: NextRouter,
 ) => {
     dispatch(setCommentDeleteRequestSending(true));
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     const token = tokenInfo.access.token;
     await patchCommentsRequest(token, idToChange, changeValue);
     dispatch(changeCommentReadType({idToChange, commentType}));
@@ -92,6 +94,7 @@ export const markAllComments = async (
     markAsRead: boolean,
     dispatch: Dispatch<UnknownAction>,
     tokenInfo: TokenInfo,
+    router: NextRouter,
 ) => {
     const {unreadComments, readComments} = commentState;
     if (!unreadComments || !readComments) return;
@@ -104,10 +107,11 @@ export const markAllComments = async (
         return item.isSelected ? [...acc, item.id] : acc;
     }, []);
 
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
+    const token = tokenInfo.access.token;
     await Promise.all(ids.map(async (id) => {
-        await tryToRefreshToken(tokenInfo, dispatch);
-        const token = tokenInfo.access.token;
+        // await tryToRefreshToken(tokenInfo, dispatch, router);
+        // const token = tokenInfo.access.token;
         await patchCommentsRequest(token, id, !markAsRead);
     }));
 

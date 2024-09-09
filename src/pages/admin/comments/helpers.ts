@@ -31,11 +31,12 @@ export const getComments = async (
     dispatch: Dispatch<UnknownAction>,
     page: number,
     value: string,
+    router: NextRouter,
 ) => {
 
     if (tokenInfo === null || tokenInfo === undefined) return null;
 
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     let data = await getCommentsRequest(tokenInfo.access.token, value, page);
     if(data.status === 404) data.comments = [];
     if (!data.comments) clearTokenInfo(dispatch);

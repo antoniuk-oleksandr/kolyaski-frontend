@@ -25,7 +25,7 @@ export const useCommentById = (
             if (data.value === null || data.page === null) return;
             dispatch(setCommentsSearchData({...data}));
 
-            await tryToRefreshToken(tokenInfo, dispatch);
+            await tryToRefreshToken(tokenInfo, dispatch, router);
             const response = await patchCommentsRequest(tokenInfo.access.token, id, false);
             setComment(response);
         }

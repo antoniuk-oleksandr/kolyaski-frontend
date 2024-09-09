@@ -8,13 +8,15 @@ import AdminLoader from "@/pages/admin/components/AdminLoader";
 import {useDispatch, useSelector} from "react-redux";
 import {ScrollArea} from "@mantine/core";
 import {useViewportSize} from "@mantine/hooks";
+import { useRouter } from "next/router";
 
 const AdminPanelLayout = (props: LayoutProps) => {
     const {children} = props;
     const {tokenInfo} = useSelector((state: any) => state.token);
     const dispatch = useDispatch();
     const {height} = useViewportSize();
-    useTokenInfo(dispatch);
+    const router = useRouter();
+    useTokenInfo(dispatch, router);
 
     if (tokenInfo === undefined) return <AdminLoader/>
     return (

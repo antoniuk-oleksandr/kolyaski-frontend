@@ -21,7 +21,7 @@ export const useAdminProductById = (
             const {id, page} = params;
             if (id === null || page === null) return;
 
-            await tryToRefreshToken(tokenInfo, dispatch);
+            await tryToRefreshToken(tokenInfo, dispatch, router);
             const response = await getProductByIdRequest(id as number);
             dispatch(setAdminProductsData({
                 productById: response.product,

@@ -6,11 +6,13 @@ import {useDispatch, useSelector} from "react-redux";
 import {TokenInfo} from "@/types/TokenInfo";
 import AdminLoader from "@/pages/admin/components/AdminLoader";
 import AdminElementLayout from "@/pages/admin/components/AdminElementLayout";
+import { useRouter } from "next/router";
 
 const AdminPage = () => {
     const {tokenInfo} = useSelector((state: any) => state.token) as { tokenInfo: TokenInfo | null };
     const dispatch = useDispatch();
-    const {sales} = useSales(tokenInfo, dispatch);
+    const router = useRouter();
+    const {sales} = useSales(tokenInfo, dispatch, router);
 
     if (!sales) return <AdminLoader/>;
     return (

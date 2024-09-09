@@ -23,7 +23,7 @@ export const useAllComments = (
             const data = await getAdminPageParams(router, "/admin/comments?page=1");
             if (data.value === null || data.page === null) return;
             dispatch(setCommentsSearchData({...data}));
-            await getComments(tokenInfo, dispatch, data.page, data.value);
+            await getComments(tokenInfo, dispatch, data.page, data.value, router);
         }
 
         getData();
@@ -36,7 +36,7 @@ export const useAllComments = (
 
             const getData = async () => {
                 if (!page || value === null) return;
-                await getComments(tokenInfo, dispatch, page, value);
+                await getComments(tokenInfo, dispatch, page, value, router);
             }
 
             getData();

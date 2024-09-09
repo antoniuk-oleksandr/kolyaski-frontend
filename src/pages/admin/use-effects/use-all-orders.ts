@@ -22,7 +22,7 @@ export const useAllOrders = (
             let {value, page, sortOrder, sortBy} = params;
             if (!page || !sortBy || !sortOrder) return;
 
-            await tryToRefreshToken(tokenInfo, dispatch);
+            await tryToRefreshToken(tokenInfo, dispatch, router);
             const response = await getAllOrdersRequest(tokenInfo.access.token, page, value, sortBy, sortOrder);
             let orders = [];
             if(response.status === 200){

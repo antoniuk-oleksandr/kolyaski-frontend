@@ -7,6 +7,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {TokenInfo} from "@/types/TokenInfo";
 import {CommentType} from "@/types/CommentType";
 import {useViewportSize} from "@mantine/hooks";
+import { useRouter } from "next/router";
 
 type CommentElementHoverItemsProps = {
     commentHovered: boolean,
@@ -24,6 +25,7 @@ const CommentElementHoverItems = (props: CommentElementHoverItemsProps) => {
     const dispatch = useDispatch();
     const {width} = useViewportSize();
     const isMobile = width < 960;
+    const router = useRouter();
 
     if(isMobile) return null;
     return (
@@ -34,7 +36,7 @@ const CommentElementHoverItems = (props: CommentElementHoverItemsProps) => {
                         lightOverlay={true}
                         isSelected={isSelected}
                         isDisabled={deleteRequestSending as boolean}
-                        action={() => handleDeleteCommentButtonClick(dispatch, id, tokenInfo, commentType)}
+                        action={() => handleDeleteCommentButtonClick(dispatch, id, tokenInfo, commentType, router)}
                         icon={<FaTrash/>}
                     />
                 </div>
@@ -45,7 +47,7 @@ const CommentElementHoverItems = (props: CommentElementHoverItemsProps) => {
                         lightOverlay={true}
                         isSelected={isSelected}
                         isDisabled={changeReadTypeRequestSending as boolean}
-                        action={() => handleChangeReadTypeButtonClick(dispatch, id, !isUnread, tokenInfo, commentType)}
+                        action={() => handleChangeReadTypeButtonClick(dispatch, id, !isUnread, tokenInfo, commentType, router)}
                         icon={isUnread ? <FaEnvelopeOpen/> : <FaEnvelope/>}
                     />
                 </div>

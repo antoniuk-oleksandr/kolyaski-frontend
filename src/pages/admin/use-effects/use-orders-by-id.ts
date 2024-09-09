@@ -23,7 +23,7 @@ export const useOrderById = (tokenInfo: TokenInfo, dispatch: Dispatch<UnknownAct
             let {value, page, sortOrder, sortBy} = params;
             if (!page || !sortBy || !sortOrder || !id) return;
 
-            await tryToRefreshToken(tokenInfo, dispatch);
+            await tryToRefreshToken(tokenInfo, dispatch, router);
             const orderById = await getOrderByIdRequest(tokenInfo.access.token, page, value, sortBy, sortOrder, id);
             initialOrderData.current = orderById;
             dispatch(setCartProducts(orderById.products));

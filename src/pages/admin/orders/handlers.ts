@@ -37,7 +37,7 @@ export const handleOrderByIdFormSubmit = async (
     setSending(true);
     const differentData = compareOrderDataPieces(initialOrderDataRef, data);
 
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     const status = await patchOrderRequest(id, differentData, tokenInfo.access.token);
 
     await router.push("/admin/orders");

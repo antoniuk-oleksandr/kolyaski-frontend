@@ -17,7 +17,7 @@ export const handleNewProductButtonSubmit = async (
     dispatch: Dispatch<UnknownAction>,
 ) => {
     setSending(true);
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     let copy = {...data};
     // @ts-ignore
     copy.subType = copy.subType === "" ? null : copy.subType;
@@ -36,7 +36,7 @@ export const handleNewProductModalSubmit = async (
     dispatch: Dispatch<UnknownAction>,
 ) => {
     setSending(true);
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     let status = 200;
     await Promise.all(files.map(async (file) => {
         const oneRequestStatus = await postProductFileRequest(file, tokenInfo.access.token);

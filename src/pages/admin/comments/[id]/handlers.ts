@@ -26,7 +26,7 @@ export const handleDeleteCommentElementButtonClick = async (
     setIsDisabled: Dispatch<SetStateAction<boolean>>,
 ) => {
     setIsDisabled(true);
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     const token = tokenInfo.access.token;
     const status = await deleteCommentRequest(token, idToRemove);
     commentsSignal.value = 0;
@@ -44,7 +44,7 @@ export const handleChangeReadTypeToUnreadButtonClick = async (
     setIsDisabled: Dispatch<SetStateAction<boolean>>,
 ) => {
     setIsDisabled(true);
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     const token = tokenInfo.access.token;
     await patchCommentsRequest(token, idToChange, true);
     commentsSignal.value = 0;

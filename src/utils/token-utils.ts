@@ -4,18 +4,25 @@ import {Dispatch} from "react";
 import {setTokenInfo} from "@/redux/token-slice";
 import {postTokenRefreshRequest} from "@/api/post-token-refresh-request";
 import {clearTokenInfoFromCookies, setTokenInfoToCookies} from "@/utils/cookie-utils";
+import {NextRouter} from "next/router";
 
 export const tryToRefreshToken = async (
     tokenInfo: TokenInfo,
-    dispatch: Dispatch<UnknownAction>
+    dispatch: Dispatch<UnknownAction>,
+    router: NextRouter,
 ) => {
-    // if (tokenInfo.access.expiration > Date.now()) return;
+    if (tokenInfo.access.expiration > Date.now()) return;
 
     let tokenCopy = {...tokenInfo};
     tokenCopy.access = await postTokenRefreshRequest(tokenCopy.refresh.token);
-    if (!tokenCopy.access) clearTokenInfoFromCookies();
-    else setTokenInfoToCookies(tokenCopy);
-    dispatch(setTokenInfo(tokenCopy));
+    if (!tokenCopy.access) {
+        clearTokenInfoFromCookies();
+        dispatch(setTokenInfo(null));
+        await router.push("/admin");
+    } else {
+        dispatch(setTokenInfo(tokenCopy));
+        setTokenInfoToCookies(tokenCopy);
+    }
 }
 
 export const clearTokenInfo = (dispatch: Dispatch<UnknownAction>) => {

@@ -40,7 +40,7 @@ export const handleEditProductProduct = async (
     const differentData = checkEditProductData(initialData, data);
     if(differentData.subType === "Жоден") differentData.subType = null;
     if (Object.keys(differentData).length === 0) return;
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     const status = await patchProductRequest(id, differentData, tokenInfo.access.token);
     await router.push(makeProductsLink(adminProductsState, undefined, "all"));
     setSending(false);
@@ -57,7 +57,7 @@ export const handleDeleteProductButtonClick = async (
     adminProductsState: AdminProductsState,
 ) => {
     setSending(true);
-    await tryToRefreshToken(tokenInfo, dispatch);
+    await tryToRefreshToken(tokenInfo, dispatch, router);
     const status = await deleteProductRequest(id, tokenInfo.access.token);
     await router.push(makeProductsLink(adminProductsState, undefined, "all"));
     setSending(false);

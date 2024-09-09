@@ -29,7 +29,7 @@ export const useAllAdminProducts = (
             } = await getAdminProductsPageParams(router, `/admin/products?page=1&sortType=${SortEnum.POPULARITY}`);
             if (page === null) return;
 
-            await tryToRefreshToken(tokenInfo, dispatch);
+            await tryToRefreshToken(tokenInfo, dispatch, router);
             const response = await getSearchRequest({value, page, type, sortType} as CatalogSlice);
             dispatch(setAdminProductsData({
                 products: response.products,

@@ -10,8 +10,11 @@ export const tryToRefreshToken = async (
     tokenInfo: TokenInfo,
     dispatch: Dispatch<UnknownAction>,
     router: NextRouter,
+    ignoreExpiration?: boolean,
 ) => {
-    if (tokenInfo.access.expiration > Date.now()) return;
+    if(!ignoreExpiration) {
+        if (tokenInfo.access.expiration > Date.now()) return;
+    }
 
     let tokenCopy = {...tokenInfo};
     tokenCopy.access = await postTokenRefreshRequest(tokenCopy.refresh.token);

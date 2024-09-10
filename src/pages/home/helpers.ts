@@ -1,4 +1,5 @@
 import {RestrictedProduct} from "@/types/RestrictedProduct";
+import {HomeData} from "@/types/HomeData";
 
 export const getPopularProductListTitle = (value: string) => {
     switch (value) {
@@ -27,4 +28,16 @@ export const makeChunksOfHomeLists = (array: RestrictedProduct[], chunkSize: num
         result.push(array.slice(i, i + chunkSize));
     }
     return result;
+}
+
+export const removeProductsWithNullImages = (
+    homeData: HomeData
+) : HomeData => {
+    const copy = {...homeData};
+
+    for (let copyKey in copy) {
+        copy[copyKey as keyof HomeData] = copy[copyKey as keyof HomeData]
+            .filter((item) => item.image !== null && item.image !== "");
+    }
+    return copy;
 }

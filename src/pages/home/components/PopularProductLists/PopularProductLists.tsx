@@ -15,6 +15,7 @@ const PopularProductLists = (props: PopularProductListsProps) => {
     const {homeData} = props;
     const homeDataKeys = Object.keys(homeData);
 
+    if(Object.values(homeData).some((value: any) => !value)) return null;
     return (
         <>
             {homeDataKeys.slice(0, homeDataKeys.length - 2).map((key, index) => (

@@ -13,7 +13,7 @@ export const useTokenInfo = (
         const getData = async () => {
             let tokenInfoFromCookies = getTokenInfoFromCookies();
             if (!tokenInfoFromCookies) dispatch(setTokenInfo(null));
-            else await tryToRefreshToken(tokenInfoFromCookies, dispatch, router);
+            else await tryToRefreshToken(tokenInfoFromCookies, dispatch, router, true);
         }
 
         getData();

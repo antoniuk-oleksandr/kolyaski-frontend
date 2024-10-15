@@ -27,7 +27,7 @@ const CommentElementLayout = (props: CommentElementLayoutProps) => {
             className={`hover:shadow py-2.5 border-t border-neutral-200 relative font-semibold text-sm grid items-center grid-cols-commentElement gap-x-3 px-6 cursor-pointer ease-out duration-200 
             phone:grid-rows-2 phone:grid-cols-commentPhoneElement
             ${isLast && 'border-b'} 
-            ${isSelected ? 'bg-blue-500 text-white border-blue-600' : 'hover:bg-comments'}`}>
+            ${isSelected ? 'bg-primary text-white border-primaryHover' : 'hover:bg-comments'}`}>
             {children}
         </div>
     )

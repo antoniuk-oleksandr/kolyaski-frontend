@@ -18,7 +18,7 @@ const CommentElementHoverItemsLayout = (props: CommentElementHoverItemsLayoutPro
                     exit={{opacity: 0}}
                     transition={{duration: 0.2}}
                     className={`absolute right-6 flex items-center justify-end gap-x-5 text-base w-18 
-                    ${isSelected ? 'bg-blue-500' : 'bg-comments'}`}>
+                    ${isSelected ? 'bg-primary' : 'bg-comments'}`}>
                     {children}
                 </motion.div>
             )}

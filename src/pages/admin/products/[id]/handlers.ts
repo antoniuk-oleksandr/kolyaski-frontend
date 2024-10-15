@@ -1,4 +1,4 @@
-import {Dispatch, SetStateAction} from "react";
+import React, {Dispatch, SetStateAction} from "react";
 import {ProductData} from "@/types/ProductData";
 import {checkEditProductData} from "./helpers";
 import {TokenInfo} from "@/types/TokenInfo";
@@ -10,8 +10,10 @@ import {editProductConfirmModalSignal} from "@/pages/admin/signals/edit-product-
 import {patchProductRequest} from "@/api/patch-product-request";
 import {setNotification} from "@/utils/utils";
 import {makeProductsLink} from "@/pages/admin/products/helpers";
-import { AdminProductsState } from "@/types/AdminProductsState";
+import {AdminProductsState} from "@/types/AdminProductsState";
 import {setAdminProductsData} from "@/redux/admin-products-slice";
+import {toggleCategorySelection} from "@/pages/admin/products/new/helpers";
+import {CategoryCheckboxMap} from "@/types/CategoryCheckboxMap";
 
 export const handleProductImageDrop = (
     files: File[],
@@ -38,7 +40,7 @@ export const handleEditProductProduct = async (
 ) => {
     setSending(true);
     const differentData = checkEditProductData(initialData, data);
-    if(differentData.subType === "Жоден") differentData.subType = null;
+    if (differentData.subType === "Жоден") differentData.subType = null;
     if (Object.keys(differentData).length === 0) return;
     await tryToRefreshToken(tokenInfo, dispatch, router);
     const status = await patchProductRequest(id, differentData, tokenInfo.access.token);

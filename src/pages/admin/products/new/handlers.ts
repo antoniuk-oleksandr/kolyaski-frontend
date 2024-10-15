@@ -1,13 +1,20 @@
-import {Dispatch, SetStateAction} from "react";
+import React, {Dispatch, SetStateAction} from "react";
 import {NextRouter} from "next/router";
 import {ProductData} from "@/types/ProductData";
 import {TokenInfo} from "@/types/TokenInfo";
 import {tryToRefreshToken} from "@/utils/token-utils";
 import {UnknownAction} from "redux";
 import {postProductRequest} from "@/api/post-product-request";
-import {postProductFileRequest} from "@/api/post-product-file-request";
 import {setNotification} from "@/utils/utils";
-import {incrementNewProductModalSignal} from "@/pages/admin/products/new/helpers";
+import {
+    getCategoryCheckboxMap,
+    incrementNewProductModalSignal, makeCategoryMap,
+    selectCategory,
+    toggleCategorySelection
+} from "@/pages/admin/products/new/helpers";
+import {postCategoriesRequest} from "@/api/post-categories-request";
+import {CategoryCheckboxMap} from "@/types/CategoryCheckboxMap";
+import {postProductFileByCategoriesRequest} from "@/api/post-product-file-by-categories-request";
 
 export const handleNewProductButtonSubmit = async (
     setSending: Dispatch<SetStateAction<boolean>>,
@@ -28,23 +35,70 @@ export const handleNewProductButtonSubmit = async (
     else setNotification(`Виникла помилка під час створення товару`, false);
 }
 
-export const handleNewProductModalSubmit = async (
-    setSending: Dispatch<SetStateAction<boolean>>,
+export const handleProductFileUpload = async (
     router: NextRouter,
     files: File[],
     tokenInfo: TokenInfo,
     dispatch: Dispatch<UnknownAction>,
+    setSelectedCategories: Dispatch<SetStateAction<CategoryCheckboxMap | null>>,
+    setValue: (name: string, value: any) => void,
+    defaultOption: string,
 ) => {
-    setSending(true);
     await tryToRefreshToken(tokenInfo, dispatch, router);
-    let status = 200;
-    await Promise.all(files.map(async (file) => {
-        const oneRequestStatus = await postProductFileRequest(file, tokenInfo.access.token);
-        if (oneRequestStatus !== 200) status = oneRequestStatus;
-    }));
-    setSending(false);
+    const {data, status} = await postCategoriesRequest(tokenInfo.access.token, files[0]);
+
+    if (status !== 200) {
+        setNotification(`Виникла помилка під час завантаження файлу`, false);
+        incrementNewProductModalSignal("close");
+    } else {
+        setValue("file", files[0]);
+        setSelectedCategories(getCategoryCheckboxMap(data.categories, defaultOption));
+    }
+}
+
+export const handleNewProductModalSubmit = async (
+    router: NextRouter,
+    file: File | null,
+    tokenInfo: TokenInfo,
+    dispatch: Dispatch<UnknownAction>,
+    setSelectedCategories: Dispatch<SetStateAction<CategoryCheckboxMap | null>>,
+    selectedCategories: CategoryCheckboxMap | null,
+) => {
+    if (!selectedCategories || !file) return;
+
+    const categories = makeCategoryMap(selectedCategories);
+
+    await tryToRefreshToken(tokenInfo, dispatch, router);
+    const {status} = await postProductFileByCategoriesRequest(
+        tokenInfo.access.token, file, categories
+    );
+
+    console.log(status);
+
+    if (status === 200) setNotification(`Товари було успішно завантажено`, true);
+    else setNotification(`Виникла помилка під час завантаження файлу`, false);
+
+    setSelectedCategories(null);
     incrementNewProductModalSignal("close");
     await router.push("/admin/products");
-    if (status === 200) setNotification(`Файл${files.length === 1 ? '' : 'и'} було успішно завантажено`, true);
-    else setNotification(`Виникла помилка під час завантаження файл${files.length === 1 ? 'у' : 'ів'}`, false);
+}
+
+export const handleCategoryClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    mapKey: string,
+    setSelectedCategories: Dispatch<SetStateAction<CategoryCheckboxMap | null>>,
+) => {
+    if (e.target !== e.currentTarget || e.target ! instanceof HTMLParagraphElement) return;
+    toggleCategorySelection(mapKey, setSelectedCategories)
+}
+
+export const handleCategorySelect = (
+    value: string | null,
+    mapKey: string,
+    setSelectedCategories: Dispatch<SetStateAction<CategoryCheckboxMap | null>>,
+) => {
+    if (!value) return
+
+    selectCategory(mapKey, value, setSelectedCategories)
+    toggleCategorySelection(mapKey, setSelectedCategories, true)
 }

@@ -11,9 +11,9 @@ const NewProductModalSubmitButton = (props: NewProductModalSubmitButtonProps) =>
         <Button
             type={"submit"}
             sending={sending}
-            className={"w-36 h-11"}
+            className={"w-fit h-11"}
         >
-            Додати файл
+            Отримати категорії
         </Button>
     )
 }

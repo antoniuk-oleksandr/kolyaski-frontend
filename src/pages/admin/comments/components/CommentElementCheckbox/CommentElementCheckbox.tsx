@@ -17,7 +17,6 @@ type CommentElementCheckboxProps = {
 
 const CommentElementCheckbox = (props: CommentElementCheckboxProps) => {
     const {isSelected, id, commentType} = props;
-    const [isHovered, setIsHovered] = useState(false);
     const dispatch = useDispatch();
     const commentsState = useSelector((state: ReduxState) => state.comments);
 
@@ -27,8 +26,6 @@ const CommentElementCheckbox = (props: CommentElementCheckboxProps) => {
                 className={`duration-200 ease-out hover:ring-[8px] ring-neutral-200 hover:bg-neutral-200 rounded-full 
                 ${isSelected ? 'hover:bg-opacity-30 ring-opacity-30' : ''}`}
                 onChange={() => null}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
                 variant="outline"
                 styles={getCommentCheckboxStyles(isSelected)}
                 checked={isSelected}

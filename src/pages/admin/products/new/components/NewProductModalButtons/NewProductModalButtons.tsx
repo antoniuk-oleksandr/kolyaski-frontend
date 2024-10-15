@@ -4,15 +4,9 @@ import NewProductModalSubmitButton from "@/pages/admin/products/new/components/N
 import {Dispatch, SetStateAction} from "react";
 import {useFormContext} from "react-hook-form";
 
-type NewProductModalButtonsProps = {
-    sending: boolean,
-    setSending: Dispatch<SetStateAction<boolean>>,
-}
-
-const NewProductModalButtons = (props: NewProductModalButtonsProps) => {
+const NewProductModalButtons = () => {
     return (
         <NewProductModalButtonsLayout>
-            <NewProductModalSubmitButton {...props}/>
             <NewProductModalCancelButton/>
         </NewProductModalButtonsLayout>
     )

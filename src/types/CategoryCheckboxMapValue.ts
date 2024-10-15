@@ -1,0 +1,1 @@
+export type CategoryCheckboxMapValue = { isSelected: boolean, option: string }

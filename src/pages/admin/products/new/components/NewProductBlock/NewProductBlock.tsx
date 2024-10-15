@@ -28,10 +28,7 @@ const NewProductBlock = (props: NewProductBlockProps) => {
                 <EditProductImagesBlock images={[]}/>
                 <NewProductButtons {...props} sending={sending}/>
             </NewProductBlockLayout>
-            <NewProductModal
-                sending={sending}
-                setSending={setSending}
-                prevModalValue={prevModalValue}
+            <NewProductModal prevModalValue={prevModalValue}
             />
         </>
     )

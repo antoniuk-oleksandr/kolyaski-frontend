@@ -3,7 +3,12 @@ const nextConfig = {
   reactStrictMode: false,
   pageExtensions: ['tsx'],
   images: {
-    domains: ['images.prom.ua'],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
   eslint: {
     ignoreDuringBuilds: true,

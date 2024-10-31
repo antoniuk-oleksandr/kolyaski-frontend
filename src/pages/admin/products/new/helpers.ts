@@ -89,10 +89,6 @@ export const selectAllCategories = (
 export const getSelectOptions = () => {
     return sidebarItemListText.reduce((acc, item) => {
         acc.push(item.text);
-        if (item.subItems) {
-            const subArr = item.subItems.map((subItem) => subItem.text);
-            acc.push(...subArr);
-        }
         return acc;
     }, [] as string[])
 }

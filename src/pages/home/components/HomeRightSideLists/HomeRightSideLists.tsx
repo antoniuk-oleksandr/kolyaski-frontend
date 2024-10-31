@@ -12,7 +12,6 @@ const HomeRightSideLists = (props: HomeRightSideListsProps) => {
 
     return (
         <HomeRightSideListsLayout>
-            {/*{homeDataKeys.map((homeDataKey, index) => (*/}
             {homeDataKeys.slice(homeDataKeys.length - 2, homeDataKeys.length).map((homeDataKey, index) => (
                 <HomeRightSideListElement homeDataKey={homeDataKey} {...props} key={index}/>
             ))}

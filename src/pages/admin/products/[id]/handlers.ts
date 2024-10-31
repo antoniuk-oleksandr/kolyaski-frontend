@@ -40,7 +40,7 @@ export const handleEditProductProduct = async (
 ) => {
     setSending(true);
     const differentData = checkEditProductData(initialData, data);
-    if (differentData.subType === "Жоден") differentData.subType = null;
+    if (differentData.subType === "Жодна") differentData.subType = null;
     if (Object.keys(differentData).length === 0) return;
     await tryToRefreshToken(tokenInfo, dispatch, router);
     const status = await patchProductRequest(id, differentData, tokenInfo.access.token);

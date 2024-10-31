@@ -9,7 +9,7 @@ const HomeRightSideProduct = (props: HomeRightSideProductProps) => {
     const {name, price} = props;
 
     return (
-        <HomeRightSideProductLayout>
+        <HomeRightSideProductLayout {...props}>
             <HomeRightSideProductImage {...props}/>
             <p className={"line-clamp-2 h-10"}>{name}</p>
             <NumberFormatter

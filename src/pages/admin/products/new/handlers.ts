@@ -73,8 +73,6 @@ export const handleNewProductModalSubmit = async (
         tokenInfo.access.token, file, categories
     );
 
-    console.log(status);
-
     if (status === 200) setNotification(`Товари було успішно завантажено`, true);
     else setNotification(`Виникла помилка під час завантаження файлу`, false);
 

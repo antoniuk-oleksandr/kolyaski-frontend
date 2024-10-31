@@ -20,6 +20,7 @@ const RelatedProductList = (props: RelatedProductListProps) => {
     const chunks = makeChunksOfHomeLists(relatedProducts, isMobile ? 2 : 4);
     const [carouselIndex, setCarouselIndex] = useState(0);
 
+    if(!relatedProducts.length) return null;
     return (
         <RelatedProductListLayout>
             <h2 className={"text-2xl text-primary mb-3"}>Супутні товари та аксесуари</h2>
